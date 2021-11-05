@@ -1,6 +1,9 @@
 .Logo-wrapper {
     max-width: 200px;
+    text-decoration: none;
 }
 .Logo-wrapper img {
     width: 100%;
+    text-decoration: none;
 }
+

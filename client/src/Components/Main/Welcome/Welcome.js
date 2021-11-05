@@ -4,14 +4,14 @@ import "./Welcome.css"
 class Welcome extends Component {
     constructor(props) {
         super(props)
+        console.log("here");
     }
-
     render() {
         return (
             <section className='welcome-section'>
                 <article className="welcome-image-wrapper">
                     <span>
-                        <img  alt='Welcome image'/>
+                        <img alt='Welcome image' />
                     </span>
                 </article>
 
