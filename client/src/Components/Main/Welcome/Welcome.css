@@ -1,0 +1,20 @@
+.welcome-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.welcome-image-wrapper {
+    flex-basis: 50%;
+}
+.welcome-image-wrapper span {
+    max-width: 30%;
+}
+.welcome-image-wrapper span>img {
+    width: 100%;
+}
+
+.welcome-ul-wrapper {
+    display: flex;
+    flex-direction: column;
+}

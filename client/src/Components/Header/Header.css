@@ -1,0 +1,10 @@
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0px auto;
+  border-bottom-left-radius: 8px;
+  border: 1px solid black;
+  border-top: none;
+  border-bottom-right-radius: 8px;
+}
