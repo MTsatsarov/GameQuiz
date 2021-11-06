@@ -7,4 +7,18 @@
   border: 1px solid black;
   border-top: none;
   border-bottom-right-radius: 8px;
+  align-items: center;
+  
+}
+.Header-nav {
+  font-size: 30px;
+}
+.Header-nav li {
+  padding-left: 10px;
+
+}
+
+.Header-nav a {
+  text-decoration: none;
+  
 }

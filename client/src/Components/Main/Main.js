@@ -17,14 +17,12 @@ class Main extends Component {
         return (
             <main className="main">
                 <Routes>
-                    <Route path="/" exact element={<Welcome/>} />
+                    <Route path="/" exat element={<Welcome/>} />
                     <Route path="/all" exact element={<All />} />
                     <Route path="/create" exact element={<Create />} />
                     <Route path="/register" exact element={<Register />} />
                     <Route path="/Login" exact element={<Login/>} />
                     <Route path="/my-quizzes" exact element={<MyQuizzes/>} />
-
-
                 </Routes>
             </main >
         )

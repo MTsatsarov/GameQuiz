@@ -1,18 +1,17 @@
 import { Component } from "react";
+import welcomePic from "../../../static/QuizSysWelcomePicture.png"
+import { Link } from "react-router-dom";
 import "./Welcome.css"
 
 class Welcome extends Component {
     constructor(props) {
         super(props)
-        console.log("here");
     }
     render() {
         return (
             <section className='welcome-section'>
                 <article className="welcome-image-wrapper">
-                    <span>
-                        <img alt='Welcome image' />
-                    </span>
+                    <img src={welcomePic} alt='Welcome image' />
                 </article>
 
                 <article className="welcome-ul-wrapper">
@@ -21,7 +20,7 @@ class Welcome extends Component {
                         <li>You like to play games ?</li>
                         <li>You are in the right place !</li>
                     </ul>
-                    <button>Get Started</button>
+                    <Link  to="/all">Get Started</Link>
                 </article>
             </section>
         );

@@ -1,0 +1,27 @@
+.site-footer {
+  width: 80%;
+  margin: 0px auto;
+  font-size: 25px;
+  border: 1px solid black;
+  color: white;
+  background: darkblue;
+}
+
+.site-footer ul {
+  display: flex;
+  padding-left: 0px;
+  flex-basis: 100%;
+  align-self: center;
+}
+
+.site-footer li {
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 40px;
+  text-align: center;
+}
+.site-footer a {
+  text-decoration: none;
+  text-align: center;
+}
