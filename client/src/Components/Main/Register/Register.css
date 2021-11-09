@@ -1,0 +1,39 @@
+.register-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  max-width: 30%;
+  padding: 10;
+  border: 2px black ridge;
+  border-radius: 8px;
+  background: linear-gradient(45deg, blue, green);
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.register-form label {
+  margin: 10px 10px;
+}
+.register-form input {
+  margin: 10px 10px;
+  height: 30px;
+  border-radius: 4px;
+}
+.register-form button {
+        height: 30px;
+        width: 60%;
+        border: none;
+        align-self: center;
+        margin: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        background: repeating-linear-gradient(45deg, green, transparent 100px);
+        border: 2px black ridge;
+        cursor: pointer;
+    }
+
+    .validation-errors {
+        color: red;
+    }
