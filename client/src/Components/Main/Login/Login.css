@@ -1,0 +1,40 @@
+
+.login-wrapper {
+  margin: 10px auto;
+  padding: 10px;
+  border: 2px ridge black;
+  max-width: 40%;
+  background: linear-gradient(45deg, blue, green);
+  color: white;
+}
+.login-wrapper h3 {
+  padding-left: 10px;
+  font-size: 30px;
+}
+.login-wrapper form {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.login-wrapper input {
+  margin: 10px;
+  height: 30px;
+}
+
+.login-wrapper button {
+  height: 30px;
+  width: 60%;
+  border: none;
+  align-self: center;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: repeating-linear-gradient(45deg, green, transparent 100px);
+  border: 2px black ridge;
+  cursor: pointer;
+}
+.validation-errors {
+  color: red;
+  font-size: 30px;
+}
