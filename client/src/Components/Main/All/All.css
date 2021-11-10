@@ -1,0 +1,32 @@
+.quiz-wrapper {
+  display: flex;
+  border: 2px solid black;
+  flex-direction: column;
+  margin: 20px auto;
+  padding: 5px;
+  max-width: 50%;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  box-shadow: 0px 0px 28px 6px rgba(0,0,0,0.55);
+}
+.votes-box {
+  display: flex;
+  align-items: center;
+  max-width: 70%;
+}
+.votes-box p {
+  margin-right: 20px;
+}
+
+.quiz-wrapper button {
+    width: 200px;
+    align-self: center;
+    height: 40px;
+    border: none;
+    background-color: brown;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}

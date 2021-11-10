@@ -1,0 +1,15 @@
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\obj\Debug\net5.0\GameQuiz.Data.csproj.AssemblyReference.cache
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\obj\Debug\net5.0\GameQuiz.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\obj\Debug\net5.0\GameQuiz.Data.AssemblyInfoInputs.cache
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\obj\Debug\net5.0\GameQuiz.Data.AssemblyInfo.cs
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\obj\Debug\net5.0\GameQuiz.Data.csproj.CoreCompileInputs.cache
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\bin\Debug\net5.0\GameQuiz.Data.deps.json
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\bin\Debug\net5.0\GameQuiz.Data.runtimeconfig.json
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\bin\Debug\net5.0\GameQuiz.Data.runtimeconfig.dev.json
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\bin\Debug\net5.0\GameQuiz.Data.dll
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\bin\Debug\net5.0\ref\GameQuiz.Data.dll
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\bin\Debug\net5.0\GameQuiz.Data.pdb
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\obj\Debug\net5.0\GameQuiz.Data.dll
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\obj\Debug\net5.0\ref\GameQuiz.Data.dll
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\obj\Debug\net5.0\GameQuiz.Data.pdb
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Data\obj\Debug\net5.0\GameQuiz.Data.genruntimeconfig.cache
