@@ -1,35 +1,28 @@
 import "./All.css"
-const All = () => {
-    return (
-        <section>
-     <article className='quiz-wrapper'>
-         <h3>Quiz 1</h3>
-         <p>Taken: 30 times</p>
-         <span className='votes-box'>
-         <p>Average grade: 4.5/5</p>
-         <p>459 votes</p>
-         </span>
-         <button>Play</button>
-     </article>
-     <article className='quiz-wrapper'>
-         <h3>Quiz 2</h3>
-         <p>Taken: 982 times</p>
-         <span className='votes-box'>
-         <p>Average grade: 5/5</p>
-         <p>1029 votes</p>
-         </span>
-         <button>Play</button>
-     </article>
-     <article className='quiz-wrapper'>
-         <h3>Quiz 1</h3>
-         <p>Taken: 30 times</p>
-         <span className='votes-box'>
-         <p>Average grade: 4.5/5</p>
-         <p>459 votes</p>
-         </span>
-         <button>Play</button>
-     </article>
-     </section>
-    )
+import * as quiz from "../../../services/QuizServices/QuizServices"
+import Quiz from "../Quiz/Quiz";
+import { Component } from "react";
+
+class All extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            quizzes: []
+        }
+    }
+componentDidMount() {
+    var allQuizzes = quiz.GetAll();
+    this.setState({quizzes:allQuizzes})
+
+}
+    render() {
+        return (
+            <section>
+                {this.quizzes.map(x => (<Quiz key={x.id} name={x.name} taken={x.taken} grade={x.taken} votesCount={x.votesCount} />))}
+
+            </section >
+        )
+    }
 }
 export default All
