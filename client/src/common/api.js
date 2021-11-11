@@ -1,5 +1,9 @@
 async function request(url, options) {
+    console.log('options');
+    console.log(options);
+
     const response = await fetch(url, options);
+    
     if (!response.ok) {
         console.log(response)
         const error = await response.json();

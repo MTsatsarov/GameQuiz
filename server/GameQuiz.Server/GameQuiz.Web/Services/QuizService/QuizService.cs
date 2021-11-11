@@ -1,6 +1,6 @@
 ﻿using GameQuiz.Web.Data;
+using GameQuiz.Web.InputModels;
 using GameQuiz.Web.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +15,13 @@ namespace GameQuiz.Web.Services.QuizService
         {
             this.db = db;
         }
+
+        public Task Create(QuizInputModel quiz)
+        {
+            var q = quiz;
+            return null;
+        }
+
         public IEnumerable<QuizViewModel> GetAll()
         {
             var quizzesToReturn = new List<QuizViewModel>();

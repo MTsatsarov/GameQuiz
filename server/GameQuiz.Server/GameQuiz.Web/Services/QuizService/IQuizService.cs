@@ -1,4 +1,5 @@
-﻿using GameQuiz.Web.ViewModels;
+﻿using GameQuiz.Web.InputModels;
+using GameQuiz.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace GameQuiz.Web.Services.QuizService
     {
         IEnumerable<QuizViewModel> GetAll();
         PlayQuizViewModel GetQuiz(string id);
+
+         Task Create(QuizInputModel quiz);
     }
 }

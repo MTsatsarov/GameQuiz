@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GameQuiz.Web.InputModels;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GameQuiz.Web.Controllers
 {
     [ApiController]
+    [EnableCors]
     [Route("api/[controller]")]
     public class QuizController : ControllerBase
     {
@@ -11,6 +14,14 @@ namespace GameQuiz.Web.Controllers
         public string All()
         {
             return "hello";
+        }
+
+        [HttpPost]
+        [Route("/quiz/create")]
+        public IActionResult Create(QuizInputModel quiz)
+        {
+            var q = quiz;
+            return this.Ok();
         }
 
         [HttpGet]
