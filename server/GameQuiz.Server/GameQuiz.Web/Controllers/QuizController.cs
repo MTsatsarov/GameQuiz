@@ -1,11 +1,12 @@
 ﻿using GameQuiz.Web.InputModels;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GameQuiz.Web.Controllers
 {
     [ApiController]
-    [EnableCors]
     [Route("api/[controller]")]
     public class QuizController : ControllerBase
     {
@@ -18,17 +19,20 @@ namespace GameQuiz.Web.Controllers
 
         [HttpPost]
         [Route("/quiz/create")]
-        public IActionResult Create(QuizInputModel quiz)
+        public JsonResult Create(string quiz)
         {
-            var q = quiz;
-            return this.Ok();
+            var result = new QuizInputModel()
+            {
+                Name = "Gosho"
+            };
+            return new JsonResult(result);
         }
 
         [HttpGet]
         [Route("/quiz/{id}")]
-        public string GetById([FromRoute] string id)
+        public JsonResult GetById([FromRoute] string id)
         {
-            return $"{id}";
+            return new JsonResult(id);
         }
     }
 }

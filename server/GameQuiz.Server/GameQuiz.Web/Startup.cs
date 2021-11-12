@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
+
 namespace GameQuiz.Web
 {
     public class Startup
@@ -22,13 +24,24 @@ namespace GameQuiz.Web
         {
             services.AddDbContext<ApplicationDbContext>(
         options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
-            services.AddControllers();
+
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options =>
+                 options.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+
+            });
+            services.AddControllers().AddNewtonsoftJson(options=> options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson(option=>option.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
             services.AddTransient<IQuizService, QuizService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(options=> options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -37,8 +50,8 @@ namespace GameQuiz.Web
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors();
-            app.UseAuthorization();
+          
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

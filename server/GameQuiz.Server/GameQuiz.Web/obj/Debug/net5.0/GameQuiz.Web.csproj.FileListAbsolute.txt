@@ -58,3 +58,6 @@ D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\M
 D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Humanizer.dll
 D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\MyGithubRepos\GameQuiz\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

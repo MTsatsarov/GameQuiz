@@ -30,17 +30,20 @@ class Create extends Component {
   async  handleSubmit(e) {
         e.preventDefault();
         let questions = [...document.querySelectorAll('article')];
-        var obj = [];
-        questions.map(x => obj.push(
-            { 
-                name: x.children[0].value, 
-                // firstAnswer: x.children[1].value, 
-                // secondAnswer: x.children[2].value, 
-                // thirdAnswer: x.children[3].value, 
-                // fourthAnswer: x.children[4].value,
-                // correctAnswer:x.children[6].value
-         }))
-         await quizService.Create(obj)
+        var obj = {'name':'sap'};
+        // questions.map(x => obj.push(
+        //     { 
+        //         'name': x.name
+        //         // name: x.children[0].value, 
+        //         // firstAnswer: x.children[1].value, 
+        //         // secondAnswer: x.children[2].value, 
+        //         // thirdAnswer: x.children[3].value, 
+        //         // fourthAnswer: x.children[4].value,
+        //         // correctAnswer:x.children[6].value
+        //  }))
+      
+        var result =  await quizService.Create(obj)
+        console.log(result);
     }
     render() {
         return (

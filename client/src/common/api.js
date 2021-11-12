@@ -1,17 +1,15 @@
 async function request(url, options) {
-    console.log('options');
-    console.log(options);
-
+console.log(options);
     const response = await fetch(url, options);
     
     if (!response.ok) {
-        console.log(response)
-        const error = await response.json();
+        const error = await response.json();  
         alert(error.message);
         throw new Error(error.message);
     }
     try {
         const data = await response.json();
+        console.log(data);
         return data;
     }
     catch (err) {
@@ -29,10 +27,10 @@ export function createOptions(method = 'get', data) {
     };
 
     if (data) {
-
         result.headers['Content-Type'] = 'application/json';
-        result.headers['Accept'] = "application/json; odata=verbose"
+        result.headers['Accept'] = "*/*";
         result.body = JSON.stringify(data);
+        console.log(data);
     }
     return result;
 }

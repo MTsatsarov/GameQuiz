@@ -5,6 +5,5 @@ export async function GetAll() {
 }
 
 export async function Create(quiz) {
-    console.log(api.host);
 return await api.post(api.host+"/quiz/create",quiz)
 }
