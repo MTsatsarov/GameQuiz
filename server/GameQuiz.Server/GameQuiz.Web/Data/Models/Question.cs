@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GameQuiz.Web.Data.Models
 {
@@ -6,8 +7,10 @@ namespace GameQuiz.Web.Data.Models
     {
         public Question()
         {
+            this.Answers = new HashSet<Answer>();
         }
 
+        [Key]
         public int Id { get; set; }
         public string Title { get; set; }
 

@@ -33,7 +33,7 @@ namespace GameQuiz.Web
                     .AllowAnyHeader());
 
             });
-            services.AddControllers().AddNewtonsoftJson(options=> options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson(option=>option.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.AddTransient<IQuizService, QuizService>();
         }
@@ -41,7 +41,7 @@ namespace GameQuiz.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors(options=> options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -50,7 +50,7 @@ namespace GameQuiz.Web
             app.UseHttpsRedirection();
 
             app.UseRouting();
-          
+
             //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

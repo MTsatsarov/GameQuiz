@@ -15,6 +15,9 @@ namespace GameQuiz.Web.Data
         public DbSet<Answer> Answers { get; set; }
 
 
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(("name=ConnectionStrings:DefaultConnection"), builder => builder.EnableRetryOnFailure());
+        }
     }
 }

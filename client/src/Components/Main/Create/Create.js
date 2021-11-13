@@ -1,20 +1,20 @@
 import { Component } from "react/cjs/react.production.min"
 import Question from "./Question/Question";
 import *  as quizService from "../../../services/QuizServices/QuizServices"
+import "./Create.css"
 
 class Create extends Component {
-    constructor() {
+    constructor(props) {
         super()
         this.state = {
             quiz: {
-                name: 'Gosho',
-                questions: []
+                name: '',
             },
             questions: []
         }
     }
     createQuestion() {
-        var newQuestion = <Question />
+        var newQuestion = <Question/>
         this.setState({ questions: this.state.questions.concat([newQuestion]) });
     };
     handleChange(e) {
@@ -27,34 +27,41 @@ class Create extends Component {
             }
         )
     }
-  async  handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
         let questions = [...document.querySelectorAll('article')];
-        var obj = {'name':'sap'};
-        // questions.map(x => obj.push(
-        //     { 
-        //         'name': x.name
-        //         // name: x.children[0].value, 
-        //         // firstAnswer: x.children[1].value, 
-        //         // secondAnswer: x.children[2].value, 
-        //         // thirdAnswer: x.children[3].value, 
-        //         // fourthAnswer: x.children[4].value,
-        //         // correctAnswer:x.children[6].value
-        //  }))
-      
-        var result =  await quizService.Create(obj)
+        var obj = {
+            quizTitle: '',
+            questionsArray: [],
+        }
+        obj.quizTitle = e.target.children[0].value;
+        questions.map(x => obj.questionsArray.push(
+            {
+
+                name: x.children[0].value,
+                firstAnswer: x.children[1].value,
+                secondAnswer: x.children[2].value,
+                thirdAnswer: x.children[3].value,
+                fourthAnswer: x.children[4].value,
+                correctAnswer: x.children[6].value
+
+            }))
+
+        var result = await quizService.Create(obj)
         console.log(result);
     }
     render() {
         return (
             <section className='create-quiz-section' onSubmit={this.handleSubmit.bind(this)}>
                 <form>
-                    <input type='text' placeholder='Name' name='name' value={this.state.quiz.name} onChange={this.handleChange.bind(this)} />
+                    <input className='name-input' type='text' placeholder='Name' name='name' value={this.state.quiz.name} onChange={this.handleChange.bind(this)} />
                     <div id="dynamicInput">
-                        {this.state.questions.map(q => <Question key={q} />)}
+                        {this.state.questions.map((q,i) => <Question key={i} count={i+1} />)}
                     </div>
-                    <button type='button' onClick={this.createQuestion.bind(this)}>Add Question</button>
-                    <button type='submit'>Create</button>
+                    <span className='form-buttons'>
+                    <button id='addQuestion' type='button' onClick={this.createQuestion.bind(this)}>Add Question</button>
+                    <button id='create-quiz-btn' type='submit'>Create</button>
+                    </span>
                 </form>
             </section>
         )

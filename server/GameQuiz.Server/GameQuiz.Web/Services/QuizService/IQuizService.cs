@@ -12,6 +12,6 @@ namespace GameQuiz.Web.Services.QuizService
         IEnumerable<QuizViewModel> GetAll();
         PlayQuizViewModel GetQuiz(string id);
 
-         Task Create(QuizInputModel quiz);
+         void Create(QuizInputModel quiz);
     }
 }

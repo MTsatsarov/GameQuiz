@@ -1,20 +1,13 @@
-import { Component } from "react/cjs/react.production.min";
 import Answer from "../Answer/Answer"
-class Question extends Component
+import "./Question.css"
+const Question =(props) =>
 {
-    constructor() {
-        super()
-    }
-
-
-    render() {
         return(
-            <article className='question'>
-            <textarea type='textarea' />
+            <article className='question-create'>
+                <h2>Question: {props.count}</h2>
+            <textarea maxLength='150' type='textarea' placeholder="Please enter question Title" />
             <Answer/>
             </article>
         )
-    }
 }
-
 export default Question

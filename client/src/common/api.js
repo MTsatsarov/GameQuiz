@@ -1,7 +1,5 @@
 async function request(url, options) {
-console.log(options);
     const response = await fetch(url, options);
-    
     if (!response.ok) {
         const error = await response.json();  
         alert(error.message);
@@ -30,7 +28,6 @@ export function createOptions(method = 'get', data) {
         result.headers['Content-Type'] = 'application/json';
         result.headers['Accept'] = "*/*";
         result.body = JSON.stringify(data);
-        console.log(data);
     }
     return result;
 }

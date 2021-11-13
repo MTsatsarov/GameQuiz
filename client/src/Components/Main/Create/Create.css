@@ -1,0 +1,37 @@
+.create-quiz-section {
+    background: linear-gradient(45deg, rgb(0, 35, 189) , rgba(17, 255, 36, 0.7));
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-around;
+}
+.create-quiz-section form {
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid black;
+    flex-basis: 40%;
+    border-radius: 8px;
+}
+.name-input {
+    width: 30%;
+    margin: 20px;
+    text-align: center;
+    height: 20px;
+    border-radius: 4px;
+}
+.form-buttons {
+    display: flex;
+    margin: 0px auto;
+    justify-content: space-around;
+    width: 45%;
+}
+.form-buttons>button {
+    background: linear-gradient(45deg, rgb(0, 35, 189) , rgba(17, 255, 36, 0.7));
+    font-size: 15px;
+    font-weight: bold;
+    border:none;
+    width: 100px;
+    margin: 5px;
+    cursor: pointer;
+}
