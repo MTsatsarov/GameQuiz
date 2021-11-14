@@ -1,7 +1,7 @@
 
 const Quiz = (props) => {
 
-    return (
+    return (    
         <article className='quiz-wrapper'>
             <h3>{props.name}</h3>
             <p>Taken: {props.taken == 1 ? `${props.taken} time` : `${props.taken} times`}</p>

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameQuiz.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211112172323_CreateListOfQanAonCall")]
-    partial class CreateListOfQanAonCall
+    [Migration("20211114044927_DbSets")]
+    partial class DbSets
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

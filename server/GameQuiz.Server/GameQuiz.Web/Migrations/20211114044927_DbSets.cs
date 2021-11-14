@@ -2,7 +2,7 @@
 
 namespace GameQuiz.Web.Migrations
 {
-    public partial class FirstThreeTables : Migration
+    public partial class DbSets : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

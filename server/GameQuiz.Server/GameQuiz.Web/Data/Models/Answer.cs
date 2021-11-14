@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace GameQuiz.Web.Data.Models
+﻿namespace GameQuiz.Web.Data.Models
 {
     public class Answer
     {
@@ -9,7 +7,6 @@ namespace GameQuiz.Web.Data.Models
 
         }
 
-        [Key]
         public int Id { get; set; }
         public string Title { get; set; }
         public bool IsCorrect { get; set; }

@@ -6,8 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json.Serialization;
-
 namespace GameQuiz.Web
 {
     public class Startup
@@ -24,7 +22,6 @@ namespace GameQuiz.Web
         {
             services.AddDbContext<ApplicationDbContext>(
         options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
-
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options =>
@@ -33,8 +30,7 @@ namespace GameQuiz.Web
                     .AllowAnyHeader());
 
             });
-            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
-
+            services.AddControllers();
             services.AddTransient<IQuizService, QuizService>();
         }
 
@@ -51,12 +47,11 @@ namespace GameQuiz.Web
 
             app.UseRouting();
 
-            //app.UseAuthorization();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
