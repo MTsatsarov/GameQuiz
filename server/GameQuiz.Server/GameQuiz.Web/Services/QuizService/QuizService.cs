@@ -57,7 +57,6 @@ namespace GameQuiz.Web.Services.QuizService
                 question.Quiz = quizToInsert;
                 quizToInsert.Questions.Add(question);
                 this.db.Questions.Add(question);
-                this.db.SaveChanges();
 
             }
             this.db.Quizzes.Add(quizToInsert);

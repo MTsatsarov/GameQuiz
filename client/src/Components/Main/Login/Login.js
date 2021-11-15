@@ -1,13 +1,13 @@
 import { Component } from "react/cjs/react.production.min"
 import "./Login.css"
 class Login extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             errors: ''
         }
     }
-    
+
     LoginSubmitHandler = (e) => {
         this.setState({ errors: '' })
         e.preventDefault();
@@ -19,16 +19,17 @@ class Login extends Component {
     }
 
     render() {
-        return (
-            <div className='login-wrapper' >
-                <h3>Login</h3>
-                <form onSubmit={this.LoginSubmitHandler} >
-                    <span className='validation-errors'>{this.state.error}</span>
-                    <input type='text' name='userName' placeholder='Enter your username ...' />
-                    <input type='password' name="password" placeholder='Enter your password ...' />
-                    <button>Login</button>
-                </form>
-            </div >
+        console.log(this.props);
+        return (              
+        <div className='login-wrapper' >
+            <h3>Login</h3>
+            <form onSubmit={this.LoginSubmitHandler} >
+                <span className='validation-errors'>{this.state.error}</span>
+                <input type='text' name='userName' placeholder='Enter your username ...' />
+                <input type='password' name="password" placeholder='Enter your password ...' />
+                <button>Login</button>
+            </form>
+        </div >
         )
     }
 }

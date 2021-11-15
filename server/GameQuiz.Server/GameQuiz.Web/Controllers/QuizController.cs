@@ -26,7 +26,7 @@ namespace GameQuiz.Web.Controllers
 
         [HttpPost]
         [Route("/quiz/create")]
-        public IActionResult Create(QuizInputModel quiz)
+        public IActionResult Create([FromBody]QuizInputModel quiz)
         {
             this.quizService.Create(quiz);
             return new JsonResult(quiz);

@@ -10,9 +10,9 @@ namespace GameQuiz.Web.InputModels
     {
         public QuizInputModel()
         {
-            this.Questions = new List<QuestionInputModel>();
+            //this.Questions = new List<QuestionInputModel>();
         }
-        [JsonProperty("quizTitle")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("questionsArray")]

@@ -1,11 +1,11 @@
-import { Component } from "react/cjs/react.production.min"
+import { Component } from "react";
 import Question from "./Question/Question";
 import *  as quizService from "../../../services/QuizServices/QuizServices"
 import "./Create.css"
 
 class Create extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             quiz: {
                 name: '',
@@ -26,28 +26,30 @@ class Create extends Component {
     }
     async handleSubmit(e) {
         e.preventDefault();
-        let questions = [...document.querySelectorAll('article')];
+        let q = [...document.querySelectorAll('article')];
         var obj = {
-            quizTitle: '',
-            questionsArray: [],
+            name: '',
+             questions: [],
         }
-        obj.quizTitle = e.target.children[1].value;
-        questions.map(x => obj.questionsArray.push(
+        obj.name = e.target.children[1].value;
+        q.map(x => obj.questions.push(
             {
 
-                name: x.children[1].value,
+                title: x.children[1].value,
                 firstAnswer: x.children[3].value,
                 secondAnswer: x.children[5].value,
                 thirdAnswer: x.children[7].value,
                 fourthAnswer: x.children[9].value,
-                correctAnswer: x.children[11].value
+                correctIndex: x.children[11].value
 
             }))
-console.log(obj);
-        var result = await quizService.Create(obj)
+        await quizService.Create(obj)
+        this.history.push('/login')
     }
     render() {
+       console.log("A");
         return (
+            
             <section className='create-quiz-section' onSubmit={this.handleSubmit.bind(this)}>
                 <form>
                     <label className='quiz-name-label' htmlFor='QuizName'>Quiz name</label>
