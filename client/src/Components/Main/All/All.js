@@ -18,7 +18,7 @@ class All extends Component {
     render() {
         return (
             <section>
-                {this.state.quizzes.map(x => (<Quiz key={x.id} name={x.name} taken={x.taken ? x.taken : 0} grade={x.grade} votesCount={x.votesCount} creator ={x.creator ? x.creator :"Admin-GameQuiz@Gmail.com"}  />))}
+                {this.state.quizzes.map(x => (<Quiz key={x.id} id = {x.id} name={x.name} taken={x.taken ? x.taken : 0} grade={x.grade} votesCount={x.votesCount} creator ={x.creator ? x.creator :"Admin-GameQuiz@Gmail.com"}  />))}
             </section >
         )
     }

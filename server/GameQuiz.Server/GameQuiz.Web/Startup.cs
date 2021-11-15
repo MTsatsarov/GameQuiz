@@ -1,5 +1,6 @@
 using GameQuiz.Web.Data;
 using GameQuiz.Web.Services.QuizService;
+using GameQuiz.Web.Services.VotesService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,8 @@ namespace GameQuiz.Web
             });
             services.AddControllers();
             services.AddTransient<IQuizService, QuizService>();
+            services.AddTransient<IVotesService, VotesService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
