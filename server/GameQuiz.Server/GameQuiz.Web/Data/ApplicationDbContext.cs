@@ -13,7 +13,6 @@ namespace GameQuiz.Web.Data
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
-
-
+        public DbSet<Vote> Votes { get; set; }
     }
 }

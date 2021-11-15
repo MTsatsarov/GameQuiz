@@ -44,10 +44,9 @@ class Create extends Component {
 
             }))
         await quizService.Create(obj)
-        this.history.push('/login')
     }
     render() {
-       console.log("A");
+
         return (
             
             <section className='create-quiz-section' onSubmit={this.handleSubmit.bind(this)}>

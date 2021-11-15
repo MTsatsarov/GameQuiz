@@ -12,12 +12,15 @@ namespace GameQuiz.Web.Data.Models
         {
             this.Id = Guid.NewGuid().ToString();
             this.Questions = new HashSet<Question>();
+            this.Votes = new HashSet<Vote>();
         }
 
         [Key]
         public string Id { get; set; }
+        [Required]
+        [StringLength(50,MinimumLength =5)]
         public string Name { get; set; }
-
+        public ICollection<Vote> Votes { get; set; }
         public ICollection<Question> Questions { get; set; }
     }
 }
