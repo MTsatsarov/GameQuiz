@@ -11,16 +11,14 @@ class All extends Component {
             quizzes: []
         }
     }
-componentDidMount() {
-    var allQuizzes = quiz.GetAll();
-    this.setState({quizzes:allQuizzes})
-
-}
+   async componentDidMount() {
+        var allQuizzes = await quiz.GetAll();
+        this.setState({ quizzes: allQuizzes })
+    }
     render() {
         return (
             <section>
-                {this.quizzes.map(x => (<Quiz key={x.id} name={x.name} taken={x.taken} grade={x.taken} votesCount={x.votesCount} />))}
-
+                {this.state.quizzes.map(x => (<Quiz key={x.id} name={x.name} taken={x.taken ? x.taken : 0} grade={x.grade} votesCount={x.votesCount} creator ={x.creator ? x.creator :"Admin-GameQuiz@Gmail.com"}  />))}
             </section >
         )
     }

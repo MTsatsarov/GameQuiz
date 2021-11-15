@@ -1,5 +1,4 @@
 async function request(url, options) {
-    console.log(options);
     const response = await fetch(url, options);
     if (!response.ok) {
         const error = await response.json();  
@@ -8,7 +7,6 @@ async function request(url, options) {
     }
     try {
         const data = await response.json();
-
         return data;
     }
     catch (err) {

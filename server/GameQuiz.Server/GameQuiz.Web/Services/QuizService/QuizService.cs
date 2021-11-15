@@ -2,6 +2,8 @@
 using GameQuiz.Web.Data.Models;
 using GameQuiz.Web.InputModels;
 using GameQuiz.Web.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,7 +24,7 @@ namespace GameQuiz.Web.Services.QuizService
             var quizToInsert = new Quiz()
             {
                 Name = quiz.Name,
-                
+
             };
             foreach (var currQuestion in quiz.Questions)
             {
@@ -43,7 +45,7 @@ namespace GameQuiz.Web.Services.QuizService
                 var thirdAnswer = new Answer()
                 {
                     Title = currQuestion.ThirdAnswer,
-                    IsCorrect = currQuestion.CorrectIndex == 3? true : false,
+                    IsCorrect = currQuestion.CorrectIndex == 3 ? true : false,
                 };
                 var fourthAnswer = new Answer()
                 {
@@ -63,6 +65,7 @@ namespace GameQuiz.Web.Services.QuizService
             this.db.SaveChanges();
         }
 
+        [HttpGet]
         public IEnumerable<QuizViewModel> GetAll()
         {
             var quizzesToReturn = new List<QuizViewModel>();
@@ -72,8 +75,11 @@ namespace GameQuiz.Web.Services.QuizService
             {
                 var currQuiz = new QuizViewModel()
                 {
-                    Name=quiz.Name,
-                   
+                    Id = quiz.Id,
+                    Name = quiz.Name,
+                    VotesCount = quiz.Votes.Count(),
+                    Grade = quiz.Votes.Count() == 0 ? 0 : Math.Round(quiz.Votes.Average(x => x.Grade), 2),
+                    Taken = quiz.Taken,
                 };
                 quizzesToReturn.Add(currQuiz);
             }

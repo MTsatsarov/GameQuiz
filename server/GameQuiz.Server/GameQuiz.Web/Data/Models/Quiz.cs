@@ -20,6 +20,7 @@ namespace GameQuiz.Web.Data.Models
         [Required]
         [StringLength(50,MinimumLength =5)]
         public string Name { get; set; }
+        public int Taken { get; set; }
         public ICollection<Vote> Votes { get; set; }
         public ICollection<Question> Questions { get; set; }
     }
