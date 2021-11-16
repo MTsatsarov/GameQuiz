@@ -2,10 +2,6 @@ import { Component } from "react/cjs/react.production.min";
 import "./Answer.css"
 
 class Answer extends Component{
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return(
             <>

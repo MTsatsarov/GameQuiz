@@ -13,20 +13,19 @@ namespace GameQuiz.Web.Controllers
     [ApiController]
     public class VotesController : ControllerBase
     {
-        private readonly VotesService votesService;
+        private readonly IVotesService votesService;
 
-        public VotesController(VotesService votesService)
+        public VotesController(IVotesService votesService)
         {
             this.votesService = votesService;
         }
         // POST api/<VotesController>
         [HttpPost]
-        [Route("/Votes/Vote")]
-        public IActionResult Vote([FromBody] QuizVoteInputModel model)
+        [Route("vote/quiz")]
+        public  JsonResult Vote([FromBody] QuizVoteInputModel model)
         {
-            //TODO FIX BUG 500
             var result =  this.votesService.VoteForQuizAsync(model);
-            return new JsonResult(result) ;
+            return new JsonResult(result);
         }
 
     }

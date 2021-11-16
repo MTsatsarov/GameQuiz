@@ -4,9 +4,6 @@ import Navigation from "./Navigation/Navigation";
 import "./Header.css"
 
 class Header extends Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         return (

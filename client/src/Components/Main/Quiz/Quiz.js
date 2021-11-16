@@ -7,10 +7,11 @@ const Quiz = (props) => {
     async function voteClickHandler(voteGrade) {
         var id = props.id;
         var obj = {
-            quiz :`${id}`,
+            quiz: `${id}`,
             grade: voteGrade
         }
-        await voteService.Vote(obj);
+        var result = await voteService.Vote(obj);
+        props.voteCount = result
 
     }
     return (
