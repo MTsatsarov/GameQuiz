@@ -17,6 +17,7 @@ namespace GameQuiz.Web.Controllers
         {
             this.quizService = quizService;
         }
+
         [HttpGet]
         [Route("/quiz/all")]
         public JsonResult All()

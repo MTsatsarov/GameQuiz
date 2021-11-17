@@ -1,8 +1,13 @@
 import Star from "../../../shared/Star/Star"
 import * as voteService from "../../../services/VoteServices/VoteServices"
+import { useState} from "react"
 import "./Quiz.css"
 
 const Quiz = (props) => {
+    const [vote, setVote] = useState({
+        voteCount: props.votesCount,
+        grade: props.grade
+    })
 
     async function voteClickHandler(voteGrade) {
         var id = props.id;
@@ -11,15 +16,18 @@ const Quiz = (props) => {
             grade: voteGrade
         }
         var result = await voteService.Vote(obj);
-        props.voteCount = result
+        setVote(oldVote => ({
+            ...oldVote, voteCount: result.voteCount, grade: result.grade
+        }));
 
     }
+
     return (
         <article className='quiz-wrapper'>
             <h3>{props.name}</h3>
             <p className='quiz-taken'>Taken: {props.taken == 1 ? `${props.taken} time` : `${props.taken} times`}</p>
             <p className='quiz-creator'>Created by: {props.creator}</p>
-            <span>
+            <span ref={}>
                 <Star value={1} clickHandler={voteClickHandler} />
                 <Star value={2} clickHandler={voteClickHandler} />
                 <Star value={3} clickHandler={voteClickHandler} />
@@ -27,8 +35,8 @@ const Quiz = (props) => {
                 <Star value={5} clickHandler={voteClickHandler} />
             </span>
             <span className='votes-box'>
-                <p>Average grade: {props.grade.toString(2)}/5</p>
-                <p>{props.votesCount} votes</p>
+                <p>Average grade: {vote.grade}/5</p>
+                <p>{vote.voteCount} votes</p>
             </span>
             <button>Play</button>
         </article>

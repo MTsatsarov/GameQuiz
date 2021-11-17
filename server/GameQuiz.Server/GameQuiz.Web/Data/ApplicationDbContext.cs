@@ -14,5 +14,6 @@ namespace GameQuiz.Web.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<Vote> Votes { get; set; }
+
     }
 }

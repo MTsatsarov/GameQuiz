@@ -1,4 +1,5 @@
 ﻿using GameQuiz.Web.InputModels;
+using GameQuiz.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,6 @@ namespace GameQuiz.Web.Services.VotesService
 {
     public interface IVotesService
     {
-        public int VoteForQuizAsync(QuizVoteInputModel model);
+        public VoteQuizVIewModel VoteForQuizAsync(QuizVoteInputModel model);
     }
 }

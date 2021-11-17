@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Question from "./Question/Question";
+import CreateQuestion from "./Question/CreateQuestion";
 import *  as quizService from "../../../services/QuizServices/QuizServices"
 import "./Create.css"
 
@@ -14,7 +14,7 @@ class Create extends Component {
         }
     }
     createQuestion() {
-        var newQuestion = <Question />
+        var newQuestion = <CreateQuestion />
         this.setState({ questions: this.state.questions.concat([newQuestion]) });
     };
     handleChange(e) {
@@ -54,7 +54,7 @@ class Create extends Component {
                     <label className='quiz-name-label' htmlFor='QuizName'>Quiz name</label>
                     <input className='name-input' id='QuizName' type='text' placeholder='Name' name='name' value={this.state.quiz.name} onChange={this.handleChange.bind(this)} />
                     <div id="dynamicInput">
-                        {this.state.questions.map((q, i) => <Question key={i} count={i + 1} />)}
+                        {this.state.questions.map((q, i) => <CreateQuestion key={i} count={i + 1} />)}
                     </div>
                     <span className='form-buttons'>
                         <button id='addQuestion' type='button' onClick={this.createQuestion.bind(this)}>Add Question</button>

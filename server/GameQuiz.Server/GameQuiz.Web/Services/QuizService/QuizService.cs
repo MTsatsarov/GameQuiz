@@ -68,22 +68,15 @@ namespace GameQuiz.Web.Services.QuizService
         [HttpGet]
         public IEnumerable<QuizViewModel> GetAll()
         {
-            var quizzesToReturn = new List<QuizViewModel>();
-            var dbQuizzes = this.db.Quizzes.ToList();
-
-            foreach (var quiz in dbQuizzes)
+            var dbQuizzes = this.db.Quizzes.Select(x=> new QuizViewModel
             {
-                var currQuiz = new QuizViewModel()
-                {
-                    Id = quiz.Id,
-                    Name = quiz.Name,
-                    VotesCount = quiz.Votes.Count(),
-                    Grade = quiz.Votes.Count() == 0 ? 0 : Math.Round(quiz.Votes.Average(x => x.Grade), 2),
-                    Taken = quiz.Taken,
-                };
-                quizzesToReturn.Add(currQuiz);
-            }
-            return quizzesToReturn;
+                Id = x.Id,
+                Name = x.Name,
+                VotesCount = x.Votes.Count(),
+                Grade = x.Votes.Count() == 0 ? 0 : Math.Round(x.Votes.Average(x => x.Grade), 2),
+                Taken = x.Taken,
+            }).ToList();
+            return dbQuizzes;
         }
 
         public PlayQuizViewModel GetQuiz(string id)

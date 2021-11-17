@@ -1,7 +1,7 @@
 import { Component } from "react/cjs/react.production.min";
-import "./Answer.css"
+import "./CreateAnswer.css"
 
-class Answer extends Component{
+class CreateAnswer extends Component{
     render() {
         return(
             <>
@@ -20,4 +20,4 @@ class Answer extends Component{
     }
 }
 
-export default Answer
+export default CreateAnswer
