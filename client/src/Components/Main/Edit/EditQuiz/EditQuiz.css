@@ -1,0 +1,20 @@
+.editSection {
+    border: 2px solid black;
+    font-size: 25px;
+    text-align: center;
+}
+.editSection input {
+    font-size: 18px;
+}
+.editForm {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#editQuestion {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: 80%;
+}
