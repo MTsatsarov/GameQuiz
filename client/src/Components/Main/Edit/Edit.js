@@ -11,20 +11,22 @@ const Edit = () => {
     })
     useEffect(() => {
         async function GetQuiz() {
-            console.log("Mounted");
             var quiz = await GetById(params.id)
-            setQuiz({
+            setQuiz( prevState=> ({
                 name: quiz.name,
                 id: params.id,
-                questions: quiz.questions.map(x=>currQuiz.questions.push( {
-                    questionName:x.name,firstAnswer:x.firstAnswer,secondAnswer:x.secondAnswer,thirdAnswer:x.thirdAnswer,fourthAnswer:x.fourthAnswer,correctIndex:x.correctIndex
+                questions:quiz.questions.map(x => currQuiz.questions.concat({
+                    questionName: x.title, firstAnswer: x.firstAnswer, secondAnswer: x.secondAnswer, thirdAnswer: x.thirdAnswer, fourthAnswer: x.fourthAnswer, correctIndex: x.correctIndex
                 }))
-            })
+            }))
         }
         GetQuiz()
-    },[])
+        console.log(currQuiz.questions);
+    }, [])
     return (
-        <EditQuiz name={currQuiz.name} questions={currQuiz.questions} />
+        <>
+            <EditQuiz name={currQuiz.name} questionsArray ={currQuiz.questions}/>
+        </>
     )
 }
 

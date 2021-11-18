@@ -9,7 +9,7 @@ class Logo extends Component {
 
             <Link to='/'>
                 <span className='Logo-wrapper'>
-                    <img src={logo192} alt='Logo image' />
+                    <img src={logo192} alt='Logo-image' />
                 </span>
             </Link>
         )
