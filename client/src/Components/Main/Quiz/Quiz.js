@@ -1,7 +1,10 @@
 import Star from "../../../shared/Star/Star"
 import * as voteService from "../../../services/VoteServices/VoteServices"
-import { useState} from "react"
+import { useState } from "react"
 import "./Quiz.css"
+import { Link } from "react-router-dom"
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Quiz = (props) => {
     const [vote, setVote] = useState({
@@ -27,7 +30,7 @@ const Quiz = (props) => {
             <h3>{props.name}</h3>
             <p className='quiz-taken'>Taken: {props.taken == 1 ? `${props.taken} time` : `${props.taken} times`}</p>
             <p className='quiz-creator'>Created by: {props.creator}</p>
-            <span ref={}>
+            <span>
                 <Star value={1} clickHandler={voteClickHandler} />
                 <Star value={2} clickHandler={voteClickHandler} />
                 <Star value={3} clickHandler={voteClickHandler} />
@@ -37,6 +40,10 @@ const Quiz = (props) => {
             <span className='votes-box'>
                 <p>Average grade: {vote.grade}/5</p>
                 <p>{vote.voteCount} votes</p>
+            </span>
+            <span className='quiz-modify'>
+                <Link to={`/edit/${props.id}`} ><FontAwesomeIcon icon={faEdit}/>Edit</Link>
+                <button><FontAwesomeIcon icon={faTrash}/>Delete</button>
             </span>
             <button>Play</button>
         </article>

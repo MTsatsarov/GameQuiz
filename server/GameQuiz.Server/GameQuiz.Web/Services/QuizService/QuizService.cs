@@ -82,9 +82,19 @@ namespace GameQuiz.Web.Services.QuizService
         public PlayQuizViewModel GetQuiz(string id)
         {
             var quiz = this.db.Quizzes.FirstOrDefault(x => x.Id == id);
-            var quizToReturn = new PlayQuizViewModel();
-
-
+            var quizToReturn = new PlayQuizViewModel()
+            {
+                Id=quiz.Id,
+                Name=quiz.Name,
+                Questions = quiz.Questions.Select(x=> new QuestionViewModel
+                {
+                    Title=x.Title,
+                    FirstAnswer = x.Answers.OrderBy(x=>x.Id).First().Title,
+                    SecondAnswer = x.Answers.OrderBy(x => x.Id).Skip(1).First().Title,
+                    ThirdAnswer = x.Answers.OrderBy(x => x.Id).Skip(2).First().Title,
+                    FourthAnswer = x.Answers.OrderBy(x => x.Id).Skip(3).First().Title,
+                }).ToList()
+            };
             return quizToReturn;
         }
     }

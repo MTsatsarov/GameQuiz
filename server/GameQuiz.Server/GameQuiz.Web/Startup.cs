@@ -22,7 +22,7 @@ namespace GameQuiz.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-        options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+        options => options.UseLazyLoadingProxies().UseSqlServer("name=ConnectionStrings:DefaultConnection"));
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options =>
@@ -55,6 +55,9 @@ namespace GameQuiz.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

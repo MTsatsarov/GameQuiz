@@ -7,6 +7,7 @@ import Create from "./Create/Create";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
 import MyQuizzes from "./My Quizzes/My Quizzes";
+import Edit from "./Edit/Edit"
 
 class Main extends Component {
     constructor(props) {
@@ -23,6 +24,8 @@ class Main extends Component {
                     <Route path="/register" exact element={<Register />} />
                     <Route path="/Login" exact element={ <Login/>} />
                     <Route path="/my-quizzes" exact element={<MyQuizzes/>} />
+                    <Route path="/edit/:id" exact element={<Edit/>} />
+
                 </Routes>
             </main >
         )

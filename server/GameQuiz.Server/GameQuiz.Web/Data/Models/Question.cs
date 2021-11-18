@@ -17,7 +17,7 @@ namespace GameQuiz.Web.Data.Models
         public string Title { get; set; }
         [Required]
         public string QuizId { get; set; }
-        public Quiz Quiz { get; set; }
+        public virtual Quiz Quiz { get; set; }
         public virtual ICollection<Answer> Answers { get; set; }
     }
 }
