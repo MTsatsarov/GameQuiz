@@ -11,7 +11,7 @@ namespace GameQuiz.Web.Services.QuizService
 {
     public class QuizService : IQuizService
     {
-        private const int ItemsPerPage = 10;
+        private const int itemsPerPage = 10;
         private readonly ApplicationDbContext db;
 
         public QuizService(ApplicationDbContext db)
@@ -66,18 +66,22 @@ namespace GameQuiz.Web.Services.QuizService
         }
 
         [HttpGet]
-        public IEnumerable<QuizViewModel> GetAll(int page)
+        public QuizListViewModel GetAll(int page)
         {
-
-            var dbQuizzes = this.db.Quizzes.Select(x=> new QuizViewModel
+            var quizzes = new QuizListViewModel();
+            quizzes.Quizzes = this.db.Quizzes.Select(x => new QuizViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
                 VotesCount = x.Votes.Count(),
                 Grade = x.Votes.Count() == 0 ? 0 : Math.Round(x.Votes.Average(x => x.Grade), 2),
                 Taken = x.Taken,
-            }).Skip(ItemsPerPage*page).Take(ItemsPerPage).ToList();
-            return dbQuizzes;
+            }).Skip(itemsPerPage * (page-1)).Take(itemsPerPage).ToList();
+            quizzes.QuizzesCount = GetCount();
+            quizzes.ItemsPerPage = 10;
+            quizzes.CurrentPage = page;
+
+            return quizzes;
         }
 
         public PlayQuizViewModel GetQuiz(string id)
@@ -85,12 +89,12 @@ namespace GameQuiz.Web.Services.QuizService
             var quiz = this.db.Quizzes.FirstOrDefault(x => x.Id == id);
             var quizToReturn = new PlayQuizViewModel()
             {
-                Id=quiz.Id,
-                Name=quiz.Name,
-                Questions = quiz.Questions.Select(x=> new QuestionViewModel
+                Id = quiz.Id,
+                Name = quiz.Name,
+                Questions = quiz.Questions.Select(x => new QuestionViewModel
                 {
-                    Title=x.Title,
-                    FirstAnswer = x.Answers.OrderBy(x=>x.Id).First().Title,
+                    Title = x.Title,
+                    FirstAnswer = x.Answers.OrderBy(x => x.Id).First().Title,
                     SecondAnswer = x.Answers.OrderBy(x => x.Id).Skip(1).First().Title,
                     ThirdAnswer = x.Answers.OrderBy(x => x.Id).Skip(2).First().Title,
                     FourthAnswer = x.Answers.OrderBy(x => x.Id).Skip(3).First().Title,
@@ -98,5 +102,8 @@ namespace GameQuiz.Web.Services.QuizService
             };
             return quizToReturn;
         }
+
+        public int GetCount() => this.db.Quizzes.Count();
+
     }
 }

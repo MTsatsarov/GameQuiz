@@ -9,9 +9,9 @@ namespace GameQuiz.Web.Services.QuizService
 {
     public interface IQuizService
     {
-        IEnumerable<QuizViewModel> GetAll(int page);
+        QuizListViewModel GetAll(int page);
         PlayQuizViewModel GetQuiz(string id);
-
-         void Create(QuizInputModel quiz);
+        void Create(QuizInputModel quiz);
+        int GetCount();
     }
 }

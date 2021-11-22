@@ -1,0 +1,18 @@
+
+.pagination {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    margin: 20px;
+    justify-content: center;
+}
+.pagination a {
+    margin-left: 10px;
+    text-decoration: none;
+}
+.sign {
+  font-size: 40px;
+  position: relative;
+  bottom: 3px;
+
+}
