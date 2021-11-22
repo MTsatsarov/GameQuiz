@@ -28,7 +28,7 @@ const Quiz = (props) => {
     return (
         <article className='quiz-wrapper'>
             <h3>{props.name}</h3>
-            <p className='quiz-taken'>Taken: {props.taken == 1 ? `${props.taken} time` : `${props.taken} times`}</p>
+            <p className='quiz-taken'>Taken: {props.taken === 1 ? `${props.taken} time` : `${props.taken} times`}</p>
             <p className='quiz-creator'>Created by: {props.creator}</p>
             <span>
                 <Star value={1} clickHandler={voteClickHandler} />

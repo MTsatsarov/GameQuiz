@@ -11,7 +11,7 @@ class Register extends Component {
     onSubmitHandler = (e) => {
         e.preventDefault();
         this.setState({error: ''})
-        if (e.target.userName.value == '' || e.target.email.value == '' || e.target.password.value == '' || e.target.rePass.value == '') {
+        if (e.target.userName.value === '' || e.target.email.value === '' || e.target.password.value === '' || e.target.rePass.value === '') {
           this.setState({error:'All fields must be filled'})
         }
 

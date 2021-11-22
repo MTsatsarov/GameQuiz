@@ -2,7 +2,7 @@ import { Component } from "react";
 import Welcome from "./Welcome/Welcome";
 import All from "./All/All"
 import "./Main.css"
-import { Routes, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Create from "./Create/Create";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
@@ -10,23 +10,22 @@ import MyQuizzes from "./My Quizzes/My Quizzes";
 import Edit from "./Edit/Edit"
 
 class Main extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <main className="main">
-                <Routes>
-                    <Route path="/" exat element={<Welcome/>} />
-                    <Route path="/all" exact element={<All />} />
-                    <Route path="/create" exact element={<Create />} />
-                    <Route path="/register" exact element={<Register />} />
-                    <Route path="/Login" exact element={ <Login/>} />
-                    <Route path="/my-quizzes" exact element={<MyQuizzes/>} />
-                    <Route path="/edit/:id" exact element={<Edit/>} />
+                <Switch>
+                    <Route path="/" exact component={Welcome} />
+                    <Route path="/all" exact component={All} />
+                    <Route path="/all/:id" exact component={All} />
 
-                </Routes>
+                    <Route path="/create" exact component={Create} />
+                    <Route path="/register" exact component={Register} />
+                    <Route path="/Login" exact component={Login} />
+                    <Route path="/my-quizzes" exact component={MyQuizzes} />
+                    <Route path="/edit/:id" exact component={Edit} />
+
+
+                </Switch>
             </main >
         )
     }

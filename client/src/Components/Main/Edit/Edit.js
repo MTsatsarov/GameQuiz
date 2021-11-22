@@ -21,8 +21,7 @@ const Edit = () => {
             }))
         }
         GetQuiz()
-        console.log(currQuiz.questions);
-    }, [])
+    }, [currQuiz.questions,params.id])
     return (
         <>
             <EditQuiz name={currQuiz.name} questionsArray ={currQuiz.questions}/>

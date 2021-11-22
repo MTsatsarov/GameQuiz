@@ -19,10 +19,10 @@ namespace GameQuiz.Web.Controllers
         }
 
         [HttpGet]
-        [Route("/quiz/all")]
-        public JsonResult All()
+        [Route("/all/{id}")]
+        public JsonResult All([FromRoute] string id = "1")
         {
-            var quizzes = quizService.GetAll();
+            var quizzes = quizService.GetAll(int.Parse(id));
             return new JsonResult(quizzes);
         }
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyGithubRepos\\GameQuiz\\server\\GameQuiz.Server\\GameQuiz.Web\\GameQuiz.Web.csproj": {}
+    "D:\\MyGithubRepos\\GameQuizRep\\server\\GameQuiz.Server\\GameQuiz.Web\\GameQuiz.Web.csproj": {}
   },
   "projects": {
-    "D:\\MyGithubRepos\\GameQuiz\\server\\GameQuiz.Server\\GameQuiz.Web\\GameQuiz.Web.csproj": {
+    "D:\\MyGithubRepos\\GameQuizRep\\server\\GameQuiz.Server\\GameQuiz.Web\\GameQuiz.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyGithubRepos\\GameQuiz\\server\\GameQuiz.Server\\GameQuiz.Web\\GameQuiz.Web.csproj",
+        "projectUniqueName": "D:\\MyGithubRepos\\GameQuizRep\\server\\GameQuiz.Server\\GameQuiz.Web\\GameQuiz.Web.csproj",
         "projectName": "GameQuiz.Web",
-        "projectPath": "D:\\MyGithubRepos\\GameQuiz\\server\\GameQuiz.Server\\GameQuiz.Web\\GameQuiz.Web.csproj",
+        "projectPath": "D:\\MyGithubRepos\\GameQuizRep\\server\\GameQuiz.Server\\GameQuiz.Web\\GameQuiz.Web.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\MyGithubRepos\\GameQuiz\\server\\GameQuiz.Server\\GameQuiz.Web\\obj\\",
+        "outputPath": "D:\\MyGithubRepos\\GameQuizRep\\server\\GameQuiz.Server\\GameQuiz.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

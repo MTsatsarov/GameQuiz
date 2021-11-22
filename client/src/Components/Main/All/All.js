@@ -4,15 +4,15 @@ import Quiz from "../Quiz/Quiz";
 import { Component } from "react";
 
 class All extends Component {
-    constructor() {
-        super()
-
+    constructor(props) {
+        super(props)
         this.state = {
-            quizzes: []
+            quizzes: [],
+            id: this.props.match.params.id
         }
     }
     async componentDidMount() {
-        var allQuizzes = await quiz.GetAll();
+        var allQuizzes = await quiz.GetAll(this.state.id);
         this.setState({ quizzes: allQuizzes })
     }
     render() {

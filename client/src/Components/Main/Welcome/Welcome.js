@@ -4,14 +4,11 @@ import { Link } from "react-router-dom";
 import "./Welcome.css"
 
 class Welcome extends Component {
-    constructor(props) {
-        super(props)
-    }
     render() {
         return (
             <section className='welcome-section'>
                 <article className="welcome-image-wrapper">
-                    <img src={welcomePic} alt='Welcome image' />
+                    <img src={welcomePic} alt='WelcomeImage' />
                 </article>
 
                 <article className="welcome-ul-wrapper">

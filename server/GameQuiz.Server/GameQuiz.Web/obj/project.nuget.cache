@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "t06zDHHjAOoze9ib4pfWzhF6ERz/g70Wh5Eewb1bZ8GV25EL21kpsz0t6cW5UHZjC8kb+WoRoKTUPGzkWLm9AA==",
+  "dgSpecHash": "j64TAACoJyrOA6nJ6fgusrR/ECJ5rkSM1BMde3gk9gpFieBzSPsTCP/bpQCu1mEMqiuoXmjQbXHZ+vR8hxfWHw==",
   "success": true,
-  "projectFilePath": "D:\\MyGithubRepos\\GameQuiz\\server\\GameQuiz.Server\\GameQuiz.Web\\GameQuiz.Web.csproj",
+  "projectFilePath": "D:\\MyGithubRepos\\GameQuizRep\\server\\GameQuiz.Server\\GameQuiz.Web\\GameQuiz.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\entityframework\\6.1.0\\entityframework.6.1.0.nupkg.sha512",

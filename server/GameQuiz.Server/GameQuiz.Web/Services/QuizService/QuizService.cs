@@ -11,6 +11,7 @@ namespace GameQuiz.Web.Services.QuizService
 {
     public class QuizService : IQuizService
     {
+        private const int ItemsPerPage = 10;
         private readonly ApplicationDbContext db;
 
         public QuizService(ApplicationDbContext db)
@@ -65,8 +66,9 @@ namespace GameQuiz.Web.Services.QuizService
         }
 
         [HttpGet]
-        public IEnumerable<QuizViewModel> GetAll()
+        public IEnumerable<QuizViewModel> GetAll(int page)
         {
+
             var dbQuizzes = this.db.Quizzes.Select(x=> new QuizViewModel
             {
                 Id = x.Id,
@@ -74,7 +76,7 @@ namespace GameQuiz.Web.Services.QuizService
                 VotesCount = x.Votes.Count(),
                 Grade = x.Votes.Count() == 0 ? 0 : Math.Round(x.Votes.Average(x => x.Grade), 2),
                 Taken = x.Taken,
-            }).ToList();
+            }).Skip(ItemsPerPage*page).Take(ItemsPerPage).ToList();
             return dbQuizzes;
         }
 

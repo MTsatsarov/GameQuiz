@@ -13,7 +13,7 @@ class Login extends Component {
         e.preventDefault();
         var userName = e.target.userName.value;
         var password = e.target.password.value;
-        if (userName == '' || password == '') {
+        if (userName === '' || password === '') {
             this.setState({ error: 'All fields must be filled' })
         }
     }
