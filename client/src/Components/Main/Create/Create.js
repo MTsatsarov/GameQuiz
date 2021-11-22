@@ -44,6 +44,7 @@ class Create extends Component {
 
             }))
         await quizService.Create(obj)
+        this.props.history.push("/all")
     }
     render() {
 
