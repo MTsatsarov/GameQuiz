@@ -20,7 +20,6 @@ namespace GameQuiz.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         [Route("/all/{id}")]
         public JsonResult All([FromRoute] string id = "1")
         {
