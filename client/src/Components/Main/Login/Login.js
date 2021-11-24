@@ -1,4 +1,5 @@
 import { Component } from "react/cjs/react.production.min"
+import * as userService from "../../../services/UserServices/UserServices"
 import "./Login.css"
 class Login extends Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class Login extends Component {
         }
     }
 
-    LoginSubmitHandler = (e) => {
+    LoginSubmitHandler = async (e) => {
         this.setState({ errors: '' })
         e.preventDefault();
         var userName = e.target.userName.value;
@@ -16,10 +17,15 @@ class Login extends Component {
         if (userName === '' || password === '') {
             this.setState({ error: 'All fields must be filled' })
         }
+        else {
+            var result = await userService.Login({userName,password})
+            if (!localStorage.authToken) {
+                localStorage.setItem('authToken',result.token)
+            }
+        }
     }
 
     render() {
-        console.log(this.props);
         return (              
         <div className='login-wrapper' >
             <h3>Login</h3>

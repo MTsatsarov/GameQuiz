@@ -22,7 +22,9 @@ export function createOptions(method = 'get', data) {
         method,
         headers: {}
     };
-
+if(localStorage.authToken) {
+    result.headers['Authorization'] = 'bearer '+localStorage.authToken
+}
     if (data) {
         result.headers['Content-Type'] = 'application/json';
         result.headers['Accept'] = "*/*";

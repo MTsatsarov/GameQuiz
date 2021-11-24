@@ -1,5 +1,6 @@
-import { Component } from "react";
 import "./Register.css"
+import { Component } from "react";
+import * as userService from "../../../services/UserServices/UserServices"
 
 class Register extends Component {
     constructor() {
@@ -8,11 +9,20 @@ class Register extends Component {
             error: ''
         }
     }
-    onSubmitHandler = (e) => {
+     onSubmitHandler = async (e) => {
         e.preventDefault();
-        this.setState({error: ''})
+        this.setState({ error: '' })
         if (e.target.userName.value === '' || e.target.email.value === '' || e.target.password.value === '' || e.target.rePass.value === '') {
-          this.setState({error:'All fields must be filled'})
+            this.setState({ error: 'All fields must be filled' })
+        } else {
+            let model = {
+                username: e.target.querySelector('input').value,
+                email: e.target.querySelectorAll('input')[1].value,
+                password: e.target.querySelectorAll('input')[2].value,         
+            }
+           var result = await  userService.Register(model)
+            console.log(result);
+
         }
 
     }

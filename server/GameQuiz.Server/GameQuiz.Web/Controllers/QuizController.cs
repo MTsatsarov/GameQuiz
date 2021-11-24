@@ -1,5 +1,6 @@
 ﻿using GameQuiz.Web.InputModels;
 using GameQuiz.Web.Services.QuizService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace GameQuiz.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/all/{id}")]
         public JsonResult All([FromRoute] string id = "1")
         {

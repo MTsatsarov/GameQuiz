@@ -1,6 +1,7 @@
 using GameQuiz.Web.Data;
 using GameQuiz.Web.Data.Models;
 using GameQuiz.Web.Services.QuizService;
+using GameQuiz.Web.Services.UserService;
 using GameQuiz.Web.Services.VotesService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -65,6 +66,8 @@ namespace GameQuiz.Web
             services.AddControllers();
             services.AddTransient<IQuizService, QuizService>();
             services.AddTransient<IVotesService, VotesService>();
+            services.AddTransient<IUserService, UserService>();
+
 
         }
 

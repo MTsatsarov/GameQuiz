@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace GameQuiz.Web.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
