@@ -70,11 +70,7 @@ D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\ref\GameQuiz.Web.dll
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\GameQuiz.Web.pdb
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Castle.Core.dll
-D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\EntityFramework.SqlServer.dll
-D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\EntityFramework.dll
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Humanizer.dll
-D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.AspNet.Identity.Core.dll
-D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -122,3 +118,11 @@ D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\obj\Debug\net5.
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\obj\Debug\net5.0\ref\GameQuiz.Web.dll
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\obj\Debug\net5.0\GameQuiz.Web.pdb
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\obj\Debug\net5.0\GameQuiz.Web.genruntimeconfig.cache
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\xunit.abstractions.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\xunit.core.dll

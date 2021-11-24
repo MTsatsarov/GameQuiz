@@ -9,7 +9,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Quiz = (props) => {
     const [vote, setVote] = useState({
         voteCount: props.votesCount,
-        grade: props.grade
+        grade: props.grade,
+        stars: [{
+            id: 1,
+            class: ''
+        }, 
+        {
+            id: 2,
+            class: ''
+        }, 
+        {
+            id: 3,
+            class: ''
+        },
+        {
+            id: 4,
+            class: ''
+        },
+        {
+            id: 5,
+            class: ''
+        }]
     })
 
     async function voteClickHandler(voteGrade) {
@@ -20,9 +40,9 @@ const Quiz = (props) => {
         }
         var result = await voteService.Vote(obj);
         setVote(oldVote => ({
-            ...oldVote, voteCount: result.voteCount, grade: result.grade
+            ...oldVote, voteCount: result.voteCount, grade: result.grade,
+            stars: oldVote.stars.map(x=>x.id <= Math.round(vote.grade) ? x.class='yellow': '')
         }));
-
     }
 
     return (
@@ -30,20 +50,17 @@ const Quiz = (props) => {
             <h3>{props.name}</h3>
             <p className='quiz-taken'>Taken: {props.taken === 1 ? `${props.taken} time` : `${props.taken} times`}</p>
             <p className='quiz-creator'>Created by: {props.creator}</p>
-            <span>
-                <Star value={1} clickHandler={voteClickHandler} />
-                <Star value={2} clickHandler={voteClickHandler} />
-                <Star value={3} clickHandler={voteClickHandler} />
-                <Star value={4} clickHandler={voteClickHandler} />
-                <Star value={5} clickHandler={voteClickHandler} />
+            <span >
+                {vote.stars.map(x => <Star value={x.id} key={x.id} class={x.class} clickHandler={voteClickHandler} />,)}
+
             </span>
             <span className='votes-box'>
                 <p>Average grade: {vote.grade}/5</p>
                 <p>{vote.voteCount} votes</p>
             </span>
             <span className='quiz-modify'>
-                <Link to={`/edit/${props.id}`} ><FontAwesomeIcon icon={faEdit}/>Edit</Link>
-                <button><FontAwesomeIcon icon={faTrash}/>Delete</button>
+                <Link to={`/edit/${props.id}`} ><FontAwesomeIcon icon={faEdit} />Edit</Link>
+                <button><FontAwesomeIcon icon={faTrash} />Delete</button>
             </span>
             <button>Play</button>
         </article>
