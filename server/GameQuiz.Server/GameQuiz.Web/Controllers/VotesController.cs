@@ -24,9 +24,9 @@ namespace GameQuiz.Web.Controllers
         [Authorize]
         [HttpPost]
         [Route("vote/quiz")]
-        public  JsonResult Vote([FromBody] QuizVoteInputModel model)
+        public async  Task<JsonResult> Vote([FromBody] QuizVoteInputModel model)
         {
-            var result =  this.votesService.VoteForQuizAsync(model);
+            var result =  await this.votesService.VoteForQuizAsync(model);
             return new JsonResult(result);
         }
 

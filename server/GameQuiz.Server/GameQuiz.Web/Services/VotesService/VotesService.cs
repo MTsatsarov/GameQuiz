@@ -18,17 +18,35 @@ namespace GameQuiz.Web.Services.VotesService
         }
 
 
-        public VoteQuizVIewModel VoteForQuizAsync(QuizVoteInputModel model)
+        public async Task<VoteQuizVIewModel> VoteForQuizAsync(QuizVoteInputModel model)
         {
-            this.db.Votes.Add(new Vote() { Grade = model.Grade, QuizId = model.Quiz });
-            this.db.SaveChanges();
+            var curr = db.Quizzes.FirstOrDefault(x => x.Id == model.Quiz);
+            if (!curr.Votes.Any(x => x.Users.Any(x => x.Id == model.UserId)))
+            {
+
+                var vote = this.db.Votes.Where(x => x.QuizId == model.Quiz).FirstOrDefault();
+                if (vote != null)
+                {
+                    vote.Users.Add(this.db.Users.FirstOrDefault(x => x.Id == model.UserId));
+
+                }
+                else
+                {
+                   await this.db.Votes.AddAsync(new Vote()
+                    {
+                        Grade = model.Grade,
+                        QuizId = model.Quiz,
+                    });
+                }
+              await  this.db.SaveChangesAsync();
+                
+            }
             var result = this.db.Votes.Where(x => x.QuizId == model.Quiz).ToList();
             var voteModel = new VoteQuizVIewModel
             {
                 VoteCount = result.Count(),
                 Grade = Math.Round(result.Average(x => x.Grade), 2)
             };
-
             return voteModel;
 
         }

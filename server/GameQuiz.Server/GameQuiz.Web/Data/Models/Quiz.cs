@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameQuiz.Web.Data.Data.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameQuiz.Web.Data.Models
 {
-    public class Quiz
+    public class Quiz:BaseDeletableModel<string>
     {
         public Quiz()
         {
@@ -15,9 +16,6 @@ namespace GameQuiz.Web.Data.Models
             this.Votes = new HashSet<Vote>();
             this.Users = new HashSet<ApplicationUser>();
         }
-
-        [Key]
-        public string Id { get; set; }
         [Required]
         [StringLength(50, MinimumLength = 5)]
         public string Name { get; set; }

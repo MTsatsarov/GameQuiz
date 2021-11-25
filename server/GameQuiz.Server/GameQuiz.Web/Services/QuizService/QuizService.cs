@@ -70,7 +70,7 @@ namespace GameQuiz.Web.Services.QuizService
         public QuizListViewModel GetAll(int page)
         {
             var quizzes = new QuizListViewModel();
-            quizzes.Quizzes = this.db.Quizzes.Select(x => new QuizViewModel
+            quizzes.Quizzes = this.db.Quizzes.OrderByDescending(x=>x.CreatedOn).Select(x => new QuizViewModel
             {
                 Id = x.Id,
                 Name = x.Name,

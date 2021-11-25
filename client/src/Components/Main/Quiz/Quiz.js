@@ -36,7 +36,8 @@ const Quiz = (props) => {
         var id = props.id;
         var obj = {
             quiz: `${id}`,
-            grade: voteGrade
+            grade: voteGrade,
+            userId: localStorage.getItem('id')
         }
         var result = await voteService.Vote(obj);
         setVote(oldVote => ({

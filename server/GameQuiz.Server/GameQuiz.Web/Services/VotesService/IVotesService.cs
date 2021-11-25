@@ -9,6 +9,6 @@ namespace GameQuiz.Web.Services.VotesService
 {
     public interface IVotesService
     {
-        public VoteQuizVIewModel VoteForQuizAsync(QuizVoteInputModel model);
+        public Task<VoteQuizVIewModel> VoteForQuizAsync(QuizVoteInputModel model);
     }
 }

@@ -1,17 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using GameQuiz.Web.Data.Data.Common;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace GameQuiz.Web.Data.Models
 {
-    public class Question
+    public class Question: BaseDeletableModel<int>
     {
         public Question()
         {
             this.Answers = new HashSet<Answer>();
         }
-
-        [Key]
-        public int Id { get; set; }
         [Required]
         [StringLength(150, MinimumLength = 10)]
         public string Title { get; set; }
