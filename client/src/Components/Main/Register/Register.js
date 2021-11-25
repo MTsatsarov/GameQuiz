@@ -9,7 +9,7 @@ class Register extends Component {
             error: ''
         }
     }
-     onSubmitHandler = async (e) => {
+    onSubmitHandler = async (e) => {
         e.preventDefault();
         this.setState({ error: '' })
         if (e.target.userName.value === '' || e.target.email.value === '' || e.target.password.value === '' || e.target.rePass.value === '') {
@@ -18,11 +18,11 @@ class Register extends Component {
             let model = {
                 username: e.target.querySelector('input').value,
                 email: e.target.querySelectorAll('input')[1].value,
-                password: e.target.querySelectorAll('input')[2].value,         
+                password: e.target.querySelectorAll('input')[2].value,
             }
-           var result = await  userService.Register(model)
+            var result = await userService.Register(model)
             console.log(result);
-this.props.history.push('/all')
+            this.props.history.push('/all')
 
         }
 

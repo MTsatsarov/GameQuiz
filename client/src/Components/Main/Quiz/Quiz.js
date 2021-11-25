@@ -58,10 +58,11 @@ const Quiz = (props) => {
                 <p>Average grade: {vote.grade}/5</p>
                 <p>{vote.voteCount} votes</p>
             </span>
-            <span className='quiz-modify'>
+            {props.creator == localStorage.getItem('userName') ? <><span className='quiz-modify'>
                 <Link to={`/edit/${props.id}`} ><FontAwesomeIcon icon={faEdit} />Edit</Link>
                 <button><FontAwesomeIcon icon={faTrash} />Delete</button>
             </span>
+            </> : ''}
             <button>Play</button>
         </article>
     )
