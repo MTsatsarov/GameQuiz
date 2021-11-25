@@ -1,5 +1,6 @@
 ﻿using GameQuiz.Web.InputModels;
 using GameQuiz.Web.Services.VotesService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace GameQuiz.Web.Controllers
             this.votesService = votesService;
         }
         // POST api/<VotesController>
+        [Authorize]
         [HttpPost]
         [Route("vote/quiz")]
         public  JsonResult Vote([FromBody] QuizVoteInputModel model)

@@ -1,5 +1,7 @@
-﻿using GameQuiz.Web.Data.Models;
+﻿using GameQuiz.Web.Data;
+using GameQuiz.Web.Data.Models;
 using GameQuiz.Web.InputModels;
+using GameQuiz.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -15,12 +17,14 @@ namespace GameQuiz.Web.Services.UserService
 {
     public class UserService : IUserService
     {
+        private readonly ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration _configuration;
 
-        public UserService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public UserService(ApplicationDbContext db ,UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
+            this.db = db;
             this.userManager = userManager;
             this.roleManager = roleManager;
             _configuration = configuration;
@@ -49,7 +53,7 @@ namespace GameQuiz.Web.Services.UserService
             return "User created successfully!";
         }
 
-        public async Task<JwtSecurityToken> Login(LoginUserInputModel model)
+        public async Task<UserModel> Login(LoginUserInputModel model)
         {
             var user = await userManager.FindByNameAsync(model.Username);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
@@ -76,8 +80,15 @@ namespace GameQuiz.Web.Services.UserService
                     claims: authClaims,
                     signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                     );
+                var currUser = this.db.Users.Where(x => x.UserName == model.Username).FirstOrDefault();
+                var currUserModel = new UserModel()
+                {
+                    Token = token,
+                    UserId = currUser.Id,
+                    Username = currUser.UserName
+                };
 
-                return token;
+                return currUserModel;
             }
             throw new ArgumentException("User not found");
         }

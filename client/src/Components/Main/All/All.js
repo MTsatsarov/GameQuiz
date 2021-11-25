@@ -17,6 +17,7 @@ class All extends Component {
     async getEvents(id) {
         var allQuizzes = await quiz.GetAll(id);
         this.setState({ quizzes: allQuizzes.quizzes, paginationModel: allQuizzes })
+        console.log(allQuizzes);
 
     }
     async getId(e) {
@@ -31,10 +32,9 @@ class All extends Component {
             <section>
                 <Pagination clickHandler={this.getId.bind(this)} nextPage={this.state.paginationModel.hasNextPage} prev={this.state.paginationModel.hasPreviousPage} currPage={this.state.paginationModel.currentPage} total={this.state.paginationModel.totalPages} />
 
-                {this.state.quizzes.map(x => (<Quiz key={x.id} id={x.id} name={x.name} taken={x.taken ? x.taken : 0} grade={x.grade} votesCount={x.votesCount} creator={x.creator ? x.creator : "Admin-GameQuiz@Gmail.com"} />))}
+                {this.state.quizzes.map(x => (<Quiz key={x.id} id={x.id} name={x.name} taken={x.taken ? x.taken : 0} grade={x.grade} votesCount={x.votesCount} creator={x.creatorName ? x.creatorName : "Admin-GameQuiz@Gmail.com"} />))}
 
-                <Pagination nextPage={this.state.paginationModel.hasNextPage} prev={this.state.paginationModel.hasPreviousPage} currPage={this.state.paginationModel.currentPage} total={this.state.paginationModel.totalPages} />
-
+                <Pagination clickHandler={this.getId.bind(this)} nextPage={this.state.paginationModel.hasNextPage} prev={this.state.paginationModel.hasPreviousPage} currPage={this.state.paginationModel.currentPage} total={this.state.paginationModel.totalPages} />
             </section >
         )
     }

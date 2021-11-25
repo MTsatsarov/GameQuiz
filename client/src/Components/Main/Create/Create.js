@@ -24,12 +24,13 @@ class Create extends Component {
             }
         )
     }
-    async handleSubmit(e) {
+     handleSubmit = async (e) => {
         e.preventDefault();
         let q = [...document.querySelectorAll('article')];
         var obj = {
             name: '',
              questions: [],
+             creator: localStorage.getItem('id') 
         }
         obj.name = e.target.children[1].value;
         q.map(x => obj.questions.push(
@@ -43,6 +44,7 @@ class Create extends Component {
                 correctIndex: x.children[11].value
 
             }))
+            console.log(obj);
         await quizService.Create(obj)
         this.props.history.push("/all")
     }

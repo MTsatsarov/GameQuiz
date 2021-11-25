@@ -1,8 +1,5 @@
-﻿using GameQuiz.Web.Data.Models;
-using GameQuiz.Web.InputModels;
+﻿using GameQuiz.Web.InputModels;
 using GameQuiz.Web.Services.UserService;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -27,11 +24,13 @@ namespace GameQuiz.Web.Controllers
         {
             try
             {
-                var token = await this.userService.Login(model);
+                var result = await this.userService.Login(model);
                 return Ok(new
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
+                    token = new JwtSecurityTokenHandler().WriteToken(result.Token),
+                    expiration = result.Token.ValidTo,
+                    userName = result.Username,
+                    id = result.UserId
                 });
             }
             catch (Exception ex)
@@ -43,6 +42,8 @@ namespace GameQuiz.Web.Controllers
 
            
         }
+
+
         [HttpPost]
         [Route("register")]
         public async Task<JsonResult> RegisterUser([FromBody] UserRegisterInputModel model)
@@ -59,7 +60,7 @@ namespace GameQuiz.Web.Controllers
         [Route("register-admin")]
         public async Task<IActionResult> RegisterAdmin([FromBody] UserRegisterInputModel model)
         {
-            var result =await this.userService.RegisterAdmin(model);
+            var result = await this.userService.RegisterAdmin(model);
 
             return Ok(new
             {

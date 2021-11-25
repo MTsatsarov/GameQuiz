@@ -24,6 +24,7 @@ namespace GameQuiz.Web.Services.QuizService
             var quizToInsert = new Quiz()
             {
                 Name = quiz.Name,
+                CreatorId= quiz.Creator
 
             };
             foreach (var currQuestion in quiz.Questions)
@@ -76,6 +77,7 @@ namespace GameQuiz.Web.Services.QuizService
                 VotesCount = x.Votes.Count(),
                 Grade = x.Votes.Count() == 0 ? 0 : Math.Round(x.Votes.Average(x => x.Grade), 2),
                 Taken = x.Taken,
+                CreatorName= this.db.Users.Where(u=>u.Id==x.CreatorId).Select(x=>x.UserName).FirstOrDefault()
             }).Skip(itemsPerPage * (page-1)).Take(itemsPerPage).ToList();
             quizzes.QuizzesCount = GetCount();
             quizzes.ItemsPerPage = 10;

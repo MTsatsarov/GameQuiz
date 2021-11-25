@@ -8,6 +8,10 @@ namespace GameQuiz.Web.Data.Models
 {
     public class Vote
     {
+        public Vote()
+        {
+            this.Users = new HashSet<ApplicationUser>();
+        }
         [Key]
         public int Id { get; set; }
 
@@ -17,5 +21,7 @@ namespace GameQuiz.Web.Data.Models
         [Required]
         public string QuizId { get; set; }
         public virtual Quiz Quiz { get; set; }
+
+        public virtual ICollection<ApplicationUser> Users { get; set; }
     }
 }

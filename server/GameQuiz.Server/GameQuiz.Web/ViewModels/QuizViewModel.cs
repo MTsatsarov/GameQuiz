@@ -9,6 +9,9 @@ namespace GameQuiz.Web.ViewModels
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("creator")]
+        public string CreatorName { get; set; }
+
         [JsonProperty("taken")]
         public int Taken { get; set; }
 

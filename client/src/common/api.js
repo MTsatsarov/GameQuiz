@@ -1,7 +1,7 @@
 async function request(url, options) {
     const response = await fetch(url, options);
     if (!response.ok) {
-        const error = await response.json();  
+        const error = await response.json();
         alert(error.message);
         throw new Error(error.message);
     }
@@ -22,9 +22,9 @@ export function createOptions(method = 'get', data) {
         method,
         headers: {}
     };
-if(localStorage.authToken) {
-    result.headers['Authorization'] = 'bearer '+localStorage.authToken
-}
+    if (localStorage.authToken) {
+        result.headers['Authorization'] = 'bearer ' + localStorage.getItem('authToken')
+    }
     if (data) {
         result.headers['Content-Type'] = 'application/json';
         result.headers['Accept'] = "*/*";

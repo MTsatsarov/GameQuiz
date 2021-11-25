@@ -21,6 +21,9 @@ class Login extends Component {
             var result = await userService.Login({userName,password})
             if (!localStorage.authToken) {
                 localStorage.setItem('authToken',result.token)
+                localStorage.setItem('id',result.id)
+                localStorage.setItem('userName',result.userName)
+                this.props.history.push('/all')
             }
         }
     }

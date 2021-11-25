@@ -1,10 +1,10 @@
-﻿using GameQuiz.Web.InputModels;
+﻿using GameQuiz.Web.Data.Models;
+using GameQuiz.Web.InputModels;
 using GameQuiz.Web.Services.QuizService;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace GameQuiz.Web.Controllers
 {
@@ -27,6 +27,7 @@ namespace GameQuiz.Web.Controllers
             return new JsonResult(quizzes);
         }
 
+        [Authorize]
         [HttpPost]
         [Route("/quiz/create")]
         public IActionResult Create([FromBody]QuizInputModel quiz)

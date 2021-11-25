@@ -41,7 +41,6 @@ const Quiz = (props) => {
         var result = await voteService.Vote(obj);
         setVote(oldVote => ({
             ...oldVote, voteCount: result.voteCount, grade: result.grade,
-            stars: oldVote.stars.map(x=>x.id <= Math.round(vote.grade) ? x.class='yellow': '')
         }));
     }
 

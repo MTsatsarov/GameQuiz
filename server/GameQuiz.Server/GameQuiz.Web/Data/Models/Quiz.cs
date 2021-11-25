@@ -13,14 +13,22 @@ namespace GameQuiz.Web.Data.Models
             this.Id = Guid.NewGuid().ToString();
             this.Questions = new HashSet<Question>();
             this.Votes = new HashSet<Vote>();
+            this.Users = new HashSet<ApplicationUser>();
         }
 
         [Key]
         public string Id { get; set; }
         [Required]
-        [StringLength(50,MinimumLength =5)]
+        [StringLength(50, MinimumLength = 5)]
         public string Name { get; set; }
         public int Taken { get; set; }
+
+
+        public string UserId { get; set; }
+
+        public virtual ICollection<ApplicationUser> Users { get; set; }
+
+        public string CreatorId { get; set; }
         public virtual ICollection<Vote> Votes { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
     }
