@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GameQuiz.Web.Services.QuizService
 {
@@ -24,7 +25,7 @@ namespace GameQuiz.Web.Services.QuizService
             var quizToInsert = new Quiz()
             {
                 Name = quiz.Name,
-                CreatorId= quiz.Creator
+                CreatorId = quiz.Creator
 
             };
             foreach (var currQuestion in quiz.Questions)
@@ -70,15 +71,15 @@ namespace GameQuiz.Web.Services.QuizService
         public QuizListViewModel GetAll(int page)
         {
             var quizzes = new QuizListViewModel();
-            quizzes.Quizzes = this.db.Quizzes.OrderByDescending(x=>x.CreatedOn).Select(x => new QuizViewModel
+            quizzes.Quizzes = this.db.Quizzes.OrderByDescending(x => x.CreatedOn).Select(x => new QuizViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
                 VotesCount = x.Votes.Count(),
                 Grade = x.Votes.Count() == 0 ? 0 : Math.Round(x.Votes.Average(x => x.Grade), 2),
                 Taken = x.Taken,
-                CreatorName= this.db.Users.Where(u=>u.Id==x.CreatorId).Select(x=>x.UserName).FirstOrDefault()
-            }).Skip(itemsPerPage * (page-1)).Take(itemsPerPage).ToList();
+                CreatorName = this.db.Users.Where(u => u.Id == x.CreatorId).Select(x => x.UserName).FirstOrDefault()
+            }).Skip(itemsPerPage * (page - 1)).Take(itemsPerPage).ToList();
             quizzes.QuizzesCount = GetCount();
             quizzes.ItemsPerPage = 10;
             quizzes.CurrentPage = page;
@@ -105,7 +106,23 @@ namespace GameQuiz.Web.Services.QuizService
             return quizToReturn;
         }
 
+
         public int GetCount() => this.db.Quizzes.Count();
+
+        public async Task<List<QuizViewModel>> GetAllByUser(string id)
+        {
+
+            return this.db.Quizzes.Where(x => x.CreatorId == id).OrderByDescending(x => x.CreatedOn).Select(x => new QuizViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                VotesCount = x.Votes.Count(),
+                Grade = x.Votes.Count() == 0 ? 0 : Math.Round(x.Votes.Average(x => x.Grade), 2),
+                Taken = x.Taken,
+                CreatorName = this.db.Users.Where(u => u.Id == x.CreatorId).Select(x => x.UserName).FirstOrDefault()
+            }).ToList();
+        }
+
 
     }
 }

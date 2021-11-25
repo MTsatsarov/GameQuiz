@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace GameQuiz.Web.Controllers
 {
@@ -43,5 +44,14 @@ namespace GameQuiz.Web.Controllers
             var result = this.quizService.GetQuiz(id);
             return new JsonResult(result);
         }
+
+        [HttpGet]
+        [Route("/quiz/my-quizzes/{id}")]
+        public async Task<JsonResult> GetQuizzesByUser([FromRoute] string id)
+        {
+            var result = await this.quizService.GetAllByUser(id);
+            return new JsonResult(result);
+        }
+
     }
 }

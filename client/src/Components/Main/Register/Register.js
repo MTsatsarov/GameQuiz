@@ -3,8 +3,8 @@ import { Component } from "react";
 import * as userService from "../../../services/UserServices/UserServices"
 
 class Register extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             error: ''
         }
@@ -22,6 +22,7 @@ class Register extends Component {
             }
            var result = await  userService.Register(model)
             console.log(result);
+this.props.history.push('/all')
 
         }
 
