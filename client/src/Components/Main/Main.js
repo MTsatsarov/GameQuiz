@@ -8,6 +8,7 @@ import Register from "./Register/Register";
 import Login from "./Login/Login";
 import MyQuizzes from "./My Quizzes/My Quizzes";
 import Edit from "./Edit/Edit"
+import PlayQuiz from "./PlayQuiz/PlayQuiz";
 
 class Main extends Component {
     render() {
@@ -17,14 +18,12 @@ class Main extends Component {
                     <Route path="/" exact component={Welcome} />
                     <Route path="/all" exact component={All} />
                     <Route path="/all/:id" exact component={All} />
-
                     <Route path="/create" exact component={Create} />
                     <Route path="/register" exact component={Register} />
                     <Route path="/Login" exact component={Login} />
                     <Route path="/my-quizzes" exact component={MyQuizzes} />
                     <Route path="/edit/:id" exact component={Edit} />
-
-
+                    <Route path="/play/:id" exact component={PlayQuiz} />
                 </Switch>
             </main >
         )

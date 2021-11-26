@@ -13,11 +13,11 @@ const Quiz = (props) => {
         stars: [{
             id: 1,
             class: ''
-        }, 
+        },
         {
             id: 2,
             class: ''
-        }, 
+        },
         {
             id: 3,
             class: ''
@@ -63,7 +63,7 @@ const Quiz = (props) => {
                 <button><FontAwesomeIcon icon={faTrash} />Delete</button>
             </span>
             </> : ''}
-            <button>Play</button>
+            <Link to={`/play/${props.id}`}>Play</Link>
         </article>
     )
 }

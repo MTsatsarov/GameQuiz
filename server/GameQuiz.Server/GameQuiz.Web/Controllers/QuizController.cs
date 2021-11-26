@@ -53,5 +53,14 @@ namespace GameQuiz.Web.Controllers
             return new JsonResult(result);
         }
 
+        [HttpPost]
+        [Route("/quiz/result/{id}")]
+        public JsonResult GetResult(QuizResultInputModel  quiz)
+        {
+            var asd = quiz;
+            //TODO Service
+            return new JsonResult(asd);
+        }
+
     }
 }
