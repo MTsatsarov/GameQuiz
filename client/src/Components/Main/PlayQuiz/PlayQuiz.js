@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react/cjs/react.development";
 import * as quizService from "../../../services/QuizServices/QuizServices"
+import PlayQuestion from "../PlayQuestion/PlayQuestion";
 import './PlayQuiz.css'
 const PlayQuiz = (props) => {
     const [quiz, setQuiz] = useState({
@@ -21,40 +22,19 @@ const PlayQuiz = (props) => {
             questionsArray: []
         };
         [...e.target.querySelectorAll('input[type=radio]:checked')].map(x => obj.questionsArray.push({
-            name: x.parentNode.getAttribute('name'),
+            name: x.parentNode.parentNode.getAttribute('name'),
             answer: x.value
         }))
-        console.log(obj);
         const result = await quizService.GetResult(obj)
+        console.log(result);
 
     }
     return (
         <article className='quizPlayWrapper'>
             <h3>{quiz.name}</h3>
-            <form className='quizForm' onSubmit={submitFormHandler}>{quiz.questions.map(x =>
-                <>
-                    <article className='questionArticle'>
-                        <h4>{x.title}</h4>
-                        <span name={x.title}>
-                            <span>
-                                <input type={"radio"} id={`${x.firstAnswer}`} name={x.title} value={`${x.firstAnswer}`} />
-                                <label htmlFor={`${x.firstAnswer}`}>{`${x.firstAnswer}`}</label>
-                            </span>
-                            <span>
-                                <input type={"radio"} id={`${x.secondAnswer}`} name={x.title} value={`${x.secondAnswer}`} />
-                                <label htmlFor={`${x.secondAnswer}`}>{`${x.secondAnswer}`}</label>
-                            </span>
-                            <span>
-                                <input type={"radio"} id={`${x.thirdAnswer}`} name={x.title} value={`${x.thirdAnswer}`} />
-                                <label htmlFor={`${x.thirdAnswer}`}>{`${x.thirdAnswer}`}</label>
-                            </span>
-                            <span>
-                                <input type={"radio"} id={`${x.fourthAnswer}`} name={x.title} value={`${x.fourthAnswer}`} />
-                                <label htmlFor={`${x.fourthAnswer}`}>{`${x.fourthAnswer}`}</label>
-                            </span>
-                        </span>
-                    </article>
-                </>)}
+            <form className='quizForm' onSubmit={submitFormHandler}>{quiz.questions.map((x,i) =>
+            <PlayQuestion data={x} key={x.id}/>
+                )}
                 <button className='submitResult'>Submit</button> </form>
 
         </article>

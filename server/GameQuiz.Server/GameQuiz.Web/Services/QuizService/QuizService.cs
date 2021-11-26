@@ -96,12 +96,16 @@ namespace GameQuiz.Web.Services.QuizService
                 Name = quiz.Name,
                 Questions = quiz.Questions.Select(x => new QuestionViewModel
                 {
+                    Id=x.Id,
                     Title = x.Title,
-                    FirstAnswer = x.Answers.OrderBy(x => x.Id).First().Title,
-                    SecondAnswer = x.Answers.OrderBy(x => x.Id).Skip(1).First().Title,
-                    ThirdAnswer = x.Answers.OrderBy(x => x.Id).Skip(2).First().Title,
-                    FourthAnswer = x.Answers.OrderBy(x => x.Id).Skip(3).First().Title,
+                    Answers = x.Answers.Select(y=> new AnswerPlayModel
+                    {
+                        Id=y.Id,
+                        Title=y.Title
+                    }).ToList(),
+                    CorrectAnswer = x.Answers.Where(i=>i.IsCorrect == true).Select(i=>id).FirstOrDefault()
                 }).ToList()
+                
             };
             return quizToReturn;
         }

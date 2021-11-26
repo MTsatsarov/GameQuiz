@@ -13,7 +13,7 @@ namespace GameQuiz.Web.ViewModels
         }
         public string Id { get; set; }
         public string Name { get; set; }
-
+        public int TotalQuestions => this.Questions.Count();
         public ICollection<QuestionViewModel> Questions { get; set; }
     }
 }

@@ -51,10 +51,8 @@ namespace GameQuiz.Web.Migrations
 
             modelBuilder.Entity("GameQuiz.Web.Data.Models.Answer", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -71,8 +69,8 @@ namespace GameQuiz.Web.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
+                    b.Property<string>("QuestionId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -153,10 +151,8 @@ namespace GameQuiz.Web.Migrations
 
             modelBuilder.Entity("GameQuiz.Web.Data.Models.Question", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -420,9 +416,7 @@ namespace GameQuiz.Web.Migrations
                 {
                     b.HasOne("GameQuiz.Web.Data.Models.Question", "Question")
                         .WithMany("Answers")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("QuestionId");
 
                     b.Navigation("Question");
                 });

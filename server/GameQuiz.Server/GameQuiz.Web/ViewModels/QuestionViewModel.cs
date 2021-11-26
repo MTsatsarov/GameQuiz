@@ -7,12 +7,10 @@ namespace GameQuiz.Web.ViewModels
 {
     public class QuestionViewModel
     {
+        public string Id { get; set; }
         public string Title { get; set; }
 
-        public string FirstAnswer { get; set; }
-        public string SecondAnswer { get; set; }
-        public string ThirdAnswer { get; set; }
-        public string FourthAnswer { get; set; }
-        public int CorrectIndex { get; set; }
+        public ICollection<AnswerPlayModel> Answers{ get; set; }
+        public string CorrectAnswer { get; set; }
     }
 }
