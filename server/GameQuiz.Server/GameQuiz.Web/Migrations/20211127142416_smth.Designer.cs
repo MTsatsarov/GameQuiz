@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameQuiz.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211126145954_foreignKeyForQString")]
-    partial class foreignKeyForQString
+    [Migration("20211127142416_smth")]
+    partial class smth
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -218,6 +218,49 @@ namespace GameQuiz.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Quizzes");
+                });
+
+            modelBuilder.Entity("GameQuiz.Web.Data.Models.Result", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Percentage")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<string>("QuizId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("TotalPoints")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuizId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Results");
                 });
 
             modelBuilder.Entity("GameQuiz.Web.Data.Models.Vote", b =>
@@ -434,6 +477,21 @@ namespace GameQuiz.Web.Migrations
                     b.Navigation("Quiz");
                 });
 
+            modelBuilder.Entity("GameQuiz.Web.Data.Models.Result", b =>
+                {
+                    b.HasOne("GameQuiz.Web.Data.Models.Quiz", "Quiz")
+                        .WithMany("Results")
+                        .HasForeignKey("QuizId");
+
+                    b.HasOne("GameQuiz.Web.Data.Models.ApplicationUser", "User")
+                        .WithMany("Results")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Quiz");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GameQuiz.Web.Data.Models.Vote", b =>
                 {
                     b.HasOne("GameQuiz.Web.Data.Models.Quiz", "Quiz")
@@ -496,6 +554,11 @@ namespace GameQuiz.Web.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("GameQuiz.Web.Data.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Results");
+                });
+
             modelBuilder.Entity("GameQuiz.Web.Data.Models.Question", b =>
                 {
                     b.Navigation("Answers");
@@ -504,6 +567,8 @@ namespace GameQuiz.Web.Migrations
             modelBuilder.Entity("GameQuiz.Web.Data.Models.Quiz", b =>
                 {
                     b.Navigation("Questions");
+
+                    b.Navigation("Results");
 
                     b.Navigation("Votes");
                 });

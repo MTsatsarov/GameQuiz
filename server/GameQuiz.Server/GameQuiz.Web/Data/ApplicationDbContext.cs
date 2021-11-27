@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GameQuiz.Web.Data
 {
-    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { }
@@ -19,6 +19,8 @@ namespace GameQuiz.Web.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<Vote> Votes { get; set; }
+
+        public DbSet<Result> Results { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

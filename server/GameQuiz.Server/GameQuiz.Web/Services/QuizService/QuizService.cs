@@ -96,16 +96,16 @@ namespace GameQuiz.Web.Services.QuizService
                 Name = quiz.Name,
                 Questions = quiz.Questions.Select(x => new QuestionViewModel
                 {
-                    Id=x.Id,
+                    Id = x.Id,
                     Title = x.Title,
-                    Answers = x.Answers.Select(y=> new AnswerPlayModel
+                    Answers = x.Answers.Select(y => new AnswerPlayModel
                     {
-                        Id=y.Id,
-                        Title=y.Title
+                        Id = y.Id,
+                        Title = y.Title
                     }).ToList(),
-                    CorrectAnswer = x.Answers.Where(i=>i.IsCorrect == true).Select(i=>id).FirstOrDefault()
+                    CorrectAnswer = x.Answers.Where(i => i.IsCorrect == true).Select(i => id).FirstOrDefault()
                 }).ToList()
-                
+
             };
             return quizToReturn;
         }
@@ -127,6 +127,42 @@ namespace GameQuiz.Web.Services.QuizService
             }).ToList();
         }
 
-
+        public async Task<int> GetResultAsync(QuizResultInputModel model)
+        {
+            var questions = this.db.Questions.Where(x => x.QuizId == model.Id);
+            var points = 0;
+            foreach (var question in questions)
+            {
+                var currQuestion = model.QuestionsArray.Where(x => x.Name == question.Title).FirstOrDefault();
+                var correctAnswer = question.Answers.First(x => x.IsCorrect == true);
+                if (correctAnswer.Id == currQuestion.Answer)
+                {
+                    points++;
+                }
+            }
+            var currentResult = this.db.Results.Where(x => x.QuizId == model.Id && model.User == x.UserId).FirstOrDefault();
+            if (currentResult != null)
+            {
+                currentResult.Percentage = (points / model.QuestionsArray.Count()) * 100;
+                currentResult.Points = points;
+                db.Results.Update(currentResult);
+            }
+            else
+            {
+                currentResult = new Result()
+                {
+                    Points = points,
+                    Percentage = (points / model.QuestionsArray.Count()) * 100,
+                    TotalPoints = model.QuestionsArray.Count(),
+                    UserId = model.User,
+                    QuizId = model.Id
+                };
+                await db.Results.AddAsync(currentResult);
+            
+            }
+            await db.SaveChangesAsync();
+            ;
+            return currentResult.Points;
+        }
     }
 }

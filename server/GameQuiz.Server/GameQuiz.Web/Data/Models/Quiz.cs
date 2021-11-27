@@ -15,6 +15,7 @@ namespace GameQuiz.Web.Data.Models
             this.Questions = new HashSet<Question>();
             this.Votes = new HashSet<Vote>();
             this.Users = new HashSet<ApplicationUser>();
+            this.Results = new HashSet<Result>();
         }
         [Required]
         [StringLength(50, MinimumLength = 5)]
@@ -29,5 +30,7 @@ namespace GameQuiz.Web.Data.Models
         public string CreatorId { get; set; }
         public virtual ICollection<Vote> Votes { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
+
+        public virtual ICollection<Result> Results { get; set; }
     }
 }

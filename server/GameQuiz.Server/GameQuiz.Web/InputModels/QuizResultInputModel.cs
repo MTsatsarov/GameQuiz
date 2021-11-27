@@ -12,6 +12,9 @@ namespace GameQuiz.Web.InputModels
         {
             this.QuestionsArray = new HashSet<QuestionResultInputModel>();
         }
+
+        [Required]
+        public string User { get; set; }
         [Required]
         public string Id { get; set; }
 

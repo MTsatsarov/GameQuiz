@@ -38,6 +38,7 @@ namespace GameQuiz.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/quiz/{id}")]
         public JsonResult GetById([FromRoute] string id)
         {
@@ -55,11 +56,10 @@ namespace GameQuiz.Web.Controllers
 
         [HttpPost]
         [Route("/quiz/result/{id}")]
-        public JsonResult GetResult(QuizResultInputModel  quiz)
+        public async Task<JsonResult> GetResult(QuizResultInputModel  quiz)
         {
-            var asd = quiz;
-            //TODO Service
-            return new JsonResult(asd);
+            var points = await quizService.GetResultAsync(quiz);
+            return new JsonResult(points);
         }
 
     }

@@ -12,6 +12,8 @@ namespace GameQuiz.Web.Services.QuizService
         QuizListViewModel GetAll(int page);
         PlayQuizViewModel GetQuiz(string id);
         Task<List<QuizViewModel>> GetAllByUser(string id);
+
+        Task<int> GetResultAsync(QuizResultInputModel model);
         void Create(QuizInputModel quiz);
         int GetCount();
     }
