@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react/cjs/react.development";
 import * as quizService from "../../../services/QuizServices/QuizServices"
 import PlayQuestion from "../PlayQuestion/PlayQuestion";
+import Result from "../Create/Result/Result";
 import './PlayQuiz.css'
 const PlayQuiz = (props) => {
 
     let [isFinished, setIsFinished] = useState(false)
+    const [result, setResult] = useState({
+        points: '',
+        percentage: 2
+    })
     const [quiz, setQuiz] = useState({
         id: '',
         name: '',
@@ -30,8 +35,8 @@ const PlayQuiz = (props) => {
             name: x.parentNode.parentNode.getAttribute('name'),
             answer: x.value
         }))
-        const result = await quizService.GetResult(obj)
-
+        var score = await quizService.GetResult(obj)
+        setResult(prevResult => ({ ...prevResult, points: score, percentage: ((Number(result.points) / quiz.questions.length) * 100 )}))
         setIsFinished(isFinished = !isFinished)
     }
     return (
@@ -45,7 +50,11 @@ const PlayQuiz = (props) => {
                     <button className='submitResult'>Submit</button>
                 </form>
             </article>
-            : <h2>HELLOO</h2>
+            : <>
+                <Result points={result.points} name={quiz.name} total ={quiz.questions.length} percentage={result.percentage} userName={localStorage.getItem('userName')}/>
+            </>
+
+
     )
 }
 
