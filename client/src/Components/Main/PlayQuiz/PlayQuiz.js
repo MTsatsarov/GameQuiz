@@ -8,7 +8,8 @@ const PlayQuiz = (props) => {
     let [isFinished, setIsFinished] = useState(false)
     const [result, setResult] = useState({
         points: '',
-        percentage: 2
+        percentage: 0,
+        maxScore: 0
     })
     const [quiz, setQuiz] = useState({
         id: '',
@@ -36,7 +37,7 @@ const PlayQuiz = (props) => {
             answer: x.value
         }))
         var score = await quizService.GetResult(obj)
-        setResult(prevResult => ({ ...prevResult, points: score, percentage: ((Number(result.points) / quiz.questions.length) * 100 )}))
+        setResult(prevResult => ({ ...prevResult, points: score.score, percentage: score.percentage, maxScore: score.maxScore }))
         setIsFinished(isFinished = !isFinished)
     }
     return (
@@ -51,7 +52,7 @@ const PlayQuiz = (props) => {
                 </form>
             </article>
             : <>
-                <Result points={result.points} name={quiz.name} total ={quiz.questions.length} percentage={result.percentage} userName={localStorage.getItem('userName')}/>
+                <Result points={result.points} name={quiz.name} percentage={result.percentage} maxScore={result.maxScore} userName={localStorage.getItem('userName')} />
             </>
 
 

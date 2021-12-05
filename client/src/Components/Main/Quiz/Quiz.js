@@ -31,7 +31,6 @@ const Quiz = (props) => {
             class: ''
         }]
     })
-
     async function voteClickHandler(voteGrade) {
         var id = props.id;
         var obj = {
@@ -51,7 +50,7 @@ const Quiz = (props) => {
             <p className='quiz-taken'>Taken: {props.taken === 1 ? `${props.taken} time` : `${props.taken} times`}</p>
             <p className='quiz-creator'>Created by: {props.creator}</p>
             <span >
-                {vote.stars.map(x => <Star value={x.id} key={x.id} class={x.class} clickHandler={voteClickHandler} />,)}
+                {vote.stars.map((x, i) => <Star value={x.id} key={x.id} class={vote.grade >= Number(x.id) ? "yellow" : ''} clickHandler={voteClickHandler} />,)}
 
             </span>
             <span className='votes-box'>
@@ -59,8 +58,12 @@ const Quiz = (props) => {
                 <p>{vote.voteCount} votes</p>
             </span>
             {props.creator === localStorage.getItem('userName') ? <><span className='quiz-modify'>
-                <Link to={`/edit/${props.id}`} ><FontAwesomeIcon icon={faEdit} />Edit</Link>
-                <button><FontAwesomeIcon icon={faTrash} />Delete</button>
+                <Link to={`/edit/${props.id}`} >
+                    <FontAwesomeIcon icon={faEdit} /> Edit
+                </Link>
+                <button>
+                    <FontAwesomeIcon icon={faTrash} />Delete
+                </button>
             </span>
             </> : ''}
             <Link to={`/play/${props.id}`}>Play</Link>

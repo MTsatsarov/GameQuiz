@@ -1,5 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Component } from "react/cjs/react.production.min"
 import * as userService from "../../../services/UserServices/UserServices"
+import { faUser,faLock } from "@fortawesome/free-solid-svg-icons"
 import "./Login.css"
 class Login extends Component {
     constructor(props) {
@@ -34,7 +36,9 @@ class Login extends Component {
             <h3>Login</h3>
             <form onSubmit={this.LoginSubmitHandler} >
                 <span className='validation-errors'>{this.state.error}</span>
-                <input type='text' name='userName' placeholder='Enter your username ...' />
+                <FontAwesomeIcon className='loginIcons' icon={faUser}/>
+                <input type='text' name='userName' placeholder='Enter your username ...' ></input>
+                <FontAwesomeIcon className='loginIcons' icon={faLock}/>
                 <input type='password' name="password" placeholder='Enter your password ...' />
                 <button>Login</button>
             </form>

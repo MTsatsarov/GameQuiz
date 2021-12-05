@@ -38,3 +38,9 @@
   color: red;
   font-size: 30px;
 }
+.loginIcons {
+  position: relative;
+  bottom: -40px;
+  left: -12px;
+  font-size: 20px;
+}

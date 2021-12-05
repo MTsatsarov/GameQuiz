@@ -127,9 +127,11 @@ namespace GameQuiz.Web.Services.QuizService
             }).ToList();
         }
 
-        public async Task<int> GetResultAsync(QuizResultInputModel model)
+        public async Task<QuizResultViewModel> GetResultAsync(QuizResultInputModel model)
         {
-            var questions = this.db.Questions.Where(x => x.QuizId == model.Id);
+            var viewModel = new QuizResultViewModel();
+            var questions = this.db.Questions.Where(x => x.QuizId == model.Id).ToList();
+
             var points = 0;
             foreach (var question in questions)
             {
@@ -143,7 +145,7 @@ namespace GameQuiz.Web.Services.QuizService
             var currentResult = this.db.Results.Where(x => x.QuizId == model.Id && model.User == x.UserId).FirstOrDefault();
             if (currentResult != null)
             {
-                currentResult.Percentage = (points / model.QuestionsArray.Count()) * 100;
+                currentResult.Percentage = ((double)(points) / (double)(model.QuestionsArray.Count())) * 100;
                 currentResult.Points = points;
                 db.Results.Update(currentResult);
             }
@@ -152,17 +154,19 @@ namespace GameQuiz.Web.Services.QuizService
                 currentResult = new Result()
                 {
                     Points = points,
-                    Percentage = (points / model.QuestionsArray.Count()) * 100,
+                    Percentage = ((double)(points) / (double)(model.QuestionsArray.Count())) * 100,
                     TotalPoints = model.QuestionsArray.Count(),
                     UserId = model.User,
                     QuizId = model.Id
                 };
                 await db.Results.AddAsync(currentResult);
-            
+
             }
             await db.SaveChangesAsync();
-            ;
-            return currentResult.Points;
+            viewModel.Score = points;
+            viewModel.MaxScore = questions.Count();
+
+            return viewModel;
         }
     }
 }

@@ -58,8 +58,9 @@ namespace GameQuiz.Web.Controllers
         [Route("/quiz/result/{id}")]
         public async Task<JsonResult> GetResult(QuizResultInputModel  quiz)
         {
-            var points = await quizService.GetResultAsync(quiz);
-            return new JsonResult(points);
+            var result = await quizService.GetResultAsync(quiz);
+     
+            return new JsonResult(result);
         }
 
     }
