@@ -3,14 +3,15 @@ import { Component } from "react/cjs/react.production.min"
 import * as userService from "../../../services/UserServices/UserServices"
 import { faUser,faLock } from "@fortawesome/free-solid-svg-icons"
 import "./Login.css"
+import {AuthContext} from "../../../contexts/AuthContext.js"
 class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
             errors: ''
         }
+       
     }
-
     LoginSubmitHandler = async (e) => {
         this.setState({ errors: '' })
         e.preventDefault();
@@ -20,11 +21,10 @@ class Login extends Component {
             this.setState({ error: 'All fields must be filled' })
         }
         else {
+      
             var result = await userService.Login({userName,password})
             if (!localStorage.authToken) {
-                localStorage.setItem('authToken',result.token)
-                localStorage.setItem('id',result.id)
-                localStorage.setItem('userName',result.userName)
+                this.context.login(result.id,result.userName,result.token)             
                 this.props.history.push('/all')
             }
         }
@@ -46,5 +46,5 @@ class Login extends Component {
         )
     }
 }
-
+Login.contextType = AuthContext;
 export default Login

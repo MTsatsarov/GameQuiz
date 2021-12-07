@@ -3,6 +3,7 @@ import CreateQuestion from "./Question/CreateQuestion";
 import *  as quizService from "../../../services/QuizServices/QuizServices"
 import Error from "../../../shared/Error/Error";
 import "./Create.css"
+import { AuthContext } from "../../../contexts/AuthContext";
 
 class Create extends Component {
     constructor(props) {
@@ -29,16 +30,15 @@ class Create extends Component {
         var obj = {
             name: '',
             questions: [],
-            creator: localStorage.getItem('id')
+            creator: this.context.user.id
         }
         obj.name = e.target.querySelector('input[name=quizName]').value
 
         q.map(x => obj.questions.push({
             title: x.querySelector('textarea[name=title]').value,
-            answerArray: Array.from(x.querySelectorAll('.myAnswer')).map(y=>y.querySelector('input[type=text]').value),
-            correct:x.querySelector('input[type=checkbox]').value
+            answerArray: Array.from(x.querySelectorAll('.myAnswer')).map(y => y.querySelector('input[type=text]').value),
+            correct: x.querySelector('input[type=checkbox]').value
         }))
-        console.log(obj);
         await quizService.Create(obj)
         this.props.history.push("/all")
     }
@@ -64,5 +64,5 @@ class Create extends Component {
         )
     }
 }
-
+Create.contextType=AuthContext
 export default Create
