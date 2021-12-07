@@ -1,7 +1,9 @@
 .answer-label {
     font-size: 25px;
 }
-
+button {
+    width: 100px;
+}
 .answer-input {
     margin: 10px;
     border-radius: 4px;

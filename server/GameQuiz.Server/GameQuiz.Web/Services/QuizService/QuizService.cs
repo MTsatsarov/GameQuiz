@@ -34,34 +34,20 @@ namespace GameQuiz.Web.Services.QuizService
                 {
                     Title = currQuestion.Title,
                 };
-                var firstAnswer = new Answer()
+                foreach (var currAnswer in currQuestion.AnswerArray)
                 {
-                    Title = currQuestion.FirstAnswer,
-                    IsCorrect = currQuestion.CorrectIndex == 1 ? true : false,
-                };
-                var secondAnswer = new Answer()
-                {
-                    Title = currQuestion.SecondAnswer,
-                    IsCorrect = currQuestion.CorrectIndex == 2 ? true : false,
-                };
-                var thirdAnswer = new Answer()
-                {
-                    Title = currQuestion.ThirdAnswer,
-                    IsCorrect = currQuestion.CorrectIndex == 3 ? true : false,
-                };
-                var fourthAnswer = new Answer()
-                {
-                    Title = currQuestion.FourthAnswer,
-                    IsCorrect = currQuestion.CorrectIndex == 4 ? true : false,
-                };
-                question.Answers.Add(firstAnswer);
-                question.Answers.Add(secondAnswer);
-                question.Answers.Add(thirdAnswer);
-                question.Answers.Add(fourthAnswer);
-                question.Quiz = quizToInsert;
-                quizToInsert.Questions.Add(question);
-                this.db.Questions.Add(question);
+                    var answer = new Answer()
+                    {
+                        Title = currAnswer,
 
+                    };
+                    bool isCorrect = currQuestion.Correct == currAnswer ? true : false;
+                    answer.IsCorrect = isCorrect;
+                    this.db.Answers.Add(answer);
+                    question.Answers.Add(answer);
+                }
+                this.db.Questions.Add(question);
+                quizToInsert.Questions.Add(question);
             }
             this.db.Quizzes.Add(quizToInsert);
             this.db.SaveChanges();
@@ -130,10 +116,10 @@ namespace GameQuiz.Web.Services.QuizService
         public async Task<QuizResultViewModel> GetResultAsync(QuizResultInputModel model)
         {
             var viewModel = new QuizResultViewModel();
-            var questions = this.db.Questions.Where(x => x.QuizId == model.Id).ToList();
+            var quiz = this.db.Quizzes.Where(x => x.Id == model.Id).FirstOrDefault();
 
             var points = 0;
-            foreach (var question in questions)
+            foreach (var question in quiz.Questions)
             {
                 var currQuestion = model.QuestionsArray.Where(x => x.Name == question.Title).FirstOrDefault();
                 var correctAnswer = question.Answers.First(x => x.IsCorrect == true);
@@ -162,9 +148,12 @@ namespace GameQuiz.Web.Services.QuizService
                 await db.Results.AddAsync(currentResult);
 
             }
+
+            quiz.Taken++;
+            db.Quizzes.Update(quiz);
             await db.SaveChangesAsync();
             viewModel.Score = points;
-            viewModel.MaxScore = questions.Count();
+            viewModel.MaxScore = quiz.Questions.Count();
 
             return viewModel;
         }

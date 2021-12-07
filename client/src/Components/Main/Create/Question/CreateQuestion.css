@@ -4,7 +4,11 @@
   margin: 10px;
   text-align: center;
 }
-
+.answers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
 .question-create textarea {
   margin: 10px;
   max-width: 100%;

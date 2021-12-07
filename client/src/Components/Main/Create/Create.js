@@ -1,61 +1,57 @@
 import { Component } from "react";
 import CreateQuestion from "./Question/CreateQuestion";
 import *  as quizService from "../../../services/QuizServices/QuizServices"
+import Error from "../../../shared/Error/Error";
 import "./Create.css"
 
 class Create extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            quiz: {
-                name: '',
-            },
-            questions: []
+            questions: [],
+            isValidName: true
         }
     }
     createQuestion() {
         var newQuestion = <CreateQuestion />
         this.setState({ questions: this.state.questions.concat([newQuestion]) });
     };
-    handleChange(e) {
-        this.setState(
-            {
-                quiz: { name: e.target.value }
-            }
-        )
+    handleNameChange(e) {
+        if (e.target.value.length < 5 || e.target.value.length > 50) {
+            this.setState({ isValidName: false })
+        } else {
+            this.setState({ isValidName: true })
+        }
     }
-     handleSubmit = async (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
         let q = [...document.querySelectorAll('article')];
         var obj = {
             name: '',
-             questions: [],
-             creator: localStorage.getItem('id') 
+            questions: [],
+            creator: localStorage.getItem('id')
         }
-        obj.name = e.target.children[1].value;
-        q.map(x => obj.questions.push(
-            {
+        obj.name = e.target.querySelector('input[name=quizName]').value
 
-                title: x.children[1].value,
-                firstAnswer: x.children[3].value,
-                secondAnswer: x.children[5].value,
-                thirdAnswer: x.children[7].value,
-                fourthAnswer: x.children[9].value,
-                correctIndex: x.children[11].value
-
-            }))
-            console.log(obj);
+        q.map(x => obj.questions.push({
+            title: x.querySelector('textarea[name=title]').value,
+            answerArray: Array.from(x.querySelectorAll('.myAnswer')).map(y=>y.querySelector('input[type=text]').value),
+            correct:x.querySelector('input[type=checkbox]').value
+        }))
+        console.log(obj);
         await quizService.Create(obj)
         this.props.history.push("/all")
     }
     render() {
 
         return (
-            
             <section className='create-quiz-section' onSubmit={this.handleSubmit.bind(this)}>
                 <form>
+
                     <label className='quiz-name-label' htmlFor='QuizName'>Quiz name</label>
-                    <input className='name-input' id='QuizName' type='text' placeholder='Name' name='name' value={this.state.quiz.name} onChange={this.handleChange.bind(this)} />
+                    <input className='name-input' id='QuizName' type='text' placeholder='Name' name='quizName' onBlur={this.handleNameChange.bind(this)} />
+                    {!this.state.isValidName && <Error message={'Name must be between 5 and 50 characters'} />}
+
                     <div id="dynamicInput">
                         {this.state.questions.map((q, i) => <CreateQuestion key={i} count={i + 1} />)}
                     </div>

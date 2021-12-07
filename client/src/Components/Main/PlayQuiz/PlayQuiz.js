@@ -20,6 +20,7 @@ const PlayQuiz = (props) => {
         async function fetchData() {
             let result = await quizService.GetById(props.match.params.id)
             setQuiz(oldState => ({ ...oldState, id: result.id, name: result.name, questions: result.questions }))
+
         }
         fetchData()
     }, [props.match.params.id])

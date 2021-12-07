@@ -1,21 +1,36 @@
 import { Component } from "react/cjs/react.production.min";
+import Error from "../../../../shared/Error/Error";
 import "./CreateAnswer.css"
 
-class CreateAnswer extends Component{
+class CreateAnswer extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            value: '',
+            isValid: false
+        }
+    }
+
+    changeHandler(e) {
+        this.setState({ value: e.target.value })
+    }
+    validateAnswer(e) {
+        var length = e.target.length;
+        if (length < 10 || length > 150) {
+            this.setState({ isValid: false });
+        } else {
+            this.setState({ isValid: true });
+        }
+    }
     render() {
-        return(
-            <>
-            <label className='answer-label' htmlFor="firstAnswer"> Answer: 1</label>
-            <input className='answer-input' type='text' id = "firstAnswer" />
-            <label className='answer-label' htmlFor="firstAnswer"> Answer: 2</label>
-            <input className='answer-input' type='text' id = "secondAnswer" />
-            <label className='answer-label' htmlFor="firstAnswer"> Answer: 3</label>
-            <input className='answer-input' type='text' id = "thirdAnswer" />
-            <label className='answer-label' htmlFor="firstAnswer"> Answer: 4</label>
-            <input className='answer-input' type='text' id = "firstAnswer" />
-            <label className='answer-label' htmlFor= 'correct'>Please write the number of the correct answer</label>
-            <input className='correct-answer' max={4} min={1} type='number' name='correct' defaultValue={1} />
-            </>
+        return (
+            <div className='myAnswer'>
+                <p>Mark as correct</p>
+                <input type='checkbox' id='firstAnswer' name={this.state.value} value={this.state.value} />
+                <label className='answer-label' htmlFor={this.state.value}> Answer: {this.props.number}</label>
+                <input type='text' className='answer-input' type='text' id="firstAnswer" onChange={this.changeHandler.bind(this)} />
+                {!this.state.isValid && <Error message={'Answer must be between 10 and 150 characters long'} />}
+            </div>
         )
     }
 }
