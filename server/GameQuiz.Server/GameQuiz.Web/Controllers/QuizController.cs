@@ -52,6 +52,14 @@ namespace GameQuiz.Web.Controllers
             this.quizService.Update(model);
             return new OkResult();
         }
+        [HttpDelete]
+        [Authorize]
+        [Route("/quiz/{id}")]
+        public OkResult Delete([FromRoute] string id)
+        {
+            this.quizService.Delete(id);
+            return new OkResult();
+        }
         [HttpGet]
         [Route("/quiz/my-quizzes/{id}")]
         public async Task<JsonResult> GetQuizzesByUser([FromRoute] string id)

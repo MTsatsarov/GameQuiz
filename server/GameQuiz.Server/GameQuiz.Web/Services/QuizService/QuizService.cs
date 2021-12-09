@@ -184,6 +184,14 @@ namespace GameQuiz.Web.Services.QuizService
                 }
             }
             this.db.Quizzes.Update(quiz);
+            this.db.SaveChanges();
+        }
+
+        public void Delete(string id)
+        {
+            var quiz = this.db.Quizzes.FirstOrDefault(x => x.Id == id);
+            quiz.IsDeleted = true;
+            db.Quizzes.Update(quiz);
             db.SaveChanges();
         }
     }

@@ -1,10 +1,11 @@
 import * as voteService from "../../../services/VoteServices/VoteServices"
-import { useState,useContext } from "react"
+import * as quizService from "../../../services/QuizServices/QuizServices"
+import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Star from "../../../shared/Star/Star"
-import {AuthContext} from "../../../contexts/AuthContext.js"
+import { AuthContext } from "../../../contexts/AuthContext.js"
 import "./Quiz.css"
 const Quiz = (props) => {
     const context = useContext(AuthContext)
@@ -32,6 +33,12 @@ const Quiz = (props) => {
             class: ''
         }]
     })
+    async function deleteQuizHandler(e) {
+        var value = e.target.getAttribute('data-id');
+        await quizService.Delete(value)
+        props.history.push('/all')
+
+    }
     async function voteClickHandler(voteGrade) {
         var id = props.id;
         var obj = {
@@ -62,12 +69,12 @@ const Quiz = (props) => {
                 <Link to={`/edit/${props.id}`} >
                     <FontAwesomeIcon icon={faEdit} /> Edit
                 </Link>
-                <button>
+                <button data-id={props.id} onClick={deleteQuizHandler}>
                     <FontAwesomeIcon icon={faTrash} />Delete
                 </button>
             </span>
             </> : ''}
-            <Link to={ context.user.id !='' ?`/play/${props.id}`: '#'} >Play</Link>
+            <Link to={context.user.id != '' ? `/play/${props.id}` : '#'} >Play</Link>
         </article>
     )
 }

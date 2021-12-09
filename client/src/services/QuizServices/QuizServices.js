@@ -22,3 +22,6 @@ export async function GetResult(obj) {
 export async function Update(id, quiz) {
     return await api.put(api.host + `/quiz/${id}`, quiz)
 }
+export async function Delete(id) {
+    return await api.del(api.host + `/quiz/${id}`)
+}
