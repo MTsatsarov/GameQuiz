@@ -2,29 +2,26 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { GetById } from "../../../services/QuizServices/QuizServices"
 import EditQuiz from "./EditQuiz/EditQuiz";
-const Edit = () => {
-    var params = useParams();
+const Edit = (props) => {
     const [currQuiz, setQuiz] = useState({
         name: 'a',
-        id: params.id,
+        id: props.match.params.id,
         questions: []
     })
     useEffect(() => {
         async function GetQuiz() {
-            var quiz = await GetById(params.id)
+            var quiz = await GetById(props.match.params.id)
             setQuiz( prevState=> ({
                 name: quiz.name,
-                id: params.id,
-                questions:quiz.questions.map(x => currQuiz.questions.concat({
-                    questionName: x.title, firstAnswer: x.firstAnswer, secondAnswer: x.secondAnswer, thirdAnswer: x.thirdAnswer, fourthAnswer: x.fourthAnswer, correctIndex: x.correctIndex
-                }))
+                id: props.match.params.id,
+                questions:quiz.questions
             }))
         }
         GetQuiz()
-    }, [currQuiz.questions,params.id])
+    }, [props.match.params.id])
     return (
         <>
-            <EditQuiz name={currQuiz.name} questionsArray ={currQuiz.questions}/>
+            <EditQuiz name={currQuiz.name} id={currQuiz.id} questionsArray ={currQuiz.questions}/>
         </>
     )
 }

@@ -16,5 +16,9 @@ export async function GetAllByUser(id) {
 }
 
 export async function GetResult(obj) {
-    return await api.post(api.host + `/quiz/result/${obj.id}`,obj)
+    return await api.post(api.host + `/quiz/result/${obj.id}`, obj)
+}
+
+export async function Update(id, quiz) {
+    return await api.put(api.host + `/quiz/${id}`, quiz)
 }

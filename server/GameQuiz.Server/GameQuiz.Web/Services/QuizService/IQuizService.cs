@@ -11,6 +11,8 @@ namespace GameQuiz.Web.Services.QuizService
     {
         QuizListViewModel GetAll(int page);
         PlayQuizViewModel GetQuiz(string id);
+        void Update(QuizUpdateInputModel model);
+
         Task<List<QuizViewModel>> GetAllByUser(string id);
 
         Task<QuizResultViewModel> GetResultAsync(QuizResultInputModel model);

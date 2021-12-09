@@ -1,10 +1,7 @@
-﻿using GameQuiz.Web.Data.Models;
-using GameQuiz.Web.InputModels;
+﻿using GameQuiz.Web.InputModels;
 using GameQuiz.Web.Services.QuizService;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace GameQuiz.Web.Controllers
@@ -42,10 +39,19 @@ namespace GameQuiz.Web.Controllers
         [Route("/quiz/{id}")]
         public JsonResult GetById([FromRoute] string id)
         {
+           var a = this.RouteData;
             var result = this.quizService.GetQuiz(id);
             return new JsonResult(result);
         }
 
+        [HttpPut]
+        [Authorize]
+        [Route("/quiz/{id}")]
+        public OkResult Update(QuizUpdateInputModel model)
+        {
+            this.quizService.Update(model);
+            return new OkResult();
+        }
         [HttpGet]
         [Route("/quiz/my-quizzes/{id}")]
         public async Task<JsonResult> GetQuizzesByUser([FromRoute] string id)

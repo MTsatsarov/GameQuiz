@@ -89,7 +89,7 @@ namespace GameQuiz.Web.Services.QuizService
                         Id = y.Id,
                         Title = y.Title
                     }).ToList(),
-                    CorrectAnswer = x.Answers.Where(i => i.IsCorrect == true).Select(i => id).FirstOrDefault()
+                    CorrectAnswer = x.Answers.Where(a => a.IsCorrect == true).Select(a => a.Id).FirstOrDefault(),
                 }).ToList()
 
             };
@@ -156,6 +156,35 @@ namespace GameQuiz.Web.Services.QuizService
             viewModel.MaxScore = quiz.Questions.Count();
 
             return viewModel;
+        }
+
+        public void Update(QuizUpdateInputModel model)
+        {
+            var quiz = db.Quizzes.Where(x => x.Id == model.Id).FirstOrDefault();
+
+            quiz.Name = model.Name;
+            foreach (var question in quiz.Questions)
+            {
+                var currentQuestion = model.Questions.Where(x => x.Id == question.Id).FirstOrDefault();
+                question.Title = currentQuestion.Name;
+                var correct = currentQuestion.Correct;
+
+                foreach (var answer in currentQuestion.Answers)
+                {
+                    var currentAnswer = question.Answers.Where(x => x.Id == answer.Id).First();
+                    currentAnswer.Title = answer.Name;
+                    if (currentQuestion.Correct == answer.Name)
+                    {
+                        currentAnswer.IsCorrect = true;
+                    }
+                    else
+                    {
+                        currentAnswer.IsCorrect = false;
+                    }
+                }
+            }
+            this.db.Quizzes.Update(quiz);
+            db.SaveChanges();
         }
     }
 }

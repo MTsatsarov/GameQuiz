@@ -36,4 +36,5 @@ class All extends Component {
         )
     }
 }
+
 export default All

@@ -1,12 +1,13 @@
-import Star from "../../../shared/Star/Star"
 import * as voteService from "../../../services/VoteServices/VoteServices"
-import { useState } from "react"
-import "./Quiz.css"
+import { useState,useContext } from "react"
 import { Link } from "react-router-dom"
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import Star from "../../../shared/Star/Star"
+import {AuthContext} from "../../../contexts/AuthContext.js"
+import "./Quiz.css"
 const Quiz = (props) => {
+    const context = useContext(AuthContext)
     const [vote, setVote] = useState({
         voteCount: props.votesCount,
         grade: props.grade,
@@ -66,7 +67,7 @@ const Quiz = (props) => {
                 </button>
             </span>
             </> : ''}
-            <Link to={`/play/${props.id}`}>Play</Link>
+            <Link to={ context.user.id !='' ?`/play/${props.id}`: '#'} >Play</Link>
         </article>
     )
 }
