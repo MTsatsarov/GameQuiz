@@ -1,5 +1,6 @@
 import * as voteService from "../../../services/VoteServices/VoteServices"
 import * as quizService from "../../../services/QuizServices/QuizServices"
+import { useHistory } from "react-router-dom"
 import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons"
@@ -8,6 +9,7 @@ import Star from "../../../shared/Star/Star"
 import { AuthContext } from "../../../contexts/AuthContext.js"
 import "./Quiz.css"
 const Quiz = (props) => {
+    let history = useHistory();
     const context = useContext(AuthContext)
     const [vote, setVote] = useState({
         voteCount: props.votesCount,
@@ -15,28 +17,15 @@ const Quiz = (props) => {
         stars: [{
             id: 1,
             class: ''
-        },
-        {
-            id: 2,
-            class: ''
-        },
-        {
-            id: 3,
-            class: ''
-        },
-        {
-            id: 4,
-            class: ''
-        },
-        {
-            id: 5,
-            class: ''
-        }]
+        }, { id: 2, class: '' }, { id: 3, class: '' }, { id: 4, class: '' }, { id: 5, class: '' }]
     })
+
     async function deleteQuizHandler(e) {
         var value = e.target.getAttribute('data-id');
         await quizService.Delete(value)
-        props.history.push('/all')
+        props.removeQuizHandler(value)
+        history.push('/all')
+
 
     }
     async function voteClickHandler(voteGrade) {
