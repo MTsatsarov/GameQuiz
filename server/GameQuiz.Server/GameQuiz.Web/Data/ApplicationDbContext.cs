@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,6 +13,10 @@ namespace GameQuiz.Web.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
+            typeof(ApplicationDbContext).GetMethod(
+                nameof(SetIsDeletedQueryFilter),
+                BindingFlags.NonPublic | BindingFlags.Static);
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { }
 
@@ -24,7 +29,31 @@ namespace GameQuiz.Web.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
             base.OnModelCreating(builder);
+            this.ConfigureUserIdentityRelations(builder);
+            var entityTypes = builder.Model.GetEntityTypes().ToList();
+            var deletableEntityTypes = entityTypes
+              .Where(et => et.ClrType != null && typeof(IDeletableEntity).IsAssignableFrom(et.ClrType));
+            foreach (var deletableEntityType in deletableEntityTypes)
+            {
+                var method = SetIsDeletedQueryFilterMethod.MakeGenericMethod(deletableEntityType.ClrType);
+                method.Invoke(null, new object[] { builder });
+            }
+
+            // Disable cascade delete
+            var foreignKeys = entityTypes
+                .SelectMany(e => e.GetForeignKeys().Where(f => f.DeleteBehavior == DeleteBehavior.Cascade));
+            foreach (var foreignKey in foreignKeys)
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+        }
+
+        private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
+           where T : class, IDeletableEntity
+        {
+            builder.Entity<T>().HasQueryFilter(e => !e.IsDeleted);
         }
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -44,6 +73,9 @@ namespace GameQuiz.Web.Data
             this.ApplyAuditInfoRules();
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
+
+        private void ConfigureUserIdentityRelations(ModelBuilder builder)
+             => builder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
         private void ApplyAuditInfoRules()
         {
             var changedEntries = this.ChangeTracker

@@ -191,6 +191,7 @@ namespace GameQuiz.Web.Services.QuizService
         {
             var quiz = this.db.Quizzes.FirstOrDefault(x => x.Id == id);
             quiz.IsDeleted = true;
+            quiz.DeletedOn = DateTime.UtcNow;
             db.Quizzes.Update(quiz);
             db.SaveChanges();
         }
