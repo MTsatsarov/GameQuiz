@@ -25,3 +25,6 @@ export async function Update(id, quiz) {
 export async function Delete(id) {
     return await api.del(api.host + `/quiz/${id}`)
 }
+export async function Search(name) {
+    return await api.get(api.host + `/api/search/${name}`)
+}

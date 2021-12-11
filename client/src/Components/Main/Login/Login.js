@@ -24,7 +24,7 @@ class Login extends Component {
       
             var result = await userService.Login({userName,password})
             if (!localStorage.authToken) {
-                this.context.login(result.id,result.userName,result.token)             
+                this.context.login(result.id,result.userName,result.token,result.expiration)             
                 this.props.history.push('/all')
             }
         }

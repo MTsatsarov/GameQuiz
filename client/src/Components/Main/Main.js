@@ -9,6 +9,7 @@ import Login from "./Login/Login";
 import MyQuizzes from "./My Quizzes/My Quizzes";
 import Edit from "./Edit/Edit"
 import PlayQuiz from "./PlayQuiz/PlayQuiz";
+import Search from "./Search/Search";
 
 class Main extends Component {
     render() {
@@ -24,6 +25,7 @@ class Main extends Component {
                     <Route path="/my-quizzes" exact component={MyQuizzes} />
                     <Route path="/edit/:id" exact component={Edit} />
                     <Route path="/play/:id" exact component={PlayQuiz} />
+                    <Route path="/search" exact component={Search} />
                 </Switch>
             </main >
         )

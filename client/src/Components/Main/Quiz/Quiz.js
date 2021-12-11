@@ -63,7 +63,7 @@ const Quiz = (props) => {
                 </button>
             </span>
             </> : ''}
-            <Link to={context.user.id != '' ? `/play/${props.id}` : '#'} >Play</Link>
+            <Link to={context.user.id !== '' ? `/play/${props.id}` : '#'} >Play</Link>
         </article>
     )
 }

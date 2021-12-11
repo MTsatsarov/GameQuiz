@@ -195,5 +195,22 @@ namespace GameQuiz.Web.Services.QuizService
             db.Quizzes.Update(quiz);
             db.SaveChanges();
         }
+
+        public QuizViewModel Search(string name)
+        {
+            var quizzes = new QuizViewModel();
+            quizzes = this.db.Quizzes.Where(x=>x.Name==name).Select(x => new QuizViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                VotesCount = x.Votes.Count(),
+                Grade = x.Votes.Count() == 0 ? 0 : Math.Round(x.Votes.Average(x => x.Grade), 2),
+                Taken = x.Taken,
+                CreatorName = this.db.Users.Where(u => u.Id == x.CreatorId).Select(x => x.UserName).FirstOrDefault()
+            }).FirstOrDefault();
+
+
+            return quizzes;
+        }
     }
 }

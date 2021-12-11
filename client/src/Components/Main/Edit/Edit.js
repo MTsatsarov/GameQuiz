@@ -1,4 +1,3 @@
-import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { GetById } from "../../../services/QuizServices/QuizServices"
 import EditQuiz from "./EditQuiz/EditQuiz";

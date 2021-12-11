@@ -26,15 +26,15 @@ class All extends Component {
     }
     removeQuizHandler(id) {
         var currQuizzes = this.state.quizzes;
-      var arr =   currQuizzes.filter(x => x.id != id)
-        this.setState(prevState => ({ ...prevState, quizzes: arr}))
+        var arr = currQuizzes.filter(x => x.id !== id)
+        this.setState(prevState => ({ ...prevState, quizzes: arr }))
     }
     render() {
         return (
             <section>
                 <Pagination clickHandler={this.getId.bind(this)} nextPage={this.state.paginationModel.hasNextPage} prev={this.state.paginationModel.hasPreviousPage} currPage={this.state.paginationModel.currentPage} total={this.state.paginationModel.totalPages} />
 
-                {this.state.quizzes.map(x => (<Quiz key={x.id} id={x.id} name={x.name} taken={x.taken ? x.taken : 0} grade={x.grade} votesCount={x.votesCount} creator={x.creatorName ? x.creatorName : "Admin-GameQuiz@Gmail.com"}  removeQuizHandler={this.removeQuizHandler.bind(this)}  />))}
+                {this.state.quizzes.map(x => (<Quiz key={x.id} id={x.id} name={x.name} taken={x.taken ? x.taken : 0} grade={x.grade} votesCount={x.votesCount} creator={x.creatorName ? x.creatorName : "Admin-GameQuiz@Gmail.com"} removeQuizHandler={this.removeQuizHandler.bind(this)} />))}
 
                 <Pagination clickHandler={this.getId.bind(this)} nextPage={this.state.paginationModel.hasNextPage} prev={this.state.paginationModel.hasPreviousPage} currPage={this.state.paginationModel.currentPage} total={this.state.paginationModel.totalPages} />
             </section >
