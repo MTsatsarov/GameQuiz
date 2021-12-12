@@ -1,7 +1,8 @@
 .Header-nav {
   display: flex;
-  padding: 10px;
+  padding: 5px;
   flex-direction: row;
+  
 }
 
 .Header-nav  ul {
@@ -11,7 +12,6 @@
 }
 
 .Header-nav  ul li {
-   margin-left: 10px;
    list-style: none;
 }
 

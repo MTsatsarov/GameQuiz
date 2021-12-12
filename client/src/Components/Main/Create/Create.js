@@ -10,7 +10,7 @@ class Create extends Component {
         super(props)
         this.state = {
             questions: [],
-            isValidName: true
+            isValidName: false
         }
     }
     createQuestion() {
@@ -26,7 +26,19 @@ class Create extends Component {
     }
     handleSubmit = async (e) => {
         e.preventDefault();
+
         let q = [...document.querySelectorAll('article')];
+        if (!this.state.isValidName || q.length === 0) {
+            console.log('invalid');
+            console.log(q);
+            return;
+        }
+
+
+
+
+
+
         var obj = {
             name: '',
             questions: [],
@@ -64,5 +76,5 @@ class Create extends Component {
         )
     }
 }
-Create.contextType=AuthContext
+Create.contextType = AuthContext
 export default Create

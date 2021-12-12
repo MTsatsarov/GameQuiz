@@ -1,4 +1,9 @@
 .main {
     width: 80%;
-    margin: 0px auto;
+    margin: 10px auto;
+    background: url(../../static/background\ full\ page.jpg);
+    background-repeat: repeat;
+    background-size: 1920px;
+    min-height: 1280px;
+    
 }

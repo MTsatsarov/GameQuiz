@@ -5,8 +5,14 @@
     border-radius: 8px;
     justify-content: space-between;
     flex-direction: row-reverse;
-    width: 100%;
+    width: 80%;
     margin: 10px;
+    color: white;
+    font-weight: bolder;
+    font-size: 25px;
+    background: url(../../../static/single\ quiz\ bg.jpg);
+   
+    background-size: 100%;
   }
   .questionArticle>h4 {
       margin: 10px;

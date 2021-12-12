@@ -11,6 +11,10 @@
   box-shadow: 0px 0px 28px 6px rgba(0, 0, 0, 0.55);
   font-family: "Montserrat", sans-serif;
   border-radius: 8px;
+  background: url(../../../static/single\ quiz\ bg.jpg) ;
+  background-size: 100%;
+  background-repeat:no-repeat ;
+  color: black;
 }
 .votes-box {
   display: flex;
