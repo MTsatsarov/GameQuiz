@@ -3,7 +3,7 @@ import * as quizService from "../../../services/QuizServices/QuizServices"
 import { useHistory } from "react-router-dom"
 import { useState, useContext } from "react"
 import { Link } from "react-router-dom"
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faEdit, faTrash, faPlay } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Star from "../../../shared/Star/Star"
 import { AuthContext } from "../../../contexts/AuthContext.js"
@@ -63,7 +63,7 @@ const Quiz = (props) => {
                 </button>
             </span>
             </> : ''}
-            <Link to={context.user.id !== '' ? `/play/${props.id}` : '#'} >Play</Link>
+            <Link  className='button' to={context.user.id !== '' ? `/play/${props.id}` : '#'} ><button  className='play-button'><FontAwesomeIcon icon ={faPlay}/>Play</button></Link>
         </article>
     )
 }

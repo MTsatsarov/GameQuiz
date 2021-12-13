@@ -10,10 +10,11 @@ import MyQuizzes from "./My Quizzes/My Quizzes";
 import Edit from "./Edit/Edit"
 import PlayQuiz from "./PlayQuiz/PlayQuiz";
 import Search from "./Search/Search";
-
+import {CreateProvider} from "../../contexts/CreateContext"
 class Main extends Component {
     render() {
         return (
+           <CreateProvider>
             <main className="main">
                 <Switch>
                     <Route path="/" exact component={Welcome} />
@@ -28,6 +29,7 @@ class Main extends Component {
                     <Route path="/search" exact component={Search} />
                 </Switch>
             </main >
+            </CreateProvider>
         )
     }
 }

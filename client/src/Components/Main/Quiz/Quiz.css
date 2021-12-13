@@ -60,4 +60,19 @@
   margin: 5px;
   font-size: 15px;
   font-weight: bold;
+  cursor: pointer;
+}
+.quiz-modify button:hover {
+  color:black;
+}
+.play-button {
+  border: none;
+  border-radius: 12px;
+ width: 200px;
+ cursor: pointer;
+ min-height: 30px;
+ font-size: 20px;
+}
+.play-button:hover {
+  background: yellow;
 }

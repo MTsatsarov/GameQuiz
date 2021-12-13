@@ -3,69 +3,38 @@ import CreateQuestion from "./Question/CreateQuestion";
 import *  as quizService from "../../../services/QuizServices/QuizServices"
 import Error from "../../../shared/Error/Error";
 import "./Create.css"
-import { AuthContext } from "../../../contexts/AuthContext";
+import { CreateContext } from "../../../contexts/CreateContext";
 
 class Create extends Component {
     constructor(props) {
         super(props)
         this.state = {
             questions: [],
-            isValidName: false
         }
     }
     createQuestion() {
         var newQuestion = <CreateQuestion />
+        this.context.createQuestion(newQuestion);
         this.setState({ questions: this.state.questions.concat([newQuestion]) });
     };
-    handleNameChange(e) {
-        if (e.target.value.length < 5 || e.target.value.length > 50) {
-            this.setState({ isValidName: false })
-        } else {
-            this.setState({ isValidName: true })
-        }
-    }
-    handleSubmit = async (e) => {
+    handleCreateQuiz = async (e) => {
         e.preventDefault();
-
-        let q = [...document.querySelectorAll('article')];
-        if (!this.state.isValidName || q.length === 0) {
-            console.log('invalid');
-            console.log(q);
-            return;
-        }
-
-
-
-
-
-
-        var obj = {
-            name: '',
-            questions: [],
-            creator: this.context.user.id
-        }
-        obj.name = e.target.querySelector('input[name=quizName]').value
-
-        q.map(x => obj.questions.push({
-            title: x.querySelector('textarea[name=title]').value,
-            answerArray: Array.from(x.querySelectorAll('.myAnswer')).map(y => y.querySelector('input[type=text]').value),
-            correct: x.querySelector('input[type=checkbox]').value
-        }))
-        await quizService.Create(obj)
+       var quiz = this.context.createQuiz();
+       console.log(quiz);
+       await quizService.Create(quiz)
         this.props.history.push("/all")
     }
     render() {
-
         return (
-            <section className='create-quiz-section' onSubmit={this.handleSubmit.bind(this)}>
+            <section className='create-quiz-section' onSubmit={this.handleCreateQuiz.bind(this)}>
                 <form>
 
                     <label className='quiz-name-label' htmlFor='QuizName'>Quiz name</label>
-                    <input className='name-input' id='QuizName' type='text' placeholder='Name' name='quizName' onBlur={this.handleNameChange.bind(this)} />
-                    {!this.state.isValidName && <Error message={'Name must be between 5 and 50 characters'} />}
+                    <input className='name-input' id='QuizName' type='text' placeholder='Name' name='quizName' onChange={this.context.changeQuizName} />
+                    {!this.context.quizName.isValid && <Error message={'Name must be between 5 and 50 characters'} />}
 
                     <div id="dynamicInput">
-                        {this.state.questions.map((q, i) => <CreateQuestion key={i} count={i + 1} />)}
+                        {this.state.questions.map((q, i) => <CreateQuestion key={i} count={i + 1}/>)}
                     </div>
                     <span className='form-buttons'>
                         <button id='addQuestion' type='button' onClick={this.createQuestion.bind(this)}>Add Question</button>
@@ -76,5 +45,5 @@ class Create extends Component {
         )
     }
 }
-Create.contextType = AuthContext
+Create.contextType = CreateContext
 export default Create
