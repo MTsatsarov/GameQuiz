@@ -1,17 +1,18 @@
 .create-quiz-section {
-    background: linear-gradient(45deg, rgb(0, 35, 189) , rgba(17, 255, 36, 0.7));
     margin: 10px auto;
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: space-around;
+    min-height: 1280px;
 }
 .create-quiz-section form {
     margin: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 3px solid black;
-    flex-basis: 40%;
+    flex-basis: 50%;
     border-radius: 8px;
+    box-shadow: 0px 0px 25px 7px #FFFFFF;
 }
 .quiz-name-label {
     font-size: 30px;
@@ -32,7 +33,6 @@
     width: 45%;
 }
 .form-buttons>button {
-    background: linear-gradient(45deg, rgb(0, 35, 189) , rgba(17, 255, 36, 0.7));
     font-size: 15px;
     font-weight: bold;
     border:none;

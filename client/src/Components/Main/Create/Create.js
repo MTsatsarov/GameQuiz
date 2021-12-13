@@ -20,9 +20,11 @@ class Create extends Component {
     handleCreateQuiz = async (e) => {
         e.preventDefault();
        var quiz = this.context.createQuiz();
-       console.log(quiz);
-       await quizService.Create(quiz)
+       if(quiz) {
+        await quizService.Create(quiz)
         this.props.history.push("/all")
+       }
+       
     }
     render() {
         return (

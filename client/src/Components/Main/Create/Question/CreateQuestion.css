@@ -6,7 +6,7 @@
 }
 .answers {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
 }
 .question-create textarea {

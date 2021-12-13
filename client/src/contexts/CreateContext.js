@@ -55,16 +55,25 @@ export const CreateProvider = (props) => {
     }
 const createQuiz = () => {
     if (!quizName.isValid) {
-        throw new Error('Quiz name must be between 5 and 50 characters long!');
+        alert('Quiz name must be between 5 and 50 characters long!');
+        return;
     } else if(!questions.some(x=>x.isValidQuestionName)) {
-        throw new Error('Quiz name must be between 10 and 150 characters long!');
+        alert('Question name must be between 10 and 150 characters long!');
+        return;
+
     } else if (!questions.some(x=>x.haveAnswers)) {
-        throw new Error('All questions must have answers!');
+        alert('All questions must have answers!');
+        return;
+
     } else if(!questions.some(x=>x.answers.some(y=>y.isValidAnswerName))) {
-        throw new Error('Answer name must be between 10 and 150 characters long!');
+        alert('Answer name must be between 10 and 150 characters long!');
+        return;
+
     }
     else if(questions.some(x=>x.correct=='')) {
-        throw new Error('All questions must have correct answer!');
+        alert('All questions must have correct answer!');
+        return;
+
     }
     var obj = {
         name: quizName.name,
