@@ -3,7 +3,7 @@ import * as quiz from "../../../services/QuizServices/QuizServices"
 import Quiz from "../Quiz/Quiz";
 import { Component } from "react";
 import Pagination from "../../../shared/Pagination/Pagination";
-
+import Spinner from "../../../shared/Spinner/Spinner";
 class All extends Component {
     constructor(props) {
         super(props)
@@ -31,11 +31,10 @@ class All extends Component {
     }
     render() {
         return (
-            <section>
+            <section className="all">
                 <Pagination clickHandler={this.getId.bind(this)} nextPage={this.state.paginationModel.hasNextPage} prev={this.state.paginationModel.hasPreviousPage} currPage={this.state.paginationModel.currentPage} total={this.state.paginationModel.totalPages} />
-
                 {this.state.quizzes.map(x => (<Quiz key={x.id} id={x.id} name={x.name} taken={x.taken ? x.taken : 0} grade={x.grade} votesCount={x.votesCount} creator={x.creatorName ? x.creatorName : "Admin-GameQuiz@Gmail.com"} removeQuizHandler={this.removeQuizHandler.bind(this)} />))}
-
+                <Spinner />
                 <Pagination clickHandler={this.getId.bind(this)} nextPage={this.state.paginationModel.hasNextPage} prev={this.state.paginationModel.hasPreviousPage} currPage={this.state.paginationModel.currentPage} total={this.state.paginationModel.totalPages} />
             </section >
         )

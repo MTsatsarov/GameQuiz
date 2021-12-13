@@ -85,6 +85,7 @@ const createQuiz = () => {
         answerArray: x.answers.map(a=>a.name),
         correct: x.correct,
     }))
+    console.log(obj);
     return obj;
    
 }

@@ -30,11 +30,11 @@ class CreateAnswer extends Component {
                     <div className="radio-div">
                         <input type='radio' name={this.state.value} value={this.state.value} name={`question${this.props.questionIndex}`} onChange={() => this.context.changeCorrectAnswer(this.props.questionIndex, this.props.number - 1)} />
                         <input type='text' className='answer-input' onChange={this.validateAnswer.bind(this)} />
-
                     </div>
                 </div>
 
                 {!this.state.isValid && <Error message={'Answer must be between 10 and 150 characters long'} />}
+
             </div>
         )
     }

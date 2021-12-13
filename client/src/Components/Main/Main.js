@@ -11,6 +11,7 @@ import Edit from "./Edit/Edit"
 import PlayQuiz from "./PlayQuiz/PlayQuiz";
 import Search from "./Search/Search";
 import {CreateProvider} from "../../contexts/CreateContext"
+
 class Main extends Component {
     render() {
         return (
