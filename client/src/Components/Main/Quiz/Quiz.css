@@ -2,37 +2,48 @@
   display: flex;
   border: 2px solid black;
   flex-direction: column;
-  margin: 20px auto;
+  margin: 15px auto;
+  min-height: 300px;
   padding: 5px;
-  max-width: 50%;
+  flex-basis: 20%;
   align-items: center;
   font-weight: bold;
   font-size: 20px;
   box-shadow: 0px 0px 28px 6px rgba(0, 0, 0, 0.55);
   font-family: "Montserrat", sans-serif;
   border-radius: 8px;
-  background: url(../../../static/single\ quiz\ bg.jpg) ;
-  background-size: 100%;
-  background-repeat:no-repeat ;
+  background: url(../../../static/single\ quiz\ bg.jpg);
+
+  background-repeat: no-repeat;
   color: black;
 }
+
+.quiz-wrapper h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
 .votes-box {
   display: flex;
   align-items: center;
   max-width: 70%;
 }
-.votes-box p {
-  margin-right: 20px;
+
+.votes-box >p {
+  margin: 5px;
 }
+
 .quiz-creator {
   margin-bottom: 15px;
   margin-top: 0px;
   font-size: 13px;
 }
+
 .quiz-taken {
   margin-bottom: 5px;
 }
-.quiz-wrapper > button {
+
+.quiz-wrapper>button {
   width: 200px;
   align-self: center;
   height: 40px;
@@ -43,12 +54,14 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
 .quiz-modify {
-  margin: 20px;
+  margin: 10px;
   display: flex;
   align-items: center;
 
 }
+
 .quiz-modify button {
   color: white;
   background: red;
@@ -57,22 +70,25 @@
   width: 80px;
   height: 30px;
   text-align: center;
-  margin: 5px;
+  margin: 15px;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
 }
+
 .quiz-modify button:hover {
-  color:black;
+  color: black;
 }
+
 .play-button {
   border: none;
   border-radius: 12px;
- width: 200px;
- cursor: pointer;
- min-height: 30px;
- font-size: 20px;
+  width: 200px;
+  cursor: pointer;
+  min-height: 30px;
+  font-size: 20px;
 }
+
 .play-button:hover {
   background: yellow;
 }

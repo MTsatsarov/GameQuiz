@@ -61,10 +61,10 @@ namespace GameQuiz.Web.Controllers
             return new OkResult();
         }
         [HttpGet]
-        [Route("/quiz/my-quizzes/{id}")]
-        public async Task<JsonResult> GetQuizzesByUser([FromRoute] string id)
+        [Route("/quiz/my-quizzes/{id}/{page}")]
+        public async Task<JsonResult> GetQuizzesByUser([FromRoute] string id,string page)
         {
-            var result = await this.quizService.GetAllByUser(id);
+            var result = await this.quizService.GetAllByUser(id,int.Parse(page));
             return new JsonResult(result);
         }
 

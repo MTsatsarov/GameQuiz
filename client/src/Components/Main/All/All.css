@@ -3,3 +3,11 @@
     flex-direction: column;
     align-items: center;
 }
+.quizzes-boxes-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}

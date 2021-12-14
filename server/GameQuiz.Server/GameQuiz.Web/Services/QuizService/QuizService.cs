@@ -12,7 +12,7 @@ namespace GameQuiz.Web.Services.QuizService
 {
     public class QuizService : IQuizService
     {
-        private const int itemsPerPage = 10;
+        private const int itemsPerPage = 12;
         private readonly ApplicationDbContext db;
 
         public QuizService(ApplicationDbContext db)
@@ -67,7 +67,7 @@ namespace GameQuiz.Web.Services.QuizService
                 CreatorName = this.db.Users.Where(u => u.Id == x.CreatorId).Select(x => x.UserName).FirstOrDefault()
             }).Skip(itemsPerPage * (page - 1)).Take(itemsPerPage).ToList();
             quizzes.QuizzesCount = GetCount();
-            quizzes.ItemsPerPage = 10;
+            quizzes.ItemsPerPage = 12;
             quizzes.CurrentPage = page;
 
             return quizzes;
@@ -99,10 +99,10 @@ namespace GameQuiz.Web.Services.QuizService
 
         public int GetCount() => this.db.Quizzes.Count();
 
-        public async Task<List<QuizViewModel>> GetAllByUser(string id)
+        public async Task<QuizListViewModel> GetAllByUser(string id,int page)
         {
-
-            return this.db.Quizzes.Where(x => x.CreatorId == id).OrderByDescending(x => x.CreatedOn).Select(x => new QuizViewModel
+            var quizzes = new QuizListViewModel();
+            quizzes.Quizzes = this.db.Quizzes.Where(x=>x.CreatorId==id).OrderByDescending(x => x.CreatedOn).Select(x => new QuizViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -110,7 +110,12 @@ namespace GameQuiz.Web.Services.QuizService
                 Grade = x.Votes.Count() == 0 ? 0 : Math.Round(x.Votes.Average(x => x.Grade), 2),
                 Taken = x.Taken,
                 CreatorName = this.db.Users.Where(u => u.Id == x.CreatorId).Select(x => x.UserName).FirstOrDefault()
-            }).ToList();
+            }).Skip(itemsPerPage * (page - 1)).Take(itemsPerPage).ToList();
+            quizzes.QuizzesCount = GetCount();
+            quizzes.ItemsPerPage = 12;
+            quizzes.CurrentPage = page;
+
+            return quizzes;
         }
 
         public async Task<QuizResultViewModel> GetResultAsync(QuizResultInputModel model)

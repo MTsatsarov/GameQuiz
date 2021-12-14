@@ -10,27 +10,29 @@ import MyQuizzes from "./My Quizzes/My Quizzes";
 import Edit from "./Edit/Edit"
 import PlayQuiz from "./PlayQuiz/PlayQuiz";
 import Search from "./Search/Search";
-import {CreateProvider} from "../../contexts/CreateContext"
+import { CreateProvider } from "../../contexts/CreateContext"
 
 class Main extends Component {
     render() {
         return (
-           <CreateProvider>
+
             <main className="main">
                 <Switch>
                     <Route path="/" exact component={Welcome} />
                     <Route path="/all" exact component={All} />
                     <Route path="/all/:id" exact component={All} />
-                    <Route path="/create" exact component={Create} />
                     <Route path="/register" exact component={Register} />
                     <Route path="/Login" exact component={Login} />
-                    <Route path="/my-quizzes" exact component={MyQuizzes} />
+                    <Route path="/my-quizzes/:id" exact component={MyQuizzes} />
                     <Route path="/edit/:id" exact component={Edit} />
                     <Route path="/play/:id" exact component={PlayQuiz} />
                     <Route path="/search" exact component={Search} />
+                    <CreateProvider>
+                        <Route path="/create" exact component={Create} />
+                    </CreateProvider>
                 </Switch>
             </main >
-            </CreateProvider>
+
         )
     }
 }

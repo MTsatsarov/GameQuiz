@@ -3,16 +3,32 @@
     display: flex;
     align-items: center;
     font-size: 25px;
-    margin: 20px;
+    margin: 10px;
     justify-content: center;
 }
 .pagination a {
     margin-left: 10px;
     text-decoration: none;
+    color: rgb(184, 184, 184);
 }
 .sign {
   font-size: 40px;
   position: relative;
   bottom: 3px;
-
+}
+.current {
+  font-size: 45px;
+  font-weight: bold;
+  background: rgb(54, 52, 52);
+  width: 70px;
+  text-align: center;
+  border-radius: 50%;
+}
+.pagination button {
+  border: none;
+  background: none;
+  font-size: 35px;
+  width: 100%;
+  background: green;
+  cursor: pointer;
 }

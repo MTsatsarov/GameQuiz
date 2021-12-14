@@ -30,6 +30,7 @@ class Register extends Component {
 
     render() {
         return (
+            <div>
             <form onSubmit={this.onSubmitHandler} className='register-form'>
                 <span className='validation-errors'>{this.state.error}</span>
                 <label htmlFor='userName' >Username</label>
@@ -42,6 +43,7 @@ class Register extends Component {
                 <input type='password' name='rePass' />
                 <button type='submit'>Register</button>
             </form>
+            </div>
 
         )
     }

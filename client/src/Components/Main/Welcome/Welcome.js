@@ -1,7 +1,9 @@
 import { Component } from "react";
 import welcomePic from "../../../static/QuizSysWelcomePicture.png"
 import { Link } from "react-router-dom";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import "./Welcome.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Welcome extends Component {
     render() {
@@ -13,11 +15,12 @@ class Welcome extends Component {
 
                 <article className="welcome-ul-wrapper">
                     <ul>
-                        <li>You like to learn new things ?</li>
-                        <li>You like to play games ?</li>
-                        <li>You are in the right place !</li>
+                        <li><FontAwesomeIcon icon={faCheck} />  You like to learn new things ?</li>
+                        <li><FontAwesomeIcon icon={faCheck} />  You like to play games ?</li>
+                        <li><FontAwesomeIcon icon={faCheck} />  You are in the right place !</li>
                     </ul>
-                    <Link  to="/all">Get Started</Link>
+
+                    <Link to="/all"> <button className="start-button">Get Started</button></Link>
                 </article>
             </section>
         );

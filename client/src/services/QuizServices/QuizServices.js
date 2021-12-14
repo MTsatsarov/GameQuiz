@@ -11,8 +11,8 @@ export async function Create(quiz) {
 export async function GetById(id) {
     return await api.get(api.host + `/quiz/${id}`)
 }
-export async function GetAllByUser(id) {
-    return await api.get(api.host + `/quiz/my-quizzes/${id}`)
+export async function GetAllByUser(id, page) {
+    return await api.get(api.host + `/quiz/my-quizzes/${id}/${page ? page : 1}`)
 }
 
 export async function GetResult(obj) {
