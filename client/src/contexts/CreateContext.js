@@ -24,12 +24,15 @@ export const CreateProvider = (props) => {
             answer.isValidAnswerName = false;
         } else {
             answer.isValidAnswerName = true;
+        } if(answer.isCorrect) {
+            questions[questionIndex].correct=newName;
         }
         answer.name = newName;
         setQuestions(questions)
     }
     const changeCorrectAnswer = (questionIndex, answerindex) => {
         questions[questionIndex].correct = questions[questionIndex].answers[answerindex].name;
+        questions[questionIndex].answers[answerindex].isCorrect=true;
         setQuestions(questions)
     }
     
@@ -54,9 +57,10 @@ export const CreateProvider = (props) => {
         setQuestions(questions)
     }
 const createQuiz = () => {
+    console.log(questions);
     if (!quizName.isValid) {
         alert('Quiz name must be between 5 and 50 characters long!');
-        return;
+        return ;
     } else if(!questions.some(x=>x.isValidQuestionName)) {
         alert('Question name must be between 10 and 150 characters long!');
         return;

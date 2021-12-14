@@ -19,10 +19,11 @@ class Create extends Component {
         this.setState({ questions: this.state.questions.concat([newQuestion]) });
     };
     handleCreateQuiz = async (e) => {
-        this.setState({loading:true})
+      
         e.preventDefault();
        var quiz = this.context.createQuiz();
        if(quiz) {
+        this.setState({loading:true})
         await quizService.Create(quiz)
         this.setState({loading:false})
 
@@ -33,6 +34,7 @@ class Create extends Component {
     render() {
         return (
             <section className='create-quiz-section' onSubmit={this.handleCreateQuiz.bind(this)}>
+                 {!this.state.loading ? 
                 <form>
 
                     <label className='quiz-name-label' htmlFor='QuizName'>Quiz name</label>
@@ -46,8 +48,8 @@ class Create extends Component {
                         <button id='addQuestion' type='button' onClick={this.createQuestion.bind(this)}>Add Question</button>
                         <button id='create-quiz-btn' type='submit'>Create</button>
                     </span>
-                </form>
-               {this.state.loading ? <Spinner loading={this.state.loading}/> : ''}
+                </form>:
+               <Spinner loading={this.state.loading}/>  }
             </section>
         )
     }

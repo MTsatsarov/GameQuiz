@@ -8,7 +8,7 @@ const Spinner = (props) => {
 
     return (
         <div className="loader">
-        <ScaleLoader color="yellow"  size={150}/>
+        <ScaleLoader loading={props.loading} color="yellow"  size={150}/>
         </div>
     )
 }
