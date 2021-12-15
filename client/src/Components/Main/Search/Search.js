@@ -1,9 +1,9 @@
-import * as quizService from "../../../services/QuizServices/QuizServices"
+// import * as quizService from "../../../services/QuizServices/QuizServices"
 
 
 const Search = (props) => {
     const search = async (searchTerm,) => {
-        const result = await quizService.Search(searchTerm);
+        // const result = await quizService.Search(searchTerm);
         props.history.push('/search/')
     }
     const onSubmitHandler = async (e) => {

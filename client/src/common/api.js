@@ -1,7 +1,7 @@
 
 async function request(url, options) {
     const response = await fetch(url, options);
-    if (response.status == 401) {
+    if (response.status === 401) {
         return new Error('401')
     }
     if (!response.ok) {

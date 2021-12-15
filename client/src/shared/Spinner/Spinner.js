@@ -1,5 +1,4 @@
 import ScaleLoader from "../../../node_modules/react-spinners/ScaleLoader"
-import { css } from "@emotion/react";
 import "./Spinner.css"
 
 

@@ -6,7 +6,7 @@ import { useState } from "react"
 import "./EditQuiz.css"
 
 function EditQuiz(props) {
-    const [name, setName] = useState('');
+    const [, setName] = useState('');
     const [isValid, setIsValid] = useState(false)
     const nameChangeHandler = (e) => {
         var value = e.target.value

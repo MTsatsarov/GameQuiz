@@ -39,7 +39,6 @@ namespace GameQuiz.Web.Controllers
         [Route("/quiz/{id}")]
         public JsonResult GetById([FromRoute] string id)
         {
-           var a = this.RouteData;
             var result = this.quizService.GetQuiz(id);
             return new JsonResult(result);
         }

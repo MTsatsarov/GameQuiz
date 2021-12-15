@@ -5,7 +5,6 @@ import Error from "../../../shared/Error/Error";
 import "./Create.css"
 import { CreateContext } from "../../../contexts/CreateContext";
 import Spinner from "../../../shared/Spinner/Spinner"
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 class Create extends Component {
     constructor(props) {
         super(props)

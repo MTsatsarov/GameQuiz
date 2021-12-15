@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useState } from "react/cjs/react.development";
 export const CreateContext = createContext();
 
 export const CreateProvider = (props) => {
@@ -73,7 +73,7 @@ export const CreateProvider = (props) => {
             return;
 
         }
-        else if (questions.some(x => x.correct == '')) {
+        else if (questions.some(x => x.correct === '')) {
             alert('All questions must have correct answer!');
             return;
 

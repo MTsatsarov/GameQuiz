@@ -1,0 +1,18 @@
+.outer-square {
+    height: 30px;
+    width: 30px;
+    background-color: #555;
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.inner-square {
+    margin:  auto;
+    height: 15px;
+    width: 15px;
+    background-color: rgb(255, 255, 255);
+}
+.active-square {
+background: red;
+}

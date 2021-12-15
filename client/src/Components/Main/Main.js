@@ -11,6 +11,7 @@ import Edit from "./Edit/Edit"
 import PlayQuiz from "./PlayQuiz/PlayQuiz";
 import Search from "./Search/Search";
 import { CreateProvider } from "../../contexts/CreateContext"
+import { PlayContextProvider } from "../../contexts/PlayContext"
 
 class Main extends Component {
     render() {
@@ -25,11 +26,15 @@ class Main extends Component {
                     <Route path="/Login" exact component={Login} />
                     <Route path="/my-quizzes/:id" exact component={MyQuizzes} />
                     <Route path="/edit/:id" exact component={Edit} />
-                    <Route path="/play/:id" exact component={PlayQuiz} />
                     <Route path="/search" exact component={Search} />
                     <CreateProvider>
                         <Route path="/create" exact component={Create} />
                     </CreateProvider>
+                </Switch>
+                <Switch>
+                    <PlayContextProvider>
+                        <Route path="/play/:id" exact component={PlayQuiz} />
+                    </PlayContextProvider>
                 </Switch>
             </main >
 
