@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/GameQuiz/static/css/main.3861879d.chunk.css",
+    "main.js": "/GameQuiz/static/js/main.52fd9bda.chunk.js",
+    "main.js.map": "/GameQuiz/static/js/main.52fd9bda.chunk.js.map",
+    "runtime-main.js": "/GameQuiz/static/js/runtime-main.ab7f15f3.js",
+    "runtime-main.js.map": "/GameQuiz/static/js/runtime-main.ab7f15f3.js.map",
+    "static/js/2.f7c92a6e.chunk.js": "/GameQuiz/static/js/2.f7c92a6e.chunk.js",
+    "static/js/2.f7c92a6e.chunk.js.map": "/GameQuiz/static/js/2.f7c92a6e.chunk.js.map",
+    "static/js/3.165c5e84.chunk.js": "/GameQuiz/static/js/3.165c5e84.chunk.js",
+    "static/js/3.165c5e84.chunk.js.map": "/GameQuiz/static/js/3.165c5e84.chunk.js.map",
+    "index.html": "/GameQuiz/index.html",
+    "static/css/main.3861879d.chunk.css.map": "/GameQuiz/static/css/main.3861879d.chunk.css.map",
+    "static/js/2.f7c92a6e.chunk.js.LICENSE.txt": "/GameQuiz/static/js/2.f7c92a6e.chunk.js.LICENSE.txt",
+    "static/media/659509.2810db0f.svg": "/GameQuiz/static/media/659509.2810db0f.svg",
+    "static/media/Main.css": "/GameQuiz/static/media/background full page.0c63ef4e.jpg",
+    "static/media/logoNew.9069426c.png": "/GameQuiz/static/media/logoNew.9069426c.png",
+    "static/media/PlayQuestion.css": "/GameQuiz/static/media/single quiz bg.83c9979d.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ab7f15f3.js",
+    "static/js/2.f7c92a6e.chunk.js",
+    "static/css/main.3861879d.chunk.css",
+    "static/js/main.52fd9bda.chunk.js"
+  ]
+}
