@@ -1,5 +1,5 @@
 // import * as quizService from "../../../services/QuizServices/QuizServices"
-
+import './Search.css'
 
 const Search = (props) => {
     const search = async (searchTerm,) => {
@@ -12,11 +12,7 @@ const Search = (props) => {
         await search(name.name)
     }
     return (
-        <form onSubmit={onSubmitHandler}>
-            <label htmlFor='name'>Please enter the name of the quiz </label>
-            <input type='text' name='name' />
-            <button>Search</button>
-        </form>
+        <h1 className="h1">UNDER CONSTRUCTION</h1>
     )
 }
 

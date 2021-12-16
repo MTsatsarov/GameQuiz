@@ -1,5 +1,5 @@
 import { Component } from "react";
-import welcomePic from "../../../static/QuizSysWelcomePicture.png"
+import welcomePic from "../../../static/659509.svg"
 import { Link } from "react-router-dom";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import "./Welcome.css"

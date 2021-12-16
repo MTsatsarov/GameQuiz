@@ -4,7 +4,7 @@
   font-size: 25px;
   border: 1px solid black;
   color: white;
-  background: linear-gradient(45deg, rgb(0, 35, 189) , rgba(17, 255, 36, 0.7));
+  background: linear-gradient(45deg, rgb(83, 83, 83) , rgba(47, 47, 47, 0.1));
 }
 
 .site-footer ul {

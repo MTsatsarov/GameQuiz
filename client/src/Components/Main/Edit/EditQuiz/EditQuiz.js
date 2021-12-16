@@ -15,7 +15,7 @@ function EditQuiz(props) {
     });
     const nameChangeHandler = (e) => {
         var value = e.target.value
-        if (value < 5 || value > 50) {
+        if (value.length < 5 || value.length > 50) {
             setIsValid(false)
         } else {
             setIsValid(true)
@@ -34,17 +34,17 @@ function EditQuiz(props) {
         props.history.push("/all");
     }
     useEffect(() => {
-        if (!isValid || quiz.questions.some(x => x.title.length < 10 || x.title.length > 150 || x.corret == '') || quiz.questions.some(x => x.answers.some(a => a.title.length < 10 || a.title.length > 150))) {
+        if (!isValid || quiz.questions.some(x => x.title.length < 10 || x.title.length > 150 || x.correct === '') || quiz.questions.some(x => x.answers.some(a => a.title.length < 10 || a.title.length > 150))) {
             setIsReadyToUpdate(false);
         } else (setIsReadyToUpdate(true))
-    }, [quiz, isValid])
+    }, [quiz,isValid])
     useEffect(() => {
         setQuiz(prevState => ({ ...prevState, quizName: props.name, questions: props.questionsArray }))
     }, [props.questionsArray, props.name])
 
     const changeQuestionNameHandler = (e, question) => {
         var currQuestion = quiz.questions.find(x => x.id === question);
-        currQuestion.name = e.target.value
+        currQuestion.title = e.target.value
         setQuiz(prevState => ({ ...prevState }))
 
     }
@@ -66,7 +66,6 @@ function EditQuiz(props) {
         answer.title = e.target.value;
         setQuiz(prevState => ({ ...prevState, questions: quiz.questions }))
     }
-    console.log(quiz.questions);
     return (
 
         <section className='editSection ' >
@@ -78,10 +77,12 @@ function EditQuiz(props) {
 
                 {!isValid && <Error message={'Quiz name must be between 5 and 50 characters long'} />}
                 <div id="editQuestion">
-                    {quiz.questions.map((x, i) => <QuestionSwitchBox key={i} questionName={x.title} currentQuestion={quiz.currentQuestion} boxNum={i} clickHandler={switchAnswer} />)}
-
+                    <div className="question-redirection">
+                        {quiz.questions.map((x, i) => <QuestionSwitchBox key={i} questionName={x.title} currentQuestion={quiz.currentQuestion} boxNum={i} clickHandler={switchAnswer} />)}
+                    </div>
                     {quiz.questions.length > 0 ?
-                        <EditQuestion changeCorrectAnswer={changeCorrectAnswer} key={quiz.questions[quiz.currentQuestion].id} question={quiz.questions[quiz.currentQuestion]} nameChange={changeQuestionNameHandler} number={quiz.currentQuestion + 1} changeAnswerName={changeAnswerName} /> : ''}
+                        <EditQuestion changeCorrectAnswer={changeCorrectAnswer} key={quiz.questions[quiz.currentQuestion].id} question={quiz.questions[quiz.currentQuestion]} nameChange={changeQuestionNameHandler} number={quiz.currentQuestion + 1} changeAnswerName={changeAnswerName} />
+                        : ''}
                 </div>
                 <span className='form-buttons'>
                     <button disabled={!isReadyToUpdate} id='update'>Update</button>

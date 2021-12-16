@@ -8,11 +8,11 @@ class Footer extends Component {
             <footer className='site-footer'>
                 <ul>
                     <li>
-                    &copy;  GameQuiz 
+                    &copy;  GameQuiz 2021
                     </li>
 
                     <li>
-                        <a href="github.com">GitHub</a>
+                        <a rel="noopener noreferrer" target="_blank" href="https://github.com/MTsatsarov/GameQuiz">Github source</a>
                     </li>
                 </ul>
             </footer>

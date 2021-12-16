@@ -9,12 +9,12 @@
 }
 
 .welcome-image-wrapper {
-  padding: 5%;
   flex-basis: 30%;
+margin-left: 50px;
 }
 
 .welcome-image-wrapper>img {
-  width: 100%;
+  width: 75%;
 }
 
 .welcome-ul-wrapper {

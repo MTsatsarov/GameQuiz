@@ -1,12 +1,14 @@
 .questionsForm {
     display: flex;
     flex-direction: column;
-    width: 50%;
     align-self: center;
     margin-bottom: 20px;
     border: 2px solid black;
     padding: 5%;
     text-align: center;
+}
+.question-create {
+    margin: 0px;
 }
 .questionsForm label {
     color: red;
@@ -14,4 +16,10 @@
 .questionsForm input {
     margin: 8px;
     font-size: 18px;
+}
+.question-create textarea {
+    width: 70%;
+}
+.question-create h2 {
+    margin: 5px;
 }
