@@ -2,7 +2,7 @@
  
 
   "name": "client",
-  "homepage": "http://mtsatsarov.github.io/GameQuiz",
+  "homepage": "https://mtsatsarov.github.io/GameQuiz/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
