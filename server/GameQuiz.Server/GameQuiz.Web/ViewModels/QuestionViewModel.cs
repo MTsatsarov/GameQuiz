@@ -11,6 +11,6 @@ namespace GameQuiz.Web.ViewModels
         public string Title { get; set; }
 
         public ICollection<AnswerPlayModel> Answers{ get; set; }
-        public string CorrectAnswer { get; set; }
+        public string Correct { get; set; }
     }
 }

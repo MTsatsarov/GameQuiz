@@ -13,6 +13,7 @@
     background: url(../../../static/single\ quiz\ bg.jpg);
    
     background-size: 100%;
+    margin-top: 10px;
   }
   .questionArticle>h4 {
       margin: 10px;

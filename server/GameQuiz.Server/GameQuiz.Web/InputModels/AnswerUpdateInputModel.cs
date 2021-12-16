@@ -8,6 +8,6 @@ namespace GameQuiz.Web.InputModels
         public string Id { get; set; }
         [StringLength(150, MinimumLength = 10)]
         [Required]
-        public string Name { get; set; }
+        public string Title { get; set; }
     }
 }

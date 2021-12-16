@@ -8,9 +8,11 @@ namespace GameQuiz.Web.InputModels
     {
         [Required]
         public string Id { get; set; }
-        [StringLength(50,MinimumLength =5)]
+
+        [StringLength(50, MinimumLength = 5)]
         [Required]
         public string Name { get; set; }
-        public IEnumerable<QuestionUpdateInputModel>  Questions{ get; set; }
+
+        public IEnumerable<QuestionUpdateInputModel> Questions { get; set; }
     }
 }

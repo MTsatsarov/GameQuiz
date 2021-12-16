@@ -27,7 +27,6 @@ class Create extends Component {
             this.setState({ loading: true })
             const result = await quizService.Create(quiz)
             this.setState({ loading: false })
-            console.log(result.message);
             if (result.message === '401') {
                 this.props.history.push("/login")
 

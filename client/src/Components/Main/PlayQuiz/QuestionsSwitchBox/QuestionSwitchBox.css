@@ -1,6 +1,6 @@
 .outer-square {
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
     background-color: #555;
     display: flex;
     align-items: center;
@@ -9,8 +9,8 @@
 
 .inner-square {
     margin:  auto;
-    height: 15px;
-    width: 15px;
+    height: 10px;
+    width: 10px;
     background-color: rgb(255, 255, 255);
 }
 .active-square {
