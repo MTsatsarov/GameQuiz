@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZvbUuUoSYkOvwKP4s+SbxAAAAAACAAAAAAAQZgAAAAEAACAAAACbkZ9BdAv5iMrH5700u1tMX/kOfni6UNwrbEY9dHKHCQAAAAAOgAAAAAIAACAAAAAdy3lUnuUx50ukXDWJZJ5OCvAnc+910WKq87p9Ag5vFYAAAABylkiiEW2BoKtDVNbUgWkb8GxUt3GQjDjRr6mA7VxfmOIqAYNFA14CEAA21gD9fSgb/hAUaBpHi3Jx+V+7Or2NtVeteUYHWvhA3s86nat3jiCoEU6xcCExI/Z7Vsa+I88nRXihC6ffJwEuqxJDyxgk6uQ0u+n9KvcDnqyGAy6lfEAAAADGQ99ucxXprOg0Vmx+LsrTI9j5oTC3AvRBEcp1Bcbcbt2QqssRq7cWGGLglsgIkY2XrN4G2PdAqHggnBdiOLR4</EncryptedPassword>
+    <History>True|2021-12-18T17:27:17.9631008Z;True|2021-12-18T19:21:19.9072729+02:00;True|2021-12-17T20:28:25.9819405+02:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="GameQuiz.Web.Data.ApplicationDbContext">
+      <Value>Data Source=tcp:gamequiz2021.database.windows.net,1433%3bInitial Catalog=GameQuiz.Web_db%3bUser Id=L3genD%40gamequiz2021%3bPassword=Matrh28c</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

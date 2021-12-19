@@ -8,16 +8,13 @@ const MyQuizzes = (props) => {
         quizzes: [],
         paginationModel: {},
     })
-    console.log(props);
     useEffect(() => {
 
         GetUserQuizzes();
     }, [])
     async function GetUserQuizzes(id) {
-        console.log(id);
         var userId = localStorage.getItem('id')
         var result = await quizService.GetAllByUser(userId,id);
-        console.log('returned');
         setQuizzes( prevState=> ({
             ...prevState,
             quizzes: result.quizzes,

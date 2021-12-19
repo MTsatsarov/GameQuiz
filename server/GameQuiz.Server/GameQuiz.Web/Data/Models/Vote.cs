@@ -9,10 +9,6 @@ namespace GameQuiz.Web.Data.Models
 {
     public class Vote:BaseDeletableModel<int>
     {
-        public Vote()
-        {
-            this.Users = new HashSet<ApplicationUser>();
-        }
 
         [Required]
         [Range(1,5)]
@@ -21,6 +17,7 @@ namespace GameQuiz.Web.Data.Models
         public string QuizId { get; set; }
         public virtual Quiz Quiz { get; set; }
 
-        public virtual ICollection<ApplicationUser> Users { get; set; }
+        public  string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

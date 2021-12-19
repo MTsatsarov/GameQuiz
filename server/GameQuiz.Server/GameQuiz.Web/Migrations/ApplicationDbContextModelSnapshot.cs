@@ -34,21 +34,6 @@ namespace GameQuiz.Web.Migrations
                     b.ToTable("ApplicationUserQuiz");
                 });
 
-            modelBuilder.Entity("ApplicationUserVote", b =>
-                {
-                    b.Property<string>("UsersId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("VotesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UsersId", "VotesId");
-
-                    b.HasIndex("VotesId");
-
-                    b.ToTable("ApplicationUserVote");
-                });
-
             modelBuilder.Entity("GameQuiz.Web.Data.Models.Answer", b =>
                 {
                     b.Property<string>("Id")
@@ -287,9 +272,14 @@ namespace GameQuiz.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("QuizId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Votes");
                 });
@@ -430,28 +420,13 @@ namespace GameQuiz.Web.Migrations
                     b.HasOne("GameQuiz.Web.Data.Models.Quiz", null)
                         .WithMany()
                         .HasForeignKey("QuizzesId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("GameQuiz.Web.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ApplicationUserVote", b =>
-                {
-                    b.HasOne("GameQuiz.Web.Data.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GameQuiz.Web.Data.Models.Vote", null)
-                        .WithMany()
-                        .HasForeignKey("VotesId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -469,7 +444,7 @@ namespace GameQuiz.Web.Migrations
                     b.HasOne("GameQuiz.Web.Data.Models.Quiz", "Quiz")
                         .WithMany("Questions")
                         .HasForeignKey("QuizId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Quiz");
@@ -495,10 +470,16 @@ namespace GameQuiz.Web.Migrations
                     b.HasOne("GameQuiz.Web.Data.Models.Quiz", "Quiz")
                         .WithMany("Votes")
                         .HasForeignKey("QuizId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("GameQuiz.Web.Data.Models.ApplicationUser", "User")
+                        .WithMany("Votes")
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Quiz");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -506,7 +487,7 @@ namespace GameQuiz.Web.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -515,7 +496,7 @@ namespace GameQuiz.Web.Migrations
                     b.HasOne("GameQuiz.Web.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -524,7 +505,7 @@ namespace GameQuiz.Web.Migrations
                     b.HasOne("GameQuiz.Web.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -533,13 +514,13 @@ namespace GameQuiz.Web.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("GameQuiz.Web.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -548,13 +529,15 @@ namespace GameQuiz.Web.Migrations
                     b.HasOne("GameQuiz.Web.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("GameQuiz.Web.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Results");
+
+                    b.Navigation("Votes");
                 });
 
             modelBuilder.Entity("GameQuiz.Web.Data.Models.Question", b =>

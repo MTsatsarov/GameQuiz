@@ -7,10 +7,12 @@ import { faEdit, faTrash, faPlay } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Star from "../../../shared/Star/Star"
 import { AuthContext } from "../../../contexts/AuthContext.js"
+import Spinner from "../../../shared/Spinner/Spinner"
 import "./Quiz.css"
 const Quiz = (props) => {
     let history = useHistory();
     const context = useContext(AuthContext)
+    const [loading, setLoading] = useState(false)
     const [vote, setVote] = useState({
         voteCount: props.votesCount,
         grade: props.grade,
@@ -29,6 +31,7 @@ const Quiz = (props) => {
 
     }
     async function voteClickHandler(voteGrade) {
+        setLoading(true)
         var id = props.id;
         var obj = {
             quiz: `${id}`,
@@ -36,9 +39,14 @@ const Quiz = (props) => {
             userId: localStorage.getItem('id')
         }
         var result = await voteService.Vote(obj);
-        setVote(oldVote => ({
-            ...oldVote, voteCount: result.voteCount, grade: result.grade,
-        }));
+        setLoading(false)
+        if (result.message === '401') {
+            history.push("/login")
+        } else {
+            setVote(oldVote => ({
+                ...oldVote, voteCount: result.voteCount, grade: result.grade,
+            }));
+        }
     }
 
     return (
@@ -46,14 +54,18 @@ const Quiz = (props) => {
             <h3>{props.name}</h3>
             <p className='quiz-taken'>Taken: {props.taken === 1 ? `${props.taken} time` : `${props.taken} times`}</p>
             <p className='quiz-creator'>Created by: {props.creator}</p>
-            <span >
-                {vote.stars.map((x, i) => <Star value={x.id} key={x.id} class={vote.grade >= Number(x.id) ? "yellow" : ''} clickHandler={voteClickHandler} />,)}
+            {loading ? <Spinner /> :
+                <>
+                    <span >
+                        {vote.stars.map((x, i) => <Star value={x.id} key={x.id} class={vote.grade >= Number(x.id) ? "yellow" : ''} clickHandler={voteClickHandler} />,)}
 
-            </span>
-            <span className='votes-box'>
-                <p>Average grade: {vote.grade}/5</p>
-                <p>{vote.voteCount} votes</p>
-            </span>
+                    </span>
+                    <span className='votes-box'>
+                        <p>Average grade: {vote.grade}/5</p>
+                        <p>{vote.voteCount} votes</p>
+                    </span>
+                </>
+            }
             {props.creator === localStorage.getItem('userName') ? <><span className='quiz-modify'>
                 <Link to={`/edit/${props.id}`} >
                     <FontAwesomeIcon icon={faEdit} /> Edit
@@ -63,7 +75,7 @@ const Quiz = (props) => {
                 </button>
             </span>
             </> : ''}
-            <Link  className='button' to={context.user.id !== '' ? `/play/${props.id}` : '#'} ><button  className='play-button'><FontAwesomeIcon icon ={faPlay}/>Play</button></Link>
+            <Link className='button' to={context.user.id !== '' ? `/play/${props.id}` : '#'} ><button className='play-button'><FontAwesomeIcon icon={faPlay} />Play</button></Link>
         </article>
     )
 }

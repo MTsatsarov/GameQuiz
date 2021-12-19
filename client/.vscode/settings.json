@@ -1,0 +1,5 @@
+{
+    "appService.deploySubpath": ".",
+    "appService.showBuildDuringDeployPrompt": false,
+    "appService.defaultWebAppToDeploy": "/subscriptions/0ce1a0e9-329b-462d-b073-85e82fe03162/resourceGroups/GameQuiz2021/providers/Microsoft.Web/sites/GameQuiz2021"
+}

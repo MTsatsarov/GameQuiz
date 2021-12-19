@@ -126,3 +126,14 @@ D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\xunit.abstractions.dll
 D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\xunit.core.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Azure.Core.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Azure.Identity.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Azure.Security.KeyVault.Certificates.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Azure.Security.KeyVault.Secrets.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.Identity.Web.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.Identity.Web.UI.Views.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\bin\Debug\net5.0\Microsoft.Identity.Web.UI.dll
+D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\obj\Debug\net5.0\GameQuiz.Web.MvcApplicationPartsAssemblyInfo.cs

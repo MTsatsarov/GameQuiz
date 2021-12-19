@@ -13,7 +13,7 @@ namespace GameQuiz.Web.Services.QuizService
         PlayQuizViewModel GetQuiz(string id);
         void Update(QuizUpdateInputModel model);
         void Delete(string id);
-        Task<QuizListViewModel> GetAllByUser(string id,int page);
+        QuizListViewModel GetAllByUser(string id,int page);
         QuizViewModel Search(string name);
         Task<QuizResultViewModel> GetResultAsync(QuizResultInputModel model);
         void Create(QuizInputModel quiz);

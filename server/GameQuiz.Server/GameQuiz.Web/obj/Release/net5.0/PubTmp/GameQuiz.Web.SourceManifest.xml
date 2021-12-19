@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\obj\Release\net5.0\PubTmp\Out\" />
+  <dbfullsql path="D:\MyGithubRepos\GameQuizRep\server\GameQuiz.Server\GameQuiz.Web\obj\Release\net5.0\PubTmp\EFSQLScripts\GameQuiz.Web.Data.ApplicationDbContext.sql" />
+</sitemanifest>

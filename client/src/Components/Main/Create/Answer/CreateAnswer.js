@@ -18,7 +18,6 @@ class CreateAnswer extends Component {
             this.setState({ isValid: true });
 
         }
-        console.log(this.state.isValid);
         this.context.changeAnswerNameHandler(e.target.value, this.props.questionIndex, this.props.number - 1)
     }
     render() {

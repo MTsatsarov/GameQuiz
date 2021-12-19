@@ -29,7 +29,6 @@ class Create extends Component {
             this.setState({ loading: false })
             if (result.message === '401') {
                 this.props.history.push("/login")
-
             }
             this.props.history.push("/all")
         }

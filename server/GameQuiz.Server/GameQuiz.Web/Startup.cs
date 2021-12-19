@@ -32,16 +32,26 @@ namespace GameQuiz.Web
         options => options.UseLazyLoadingProxies().UseSqlServer("name=ConnectionStrings:DefaultConnection"));
             services.AddCors(c =>
             {
-                c.AddPolicy("AllowOrigin", options =>
-                 options.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
+                c.AddPolicy(name: "AllowOrigins",
+                 options =>
+                 {
+                     options.WithOrigins("http://gamequiz2021.azurewebsites.net/GameQuiz/", "http://localhost:3000/");
+                 });
 
             });
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
               .AddEntityFrameworkStores<ApplicationDbContext>()
               .AddDefaultTokenProviders();
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 1;
+            });
 
             services.AddAuthentication(options =>
             {
@@ -83,7 +93,6 @@ namespace GameQuiz.Web
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
 

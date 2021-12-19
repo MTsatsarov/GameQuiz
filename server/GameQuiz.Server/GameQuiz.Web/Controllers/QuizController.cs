@@ -61,9 +61,9 @@ namespace GameQuiz.Web.Controllers
         }
         [HttpGet]
         [Route("/quiz/my-quizzes/{id}/{page}")]
-        public async Task<JsonResult> GetQuizzesByUser([FromRoute] string id,string page)
+        public JsonResult GetQuizzesByUser([FromRoute] string id,string page)
         {
-            var result = await this.quizService.GetAllByUser(id,int.Parse(page));
+            var result =  this.quizService.GetAllByUser(id,int.Parse(page));
             return new JsonResult(result);
         }
 

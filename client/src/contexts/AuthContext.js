@@ -19,7 +19,7 @@ export const AuthProvider = (props) => {
         authToken: ''
 
     })
-    
+
     checkForToken();
     useEffect(() => {
         var id = localStorage.getItem('id');

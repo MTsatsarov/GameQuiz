@@ -99,7 +99,7 @@ namespace GameQuiz.Web.Services.QuizService
 
         public int GetCount() => this.db.Quizzes.Count();
 
-        public async Task<QuizListViewModel> GetAllByUser(string id,int page)
+        public QuizListViewModel GetAllByUser(string id,int page)
         {
             var quizzes = new QuizListViewModel();
             quizzes.Quizzes = this.db.Quizzes.Where(x=>x.CreatorId==id).OrderByDescending(x => x.CreatedOn).Select(x => new QuizViewModel

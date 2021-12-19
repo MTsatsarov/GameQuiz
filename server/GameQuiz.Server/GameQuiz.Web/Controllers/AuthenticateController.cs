@@ -46,14 +46,19 @@ namespace GameQuiz.Web.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<JsonResult> RegisterUser([FromBody] UserRegisterInputModel model)
+        public async Task<IActionResult> RegisterUser([FromBody] UserRegisterInputModel model)
         {
-            var result = await this.userService.Register(model);
-
-            return new JsonResult(new
+             await this.userService.Register(model);
+            var result = await this.userService.Login(new LoginUserInputModel() {Username=model.Username,Password=model.Password });
+           
+            return Ok(new
             {
-                status = result
+                token = new JwtSecurityTokenHandler().WriteToken(result.Token),
+                expiration = result.Token.ValidTo,
+                userName = result.Username,
+                id = result.UserId
             });
+
         }
 
         [HttpPost]
