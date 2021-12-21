@@ -5,12 +5,11 @@ import { AuthProvider } from "./contexts/AuthContext";
 import './App.css';
 function App() {
   return (
-    <AuthProvider>
-
+      <AuthProvider>
         <Header />
         <Main />
         <Footer />
-    </AuthProvider>
+      </AuthProvider>
   );
 }
 

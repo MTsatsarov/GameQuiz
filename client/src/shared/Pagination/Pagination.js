@@ -24,7 +24,7 @@ const Pagination = (props) => {
 
 
           
-            <Link data-id={props.total} className="anchor" to={{ pathname: `/${props.location}/${props.total}` }} >
+            <Link data-id={props.total >0 ? props.total : '1'} className="anchor" to={{ pathname: `/${props.location}/${props.total}` }} >
              Last
             </Link>
         </div>

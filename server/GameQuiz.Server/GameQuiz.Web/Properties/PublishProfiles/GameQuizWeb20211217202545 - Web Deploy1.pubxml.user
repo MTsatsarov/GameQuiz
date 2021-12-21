@@ -6,8 +6,8 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZvbUuUoSYkOvwKP4s+SbxAAAAAACAAAAAAAQZgAAAAEAACAAAACbkZ9BdAv5iMrH5700u1tMX/kOfni6UNwrbEY9dHKHCQAAAAAOgAAAAAIAACAAAAAdy3lUnuUx50ukXDWJZJ5OCvAnc+910WKq87p9Ag5vFYAAAABylkiiEW2BoKtDVNbUgWkb8GxUt3GQjDjRr6mA7VxfmOIqAYNFA14CEAA21gD9fSgb/hAUaBpHi3Jx+V+7Or2NtVeteUYHWvhA3s86nat3jiCoEU6xcCExI/Z7Vsa+I88nRXihC6ffJwEuqxJDyxgk6uQ0u+n9KvcDnqyGAy6lfEAAAADGQ99ucxXprOg0Vmx+LsrTI9j5oTC3AvRBEcp1Bcbcbt2QqssRq7cWGGLglsgIkY2XrN4G2PdAqHggnBdiOLR4</EncryptedPassword>
-    <History>False|2021-12-19T15:42:46.3322730Z;False|2021-12-19T17:40:09.6072897+02:00;False|2021-12-19T17:37:03.8904771+02:00;True|2021-12-18T19:27:17.9631008+02:00;True|2021-12-18T19:21:19.9072729+02:00;True|2021-12-17T20:28:25.9819405+02:00;</History>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZvbUuUoSYkOvwKP4s+SbxAAAAAACAAAAAAAQZgAAAAEAACAAAADbPlsxf/gUMPx9qJYME4BMxyM/LL57mQGO6MoHb+uE8gAAAAAOgAAAAAIAACAAAACTa5jQS0PkuYMqzu4n/7SHxAviHYLgsT6sM9LegVfLZIAAAACcLNOZGfrSLgz+miaPatKSDRCbvkxj7oI1+LxvXS/JqFYr0oje9Wozi4dx3ogay1r8g7QwsMZ7GvNF2B28jhG6r1tx7AjyI5LgNQh5n6h1pK6qwQg/c3T+iHcsK2qkik5K35ojjZO5KqAPFsjvd5doFBQg273WuKj6E6NWaqV1iUAAAAA6a0z3ZijDiEk6+Na2ML3wLl7ecaGqm4rQwtR4sS7UjQTVln3C58JpmeLjHQj75BSY2mrlSCqXQ8YffQQwzZ+/</EncryptedPassword>
+    <History>True|2021-12-19T17:54:51.2743157Z;True|2021-12-19T17:49:02.7492526+02:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <EFMigrations Include="GameQuiz.Web.Data.ApplicationDbContext">

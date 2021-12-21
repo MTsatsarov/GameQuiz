@@ -11,10 +11,12 @@ class All extends Component {
             quizzes: [],
             id: this.props.match.params.id,
             paginationModel: {},
-            loading: false
+            loading: false,
+            error: false
         }
     }
     async getEvents(id) {
+        console.log('here');
         var allQuizzes = await quiz.GetAll(id);
         this.setState({ quizzes: allQuizzes.quizzes, paginationModel: allQuizzes })
     }
@@ -24,7 +26,9 @@ class All extends Component {
     }
     async componentDidMount() {
         this.setState({ loading: true })
-        await this.getEvents(this.props.match.params.id);
+
+        await this.getEvents(this.props.match.params.id)
+
         this.setState({ loading: false })
 
     }
@@ -34,6 +38,7 @@ class All extends Component {
         this.setState(prevState => ({ ...prevState, quizzes: arr }))
     }
     render() {
+
         return (
             <section className="all">
                 <Pagination clickHandler={this.getId.bind(this)} location={'all'} nextPage={this.state.paginationModel.hasNextPage} prev={this.state.paginationModel.hasPreviousPage} currPage={this.state.paginationModel.currentPage} total={this.state.paginationModel.totalPages} />
@@ -41,7 +46,7 @@ class All extends Component {
                     {this.state.quizzes.map(x => (<Quiz key={x.id} id={x.id} name={x.name} taken={x.taken ? x.taken : 0} grade={x.grade} votesCount={x.votesCount} creator={x.creatorName ? x.creatorName : "Admin-GameQuiz@Gmail.com"} removeQuizHandler={this.removeQuizHandler.bind(this)} />))}
                 </div>
                 <Spinner loading={this.state.loading} />
-                <Pagination clickHandler={this.getId.bind(this)} location ={'all'}nextPage={this.state.paginationModel.hasNextPage} prev={this.state.paginationModel.hasPreviousPage} currPage={this.state.paginationModel.currentPage} total={this.state.paginationModel.totalPages} />
+                <Pagination clickHandler={this.getId.bind(this)} location={'all'} nextPage={this.state.paginationModel.hasNextPage} prev={this.state.paginationModel.hasPreviousPage} currPage={this.state.paginationModel.currentPage} total={this.state.paginationModel.totalPages} />
             </section >
         )
     }
