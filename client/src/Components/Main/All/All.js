@@ -16,7 +16,6 @@ class All extends Component {
         }
     }
     async getEvents(id) {
-        console.log('here');
         var allQuizzes = await quiz.GetAll(id);
         this.setState({ quizzes: allQuizzes.quizzes, paginationModel: allQuizzes })
     }

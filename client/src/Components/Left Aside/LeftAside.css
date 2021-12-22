@@ -1,0 +1,24 @@
+.leftAside {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 10%;
+  max-height: 500px;
+  z-index: 5;
+}
+.leftAside > span {
+  max-width: 100%;
+  box-sizing: content-box;
+}
+.leftAside > span > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+.leftAside > span > div > div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  margin-top: 10px;
+}
+.leftAside> span >div >div>div {
+    width: 100%;
+}
