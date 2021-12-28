@@ -13,7 +13,7 @@ namespace GameQuiz.Web.Data.Models
             this.Answers = new HashSet<Answer>();
         }
         [Required]
-        [StringLength(150, MinimumLength = 10)]
+        [StringLength(150, MinimumLength = 5)]
         public string Title { get; set; }
         [Required]
         public string QuizId { get; set; }

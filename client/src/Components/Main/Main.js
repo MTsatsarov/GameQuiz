@@ -9,7 +9,6 @@ import Login from "./Login/Login";
 import MyQuizzes from "./My Quizzes/My Quizzes";
 import Edit from "./Edit/Edit"
 import PlayQuiz from "./PlayQuiz/PlayQuiz";
-import Search from "./Search/Search";
 import { CreateProvider } from "../../contexts/CreateContext"
 import { PlayContextProvider } from "../../contexts/PlayContext"
 
@@ -26,7 +25,6 @@ class Main extends Component {
                     <Route path="/Login" exact component={Login} />
                     <Route path="/my-quizzes/:id" exact component={MyQuizzes} />
                     <Route path="/edit/:id" exact component={Edit} />
-                    <Route path="/search" exact component={Search} />
                     <CreateProvider>
                         <Route path="/create" exact component={Create} />
                     </CreateProvider>

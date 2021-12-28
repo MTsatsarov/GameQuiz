@@ -12,7 +12,7 @@ class CreateAnswer extends Component {
     }
     validateAnswer(e) {
         var length = e.target.value.length;
-        if (length < 10 || length > 150) {
+        if (length < 1 || length > 150) {
             this.setState({ isValid: false });
         } else {
             this.setState({ isValid: true });
@@ -32,7 +32,7 @@ class CreateAnswer extends Component {
                     </div>
                 </div>
 
-                {!this.state.isValid && <Error message={'Answer must be between 10 and 150 characters long'} />}
+                {!this.state.isValid && <Error message={'Answer must be between 1 and 150 characters long'} />}
 
             </div>
         )

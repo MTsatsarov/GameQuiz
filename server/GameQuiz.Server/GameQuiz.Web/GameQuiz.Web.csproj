@@ -5,29 +5,6 @@
     <StartupObject>GameQuiz.Web.Program</StartupObject>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Migrations\20211110150120_Init.cs" />
-    <Compile Remove="Migrations\20211110150120_Init.Designer.cs" />
-    <Compile Remove="Migrations\20211110155907_QuizQuestionAnswer.cs" />
-    <Compile Remove="Migrations\20211110155907_QuizQuestionAnswer.Designer.cs" />
-    <Compile Remove="Migrations\20211114044927_DbSets.cs" />
-    <Compile Remove="Migrations\20211114044927_DbSets.Designer.cs" />
-    <Compile Remove="Migrations\20211115095222_VotesTable.cs" />
-    <Compile Remove="Migrations\20211115095222_VotesTable.Designer.cs" />
-    <Compile Remove="Migrations\20211115110016_QuizTaken.cs" />
-    <Compile Remove="Migrations\20211115110016_QuizTaken.Designer.cs" />
-    <Compile Remove="Migrations\20211118133943_LazyLoadingAdded.cs" />
-    <Compile Remove="Migrations\20211118133943_LazyLoadingAdded.Designer.cs" />
-    <Compile Remove="Migrations\20211124155843_UsersAdded.cs" />
-    <Compile Remove="Migrations\20211124155843_UsersAdded.Designer.cs" />
-    <Compile Remove="Migrations\20211125124326_RelationBetweenUserVoteQuiz.cs" />
-    <Compile Remove="Migrations\20211125124326_RelationBetweenUserVoteQuiz.Designer.cs" />
-    <Compile Remove="Migrations\20211125133056_BaseDelModelAdded.cs" />
-    <Compile Remove="Migrations\20211125133056_BaseDelModelAdded.Designer.cs" />
-    <Compile Remove="Migrations\20211126144230_IdForQandAString.cs" />
-    <Compile Remove="Migrations\20211126144230_IdForQandAString.Designer.cs" />
-    <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.12" />
@@ -49,6 +26,7 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Services\HelperServices\" />
   </ItemGroup>
 
 </Project>

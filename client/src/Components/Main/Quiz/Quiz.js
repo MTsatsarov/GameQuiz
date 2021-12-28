@@ -42,8 +42,9 @@ const Quiz = (props) => {
             userId: localStorage.getItem('id')
         }
         var result = await voteService.Vote(obj);
+        console.log(result);
         setLoading(false)
-        !result.hasOwnProperty('ok') ? setError(prevState => ({ ...prevState, hasError: true, errorData: result })) : setError(prevState => ({ ...prevState, hasError: false, errorData:result }))
+        !result.hasOwnProperty('voteCount') ? setError(prevState => ({ ...prevState, hasError: true, errorData: result })) : setError(prevState => ({ ...prevState, hasError: false, errorData:result }))
         setVote(oldVote => ({
             ...oldVote, voteCount: result.voteCount, grade: result.grade,
         }));

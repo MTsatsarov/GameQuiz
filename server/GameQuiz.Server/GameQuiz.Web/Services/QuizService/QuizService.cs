@@ -22,12 +22,17 @@ namespace GameQuiz.Web.Services.QuizService
 
         public void Create(QuizInputModel quiz)
         {
-            var quizToInsert = new Quiz()
+            var quizToInsert = this.db.Quizzes.Where(x => x.Name == quiz.Name).FirstOrDefault();
+            if(quizToInsert ==null)
             {
-                Name = quiz.Name,
-                CreatorId = quiz.Creator
+                quizToInsert = new Quiz()
+                {
+                    Name = quiz.Name,
+                    CreatorId = quiz.Creator
 
-            };
+                };
+            }
+         
             foreach (var currQuestion in quiz.Questions)
             {
                 var question = new Question()
@@ -201,21 +206,5 @@ namespace GameQuiz.Web.Services.QuizService
             db.SaveChanges();
         }
 
-        public QuizViewModel Search(string name)
-        {
-            var quizzes = new QuizViewModel();
-            quizzes = this.db.Quizzes.Where(x=>x.Name==name).Select(x => new QuizViewModel
-            {
-                Id = x.Id,
-                Name = x.Name,
-                VotesCount = x.Votes.Count(),
-                Grade = x.Votes.Count() == 0 ? 0 : Math.Round(x.Votes.Average(x => x.Grade), 2),
-                Taken = x.Taken,
-                CreatorName = this.db.Users.Where(u => u.Id == x.CreatorId).Select(x => x.UserName).FirstOrDefault()
-            }).FirstOrDefault();
-
-
-            return quizzes;
-        }
     }
 }

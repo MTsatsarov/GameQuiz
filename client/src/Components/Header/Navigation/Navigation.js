@@ -16,7 +16,6 @@ class Navigation extends Component {
             <nav className="Header-nav">
                 <ul>
                     <li><Link to="/all">All Quizzes</Link></li>
-                    <li><Link to='/search'>Search</Link></li>
                     {this.context.user.id ?
                         <>
                             <li><Link to='/my-quizzes/1'>My Quizzes</Link></li>

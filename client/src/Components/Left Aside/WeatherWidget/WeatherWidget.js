@@ -15,8 +15,6 @@ const WeatherWidget = (props) => {
 
     async function succesToGetPos(position) {
         setPosition(prevState => ({ ...prevState, latitude: position.coords.latitude, longitude: position.coords.longitude }))
-        console.log(position);
-      
     }
     function errorToGetPos(error) {
 

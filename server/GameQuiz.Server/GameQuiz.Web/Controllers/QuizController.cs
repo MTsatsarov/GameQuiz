@@ -2,6 +2,9 @@
 using GameQuiz.Web.Services.QuizService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace GameQuiz.Web.Controllers
@@ -24,6 +27,7 @@ namespace GameQuiz.Web.Controllers
             var quizzes = quizService.GetAll(int.Parse(id));
             return new JsonResult(quizzes);
         }
+
 
         [Authorize]
         [HttpPost]

@@ -17,6 +17,7 @@ class All extends Component {
     }
     async getEvents(id) {
         var allQuizzes = await quiz.GetAll(id);
+        console.log(allQuizzes);
         this.setState({ quizzes: allQuizzes.quizzes, paginationModel: allQuizzes })
     }
     async getId(e) {
@@ -31,7 +32,7 @@ class All extends Component {
         this.setState({ loading: false })
 
     }
-    removeQuizHandler(id) {
+     removeQuizHandler(id) {
         var currQuizzes = this.state.quizzes;
         var arr = currQuizzes.filter(x => x.id !== id)
         this.setState(prevState => ({ ...prevState, quizzes: arr }))

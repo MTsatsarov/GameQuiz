@@ -4,11 +4,13 @@ import * as userService from "../../../services/UserServices/UserServices"
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons"
 import "./Login.css"
 import { AuthContext } from "../../../contexts/AuthContext.js"
+import Spinner from "../../../shared/Spinner/Spinner"
 class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            errors: ''
+            errors: '',
+            isLoading: false
         }
 
     }
@@ -23,8 +25,15 @@ class Login extends Component {
         else {
 
             var result = await userService.Login({ userName, password })
+            if(result.error) {
+                this.setState({ error: result.error})
+                return;
+            }
             if (!localStorage.authToken) {
+                this.setState(prevState => ({ ...prevState, isLoading: true }))
                 this.context.login(result.id, result.userName, result.token, result.expiration)
+                this.setState(prevState => ({ ...prevState, isLoading: false }))
+
                 this.props.history.push('/all')
             }
         }
@@ -32,6 +41,8 @@ class Login extends Component {
 
     render() {
         return (
+            
+            this.state.isLoading? <Spinner/> :
             <div>
                 <div className='login-wrapper' >
                     <h3>Login</h3>

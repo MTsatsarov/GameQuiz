@@ -11,7 +11,7 @@ namespace GameQuiz.Web.Data.Models
             this.Id = Guid.NewGuid().ToString();
         }
         [Required]
-        [StringLength(150,MinimumLength =10)]
+        [StringLength(150,MinimumLength =1)]
         public string Title { get; set; }
         public bool IsCorrect { get; set; }
         public string QuestionId { get; set; }

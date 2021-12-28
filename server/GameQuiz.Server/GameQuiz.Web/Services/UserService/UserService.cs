@@ -34,7 +34,7 @@ namespace GameQuiz.Web.Services.UserService
             var userExists = await this.userManager.FindByNameAsync(model.Username);
             if (userExists != null)
             {
-                throw new ArgumentException("User creation failed! Please check user details and try again.");
+                throw new ArgumentException("This username was already registered.");
 
             }
 
@@ -56,7 +56,11 @@ namespace GameQuiz.Web.Services.UserService
         public async Task<UserModel> Login(LoginUserInputModel model)
         {
             var user = await userManager.FindByNameAsync(model.Username);
-            if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
+            if(user == null)
+            {
+                throw new ArgumentException("User not found");
+            }
+            if (await userManager.CheckPasswordAsync(user, model.Password))
             {
                 var userRoles = await userManager.GetRolesAsync(user);
 
@@ -90,7 +94,7 @@ namespace GameQuiz.Web.Services.UserService
 
                 return currUserModel;
             }
-            throw new ArgumentException("User not found");
+            throw new ArgumentException("Password is incorrect");
         }
 
 

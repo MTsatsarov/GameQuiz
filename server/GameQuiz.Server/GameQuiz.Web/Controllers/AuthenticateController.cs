@@ -35,12 +35,12 @@ namespace GameQuiz.Web.Controllers
             }
             catch (Exception ex)
             {
-                return this.BadRequest(ex.Message);
-                
-            }
-          
+                return new JsonResult(new { error = ex.Message });
 
-           
+            }
+
+
+
         }
 
 
@@ -48,16 +48,24 @@ namespace GameQuiz.Web.Controllers
         [Route("register")]
         public async Task<IActionResult> RegisterUser([FromBody] UserRegisterInputModel model)
         {
-             await this.userService.Register(model);
-            var result = await this.userService.Login(new LoginUserInputModel() {Username=model.Username,Password=model.Password });
-           
-            return Ok(new
+
+            try
             {
-                token = new JwtSecurityTokenHandler().WriteToken(result.Token),
-                expiration = result.Token.ValidTo,
-                userName = result.Username,
-                id = result.UserId
-            });
+                await this.userService.Register(model);
+                var result = await this.userService.Login(new LoginUserInputModel() { Username = model.Username, Password = model.Password });
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(result.Token),
+                    expiration = result.Token.ValidTo,
+                    userName = result.Username,
+                    id = result.UserId
+                });
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult(new { error = ex.Message });
+            }
+
 
         }
 

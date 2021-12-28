@@ -14,7 +14,6 @@ namespace GameQuiz.Web.Services.QuizService
         void Update(QuizUpdateInputModel model);
         void Delete(string id);
         QuizListViewModel GetAllByUser(string id,int page);
-        QuizViewModel Search(string name);
         Task<QuizResultViewModel> GetResultAsync(QuizResultInputModel model);
         void Create(QuizInputModel quiz);
         int GetCount();

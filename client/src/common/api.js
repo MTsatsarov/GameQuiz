@@ -47,5 +47,5 @@ export async function del(url) {
     return request(url, createOptions('delete'))
 }
 
-export const host = 'https://gamequizweb20211217202545.azurewebsites.net';
-// export const host = 'https://localhost:44377';
+// export const host = 'https://gamequizweb20211217202545.azurewebsites.net';
+export const host = 'https://localhost:44377';

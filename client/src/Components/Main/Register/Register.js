@@ -26,6 +26,10 @@ class Register extends Component {
                 password: password,
             }
             var result = await userService.Register(model)
+            if(result.error) {
+                this.setState({ error: result.error })
+                return;
+            }
             if (!localStorage.authToken) {
                 this.context.login(result.id, result.userName, result.token, result.expiration)
             }

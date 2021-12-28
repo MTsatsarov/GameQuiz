@@ -30,7 +30,7 @@ const CreateQuestion = (props) => {
         <article className='question-create'>
             <h2>Question: {props.count}</h2>
             <textarea maxLength='150' type='textarea' placeholder="Please enter question Title" onChange={nameChangeHandler} name={`question${props.count-1}`} />
-            {!questionName.isValid && <Error message={'Question must be between 10 and 150 characters long'} />}
+            {!questionName.isValid && <Error message={'Question must be between 5 and 150 characters long'} />}
             {<button type='button' onClick={addAnswer}>ADD ANSWER</button>}
             <div className='answers'>
                 {answerArray.answers.map((x, i) => <CreateAnswer key={i} number={i + 1} questionIndex = {props.count-1}/>)}

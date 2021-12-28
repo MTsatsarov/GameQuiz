@@ -34,7 +34,7 @@ function EditQuiz(props) {
         props.history.push("/all");
     }
     useEffect(() => {
-        if (!isValid || quiz.questions.some(x => x.title.length < 10 || x.title.length > 150 || x.correct === '') || quiz.questions.some(x => x.answers.some(a => a.title.length < 10 || a.title.length > 150))) {
+        if (!isValid || quiz.questions.some(x => x.title.length < 5 || x.title.length > 150 || x.correct === '') || quiz.questions.some(x => x.answers.some(a => a.title.length < 1 || a.title.length > 150))) {
             setIsReadyToUpdate(false);
         } else (setIsReadyToUpdate(true))
     }, [quiz,isValid])

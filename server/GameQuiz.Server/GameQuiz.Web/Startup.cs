@@ -77,8 +77,6 @@ namespace GameQuiz.Web
             services.AddTransient<IQuizService, QuizService>();
             services.AddTransient<IVotesService, VotesService>();
             services.AddTransient<IUserService, UserService>();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,7 +93,7 @@ namespace GameQuiz.Web
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
